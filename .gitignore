@@ -1,0 +1,6 @@
+**
+!.gitignore
+!.vim/vimrc
+!.p/*
+!.emacs/init.el
+!.ssh/id_rsa_raspi*
