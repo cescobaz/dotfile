@@ -19,11 +19,16 @@ set ignorecase
 " Include only uppercase words with uppercase search term
 set smartcase
 
+" Insert space characters whenever the tab key is pressed, use Ctrl-V<Tab> to
+" enter real tab
+set expandtab
+set tabstop=2
+set encoding=utf-8
+set fileencoding=utf-8
+
 " Map the <Space> key to toggle a selected fold opened/closed.
 nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
 vnoremap <Space> zf
-
-colorscheme desert
 
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -33,7 +38,22 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
+" Fuzzy File search plugin and shell command
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+
+let g:EasyMotion_smartcase = 1
+Plug 'https://github.com/easymotion/vim-easymotion'
+
+" Collection of best vim colorscheme
+" angr
+" challenger_deep, alto contrasto
+" happy_haking, molto clean
+" paper_color, pulito, semplice e colorato
+" hybrid_material, non male, semplice
+Plug 'https://github.com/rafi/awesome-vim-colorschemes.git'
+
+" Git plugin
+Plug 'https://github.com/tpope/vim-fugitive.git'
 
 let g:javascript_plugin_jsdoc = 1
 let g:javascript_plugin_ngdoc = 1
@@ -41,10 +61,13 @@ let g:javascript_plugin_flow = 1
 Plug 'sheerun/vim-polyglot'
 
 let g:ale_completion_enabled = 1
-" let g:ale_fixers = ['prettier', 'eslint']
+let g:ale_completion_max_suggestions = 5
+let g:ale_fixers = ['eslint']
 let g:ale_fix_on_save = 1
 Plug 'dense-analysis/ale'
 
 call plug#end()
 
+map s <Plug>(easymotion-bd-f)
 
+colorscheme hybrid_material
