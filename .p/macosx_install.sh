@@ -2,6 +2,7 @@
 
 set -x
 
+brew install fd
 brew install ripgrep
 
 
