@@ -1,3 +1,5 @@
+# ripgrep
+export RIPGREP_CONFIG_PATH="$HOME/.p/.ripgrep"
 # fzf
-export FZF_DEFAULT_COMMAND="find ./* -type f -not -path '*.stack/*' -not -path '*.git/*' -not -path '*node_modules/*' -not -path '*Pods/*' -not -name '.DS_Store' -not -path '*build/*'"
-export FZF_DEFAULT_OPTS="--height 40% --preview='head -$LINES {}'"
+export FZF_DEFAULT_COMMAND="find ./* -type f -not -path '*.stack/*' -not -path '*.git/*' -not -path '*node_modules/*' -not -path '*Pods/*' -not -name '.DS_Store' -not -path '*build/*' -not -path '*home-git/*'"
+export FZF_DEFAULT_OPTS="--layout=reverse --height 40% --preview='head -$LINES {}'"

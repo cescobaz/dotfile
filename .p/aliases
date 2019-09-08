@@ -1,2 +1,3 @@
 alias home-git='git --work-tree=$HOME --git-dir=$HOME/.home-git'
+alias f='fzf'
 alias code='open -a Visual\ Studio\ Code'
