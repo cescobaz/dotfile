@@ -72,6 +72,8 @@ call plug#end()
 map s <Plug>(easymotion-bd-f)
 map <C-p> :Files<CR>
 map <C-x><C-f> :Files<CR>
-map <C-x><C-i> :Rg<CR>
+map <C-x>f :Rg<CR>
+map <C-x><C-b> :Buffer<CR>
+map <C-x>b :BLines<CR>
 
 colorscheme hybrid_material
