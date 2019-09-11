@@ -63,7 +63,10 @@ Plug 'sheerun/vim-polyglot'
 
 let g:ale_completion_enabled = 1
 let g:ale_completion_max_suggestions = 5
-let g:ale_fixers = ['eslint']
+let g:ale_fixers = {
+\   'javascript': ['eslint'],
+\   'json': ['jq'],
+\}
 let g:ale_fix_on_save = 1
 Plug 'dense-analysis/ale'
 
