@@ -67,7 +67,7 @@ let g:ale_fixers = {
 \   'javascript': ['eslint'],
 \   'json': ['jq'],
 \}
-let g:ale_fix_on_save = 1
+let g:ale_fix_on_save = 0
 Plug 'dense-analysis/ale'
 
 call plug#end()
