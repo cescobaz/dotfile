@@ -15,7 +15,7 @@ DISABLE_UNTRACKED_FILES_DIRTY='true'
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-NVM_LAZY_LOAD='true'
+# NVM_LAZY_LOAD='true'
 plugins=(
     zsh-nvm
 )
