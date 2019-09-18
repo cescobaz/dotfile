@@ -3,3 +3,5 @@ export RIPGREP_CONFIG_PATH="$HOME/.p/.ripgrep"
 # fzf
 export FZF_DEFAULT_COMMAND="fd --type f"
 export FZF_DEFAULT_OPTS='--layout=reverse --height 40% --preview="[[ $(file --mime {}) =~ binary ]] && echo {} is a binary file || (rougify {}) 2> /dev/null"'
+
+export MY_TRASH_FOLDER="$HOME/toremove"
