@@ -5,7 +5,6 @@ set -x
 brew install fd
 brew install ripgrep
 
-
 # add aliases to .zshrc
 
 # add env variabiles to env file .zshenv
