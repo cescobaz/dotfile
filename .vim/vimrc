@@ -26,6 +26,9 @@ set tabstop=2
 set encoding=utf-8
 set fileencoding=utf-8
 
+:set listchars=eol:$,tab:>·,trail:~,extends:>,precedes:<,space:␣
+:set list
+
 " Map the <Space> key to toggle a selected fold opened/closed.
 nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
 vnoremap <Space> zf
@@ -61,16 +64,22 @@ let g:javascript_plugin_ngdoc = 1
 let g:javascript_plugin_flow = 1
 Plug 'sheerun/vim-polyglot'
 
-let g:ale_completion_enabled = 1
+let g:ale_completion_enabled = 0
 let g:ale_completion_max_suggestions = 5
 let g:ale_fixers = {
 \   'javascript': ['eslint'],
 \   'json': ['jq'],
 \}
-let g:ale_fix_on_save = 0
+let g:ale_fix_on_save = 1
 Plug 'dense-analysis/ale'
 
+" autocompletion
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 call plug#end()
+
+" BUG: https://github.com/dense-analysis/ale/issues/1700
+set completeopt+=noinsert
 
 map s <Plug>(easymotion-bd-f)
 map <C-p> :Files<CR>
