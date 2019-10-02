@@ -1,5 +1,18 @@
 source $VIMRUNTIME/defaults.vim
 
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+"Plugin 'ycm-core/YouCompleteMe'
+Plugin 'Valloric/YouCompleteMe'
+
+call vundle#end()
+filetype plugin indent on
+
+
 set number
 set wrap
 
@@ -65,7 +78,6 @@ let g:javascript_plugin_flow = 1
 Plug 'sheerun/vim-polyglot'
 
 let g:ale_completion_enabled = 0
-let g:ale_completion_max_suggestions = 5
 let g:ale_fixers = {
 \   'javascript': ['eslint'],
 \   'json': ['jq'],
@@ -73,13 +85,7 @@ let g:ale_fixers = {
 let g:ale_fix_on_save = 1
 Plug 'dense-analysis/ale'
 
-" autocompletion
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
 call plug#end()
-
-" BUG: https://github.com/dense-analysis/ale/issues/1700
-set completeopt+=noinsert
 
 map s <Plug>(easymotion-bd-f)
 map <C-p> :Files<CR>
@@ -87,5 +93,7 @@ map <C-x><C-f> :Files<CR>
 map <C-x>f :Rg<CR>
 map <C-x><C-b> :Buffer<CR>
 map <C-x>b :BLines<CR>
+
+map <C-x><C-l> :ALEFix<CR>
 
 colorscheme hybrid_material
