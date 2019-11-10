@@ -1,3 +1,5 @@
+export PATH=$HOME/.cabal/bin:$PATH
+source $HOME/.ghcup/env
 # ripgrep
 export RIPGREP_CONFIG_PATH="$HOME/.p/.ripgrep"
 # fzf

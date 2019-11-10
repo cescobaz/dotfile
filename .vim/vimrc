@@ -3,15 +3,7 @@ source $VIMRUNTIME/defaults.vim
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-Plugin 'Valloric/YouCompleteMe'
-
-call vundle#end()
 filetype plugin indent on
-
-let g:ycm_autoclose_preview_window_after_completion = 1
 
 set number
 set wrap
@@ -23,7 +15,7 @@ set showmode
 set showcmd
 
 " Set status line display
-set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ [BUFFER=%n]\ %{strftime('%c')}
+set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ [BUFFER=%n] 
 
 " Highlight matching search patterns
 set hlsearch
@@ -41,6 +33,9 @@ set fileencoding=utf-8
 
 :set listchars=eol:$,tab:>·,trail:~,extends:>,precedes:<,space:␣
 :set list
+
+" automatically save the file when we change buffers
+:set autowriteall
 
 " Map the <Space> key to toggle a selected fold opened/closed.
 nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
@@ -78,6 +73,7 @@ let g:javascript_plugin_flow = 1
 Plug 'sheerun/vim-polyglot'
 
 let g:ale_completion_enabled = 0
+let g:ale_linters_explicit = 1
 let g:ale_fixers = {
 \   'javascript': ['eslint'],
 \   'json': ['jq'],
@@ -85,7 +81,14 @@ let g:ale_fixers = {
 let g:ale_fix_on_save = 1
 Plug 'dense-analysis/ale'
 
+Plug 'Valloric/YouCompleteMe', { 'dir': '~/.vim/plugged/YouCompleteMe', 'do': './install.py --ts-completer --java-completer' }
+let g:ycm_autoclose_preview_window_after_insertion = 1
+
 call plug#end()
+
+au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
+au FileType haskell nnoremap <buffer> <silent> <F2> :HdevtoolsInfo<CR>
+au FileType haskell nnoremap <buffer> <silent> <F3> :HdevtoolsClear<CR>
 
 map s <Plug>(easymotion-bd-f)
 map <C-p> :Files<CR>
