@@ -2,8 +2,6 @@
 
 set -e
 
-./macosx_brew.sh
-
 echo 'iterm2 ...'
 cp -R ./.iterm2 ~/
 
