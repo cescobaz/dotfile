@@ -23,7 +23,6 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 alias vim=/usr/local/bin/vim
-alias emacs=/usr/local/bin/emacs
 source ~/.p/aliases
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
