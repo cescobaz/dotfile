@@ -27,3 +27,4 @@ alias emacs=/usr/local/bin/emacs
 source ~/.p/aliases
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
