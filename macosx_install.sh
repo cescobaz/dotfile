@@ -3,5 +3,5 @@
 set -e
 
 ./macosx_brew.sh
-./macosx_apply.sh
+./macosx_install_links.sh
 
