@@ -3,3 +3,4 @@ alias f='fzf'
 alias watch="$HOME/.p/watch.sh"
 alias code='open -a Visual\ Studio\ Code'
 alias top='top -o cpu'
+alias downloads='ls -lt ~/Downloads | head -n 10'

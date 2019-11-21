@@ -18,6 +18,7 @@ DISABLE_UNTRACKED_FILES_DIRTY='true'
 # NVM_LAZY_LOAD='true'
 plugins=(
     zsh-nvm
+    zsh-autosuggestions
 )
 
 source $ZSH/oh-my-zsh.sh
