@@ -6,12 +6,10 @@ Run the installer
 
 ```bash
 cd ~/xhome
-./macosx_apply.sh
+./macosx_brew.sh
 ```
-
-## Update after editing
 
 ```bash
 cd ~/xhome
-./import_configurations.sh
+./macosx_install_links.sh
 ```
