@@ -13,6 +13,7 @@ LINKS=(
   "$SCRIPT_HOME/.zshrc:$DHOME/.zshrc"
   "$SCRIPT_HOME/.p:$DHOME/.p"
   "$SCRIPT_HOME/.vim/vimrc:$DHOME/.vim/vimrc"
+  "$SCRIPT_HOME/.tmux.conf:$DHOME/.tmux.conf"
   "$SCRIPT_HOME/.iterm2/com.googlecode.iterm2.plist:$DHOME/.iterm2/com.googlecode.iterm2.plist"
 )
 
