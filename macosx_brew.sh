@@ -3,6 +3,7 @@
 set -e
 
 PACKAGES=(
+  coreutils
   fd
   ripgrep
   macvim
