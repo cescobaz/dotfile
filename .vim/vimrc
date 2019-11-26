@@ -100,4 +100,6 @@ map <C-x>b :BLines<CR>
 
 map <C-x><C-l> :ALEFix<CR>
 
+map gt :YcmCompleter GoTo<CR>
+
 colorscheme hybrid_material
