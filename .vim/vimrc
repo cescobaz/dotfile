@@ -85,6 +85,8 @@ Plug 'dense-analysis/ale'
 Plug 'Valloric/YouCompleteMe', { 'dir': '~/.vim/plugged/YouCompleteMe', 'do': './install.py --ts-completer --java-completer' }
 let g:ycm_autoclose_preview_window_after_insertion = 1
 
+Plug 'tpope/vim-obsession'
+
 call plug#end()
 
 au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>

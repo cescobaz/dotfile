@@ -17,4 +17,8 @@ do
    brew list "$PACKAGE" || brew install "$PACKAGE"
 done
 
+echo "[INFO] installing zsh-autosuggestions"
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
+echo "[INFO] installing tmux plugin manager"
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
