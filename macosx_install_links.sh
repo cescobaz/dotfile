@@ -15,6 +15,7 @@ LINKS=(
   "$SCRIPT_HOME/.vim/vimrc:$DHOME/.vim/vimrc"
   "$SCRIPT_HOME/.tmux.conf:$DHOME/.tmux.conf"
   "$SCRIPT_HOME/.iterm2:$DHOME/.iterm2"
+  "$SCRIPT_HOME/.stack/config.yaml:$DHOME/.stack/config.yaml"
 )
 
 for LINK in "${LINKS[@]}"
