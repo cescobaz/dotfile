@@ -78,6 +78,7 @@ let g:ale_fixers = {
 \   'javascript': ['eslint'],
 \   'json': ['jq'],
 \   'sh': ['shfmt'],
+\   'haskell': ['hindent'],
 \}
 let g:ale_fix_on_save = 1
 Plug 'dense-analysis/ale'

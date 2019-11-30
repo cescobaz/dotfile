@@ -16,6 +16,7 @@ LINKS=(
   "$SCRIPT_HOME/.tmux.conf:$DHOME/.tmux.conf"
   "$SCRIPT_HOME/.iterm2:$DHOME/.iterm2"
   "$SCRIPT_HOME/.stack/config.yaml:$DHOME/.stack/config.yaml"
+  "$SCRIPT_HOME/.hindent.yaml:$DHOME/.hindent.yaml"
 )
 
 for LINK in "${LINKS[@]}"
