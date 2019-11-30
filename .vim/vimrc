@@ -94,6 +94,8 @@ au FileType haskell nnoremap <buffer> <silent> <F2> :HdevtoolsInfo<CR>
 au FileType haskell nnoremap <buffer> <silent> <F3> :HdevtoolsClear<CR>
 
 nmap <C-x><C-p> "*p
+nmap <C-x><C-y> "*y
+
 map s <Plug>(easymotion-bd-f)
 map <C-p> :Files<CR>
 map <C-x><C-f> :Files<CR>
