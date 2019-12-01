@@ -69,18 +69,24 @@ let g:javascript_plugin_ngdoc = 1
 let g:javascript_plugin_flow = 1
 Plug 'sheerun/vim-polyglot'
 
-let g:ale_completion_enabled = 1
+let g:ale_completion_enabled = 0
 let g:ale_linters_explicit = 1
 let g:ale_open_list = 1
 let g:ale_fix_on_save = 1
 Plug 'dense-analysis/ale'
 
-Plug 'Valloric/YouCompleteMe', { 'dir': '~/.vim/plugged/YouCompleteMe', 'do': './install.py --ts-completer --java-completer' }
-let g:ycm_autoclose_preview_window_after_insertion = 1
+Plug 'Shougo/deoplete.nvim'
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
+let g:deoplete#enable_at_startup = 1
 
 Plug 'tpope/vim-obsession'
 
 call plug#end()
+
+call deoplete#custom#option('sources', {
+\ '_': [ 'buffer', 'tag', 'file'],
+\})
 
 nmap <C-x><C-p> "*p
 nmap <C-x><C-y> "*y
@@ -95,7 +101,7 @@ map <C-x>b :BLines<CR>
 map <C-x><C-l> :ALEFix<CR>
 nmap <C-x><C-i> :ALEDetail<CR>
 
-nmap gt :YcmCompleter GoTo<CR>
+nmap gt :ALEGoToDefinition<CR>
 
 function! LinterStatus() abort
     let l:counts = ale#statusline#Count(bufnr(''))
