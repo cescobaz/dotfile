@@ -12,26 +12,36 @@ DHOME="$HOME"
 LINKS=(
   "$SCRIPT_HOME/.zshrc:$DHOME/.zshrc"
   "$SCRIPT_HOME/.p:$DHOME/.p"
+  "$SCRIPT_HOME/.gitignore_global:$DHOME/.gitignore_global"
   "$SCRIPT_HOME/.vim/vimrc:$DHOME/.vim/vimrc"
+  "$SCRIPT_HOME/.vim/ftplugin/haskell.vim:$DHOME/.vim/ftplugin/haskell.vim"
   "$SCRIPT_HOME/.tmux.conf:$DHOME/.tmux.conf"
   "$SCRIPT_HOME/.iterm2:$DHOME/.iterm2"
   "$SCRIPT_HOME/.stack/config.yaml:$DHOME/.stack/config.yaml"
   "$SCRIPT_HOME/.hindent.yaml:$DHOME/.hindent.yaml"
 )
 
+ALL=0
+
 for LINK in "${LINKS[@]}"
 do
   SLINK="${LINK##*:}"
   REAL_FILE="${LINK%%:*}"
   echo "[INFO] installing link \"${SLINK}\" that points to \"${REAL_FILE}\""
-  if [ ! -e "$SLINK" ] && [ ! -L "$SLINK" ]
+  if [ ! -e "$SLINK" ] && [ ! -L "$SLINK" ] || [ $ALL == 1 ]
   then 
+   rm -r "$SLINK"
    make_link "$REAL_FILE" "$SLINK"
    continue
   fi
   while true; do
-    echo "File at ${SLINK} exists, do you want to override it? (y/n)"
+    echo ""
+    echo "File at ${SLINK} exists, do you want to override it? (y/n/a)"
     read RESPONSE
+    if [ $RESPONSE == "a" ]; then
+      RESPONSE="y"
+      ALL=1
+    fi
     if [ $RESPONSE == "y" ]; then
       rm -r "$SLINK"
       make_link "$REAL_FILE" "$SLINK"

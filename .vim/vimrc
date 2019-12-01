@@ -14,9 +14,6 @@ set laststatus=2
 set showmode
 set showcmd
 
-" Set status line display
-set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ [BUFFER=%n] 
-
 " Highlight matching search patterns
 set hlsearch
 " Include matching uppercase words with lowercase search term
@@ -72,8 +69,15 @@ let g:javascript_plugin_ngdoc = 1
 let g:javascript_plugin_flow = 1
 Plug 'sheerun/vim-polyglot'
 
-let g:ale_completion_enabled = 0
+let g:ale_completion_enabled = 1
 let g:ale_linters_explicit = 1
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\   'json': ['jq'],
+\   'sh': ['shfmt'],
+\   'haskell': ['hie'],
+\}
+let g:ale_open_list = 1
 let g:ale_fixers = {
 \   'javascript': ['eslint'],
 \   'json': ['jq'],
@@ -90,10 +94,6 @@ Plug 'tpope/vim-obsession'
 
 call plug#end()
 
-au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
-au FileType haskell nnoremap <buffer> <silent> <F2> :HdevtoolsInfo<CR>
-au FileType haskell nnoremap <buffer> <silent> <F3> :HdevtoolsClear<CR>
-
 nmap <C-x><C-p> "*p
 nmap <C-x><C-y> "*y
 
@@ -105,7 +105,24 @@ map <C-x><C-b> :Buffer<CR>
 map <C-x>b :BLines<CR>
 
 map <C-x><C-l> :ALEFix<CR>
+nmap gi :ALEDetail<CR>
 
-map gt :YcmCompleter GoTo<CR>
+nmap gt :YcmCompleter GoTo<CR>
+
+function! LinterStatus() abort
+    let l:counts = ale#statusline#Count(bufnr(''))
+
+    let l:all_errors = l:counts.error + l:counts.style_error
+    let l:all_non_errors = l:counts.total - l:all_errors
+
+    return l:counts.total == 0 ? 'OK' : printf(
+    \   '%dW %dE',
+    \   all_non_errors,
+    \   all_errors
+    \)
+endfunction
+
+" Set status line display
+set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ [%{LinterStatus()}]
 
 colorscheme hybrid_material

@@ -1,6 +1,5 @@
-alias home-git='git --work-tree=$HOME --git-dir=$HOME/.home-git'
+alias vim="if [ -f Session.vim ]; then vim -S Session.vim; else vim; fi"
 alias f='fzf'
 alias watch="$HOME/.p/watch.sh"
-alias code='open -a Visual\ Studio\ Code'
 alias top='top -o cpu'
 alias downloads='ls -lt ~/Downloads | head -n 10'

@@ -26,6 +26,5 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 echo "[INFO] installing npm prettier"
 npm i -g prettier
 
-echo "[INFO] installing haskell linter: hindent"
-stack install hindent
-
+echo "[INFO] installing haskell tools ..."
+./macosx_install_haskell_tools.sh
