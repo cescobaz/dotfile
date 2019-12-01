@@ -29,5 +29,5 @@ npm i -g prettier
 echo "[INFO] installing haskell tools ..."
 ./macosx_install_haskell_tools.sh
 
-echo "[INFO] installing dependencies for deoplete"
-pip3 install --user --upgrade pynvim
+echo "[INFO] installing bash-language-server"
+npm i -g bash-language-server

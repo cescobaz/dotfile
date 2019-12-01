@@ -46,6 +46,8 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'tpope/vim-obsession'
+
 " Fuzzy File search plugin and shell command
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -75,18 +77,41 @@ let g:ale_open_list = 1
 let g:ale_fix_on_save = 1
 Plug 'dense-analysis/ale'
 
-Plug 'Shougo/deoplete.nvim'
-Plug 'roxma/nvim-yarp'
-Plug 'roxma/vim-hug-neovim-rpc'
-let g:deoplete#enable_at_startup = 1
-
-Plug 'tpope/vim-obsession'
+Plug 'Valloric/YouCompleteMe', { 'dir': '~/.vim/plugged/YouCompleteMe', 'do': './install.py --ts-completer --java-completer' }
+let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_min_num_of_chars_for_completion = 1
+let g:ycm_warning_symbol = '~~'
+let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_language_server = 
+  \ [ 
+  \   {
+  \     'name': 'haskell',
+  \     'cmdline': [ 'hie-wrapper' ],
+  \     'filetypes': [ 'haskell', 'hs', 'lhs' ],
+  \     'project_root_files': [ 'stack.yaml', '.stack.yaml', 'cabal.config', 'package.yaml' ]
+  \   },
+  \   {
+  \     'name': 'sh',
+  \     'cmdline': ['bash-language-server', 'start'],
+  \     'filetypes': [ 'sh' ]
+  \   }
+  \ ]
+let g:ycm_semantic_triggers =  {
+  \   'c': ['->', '.'],
+  \   'objc': ['->', '.', 're!\[[_a-zA-Z]+\w*\s', 're!^\s*[^\W\d]\w*\s',
+  \            're!\[.*\]\s'],
+  \   'ocaml': ['.', '#'],
+  \   'cpp,cuda,objcpp': ['->', '.', '::'],
+  \   'perl': ['->'],
+  \   'php': ['->', '::'],
+  \   'cs,d,elixir,go,groovy,java,julia,perl6,python,scala,typescript,vb': ['.'],
+  \   'ruby,rust': ['.', '::'],
+  \   'lua': ['.', ':'],
+  \   'erlang': [':'],
+  \   'haskell,javascript': ['re!\w+'],
+  \ }
 
 call plug#end()
-
-call deoplete#custom#option('sources', {
-\ '_': ['ale', 'buffer', 'tag', 'file'],
-\})
 
 nmap <C-x><C-p> "*p
 nmap <C-x><C-y> "*y
@@ -99,9 +124,9 @@ map <C-x><C-b> :Buffer<CR>
 map <C-x>b :BLines<CR>
 
 map <C-x><C-l> :ALEFix<CR>
-nmap <C-x><C-i> :ALEDetail<CR>
+nmap <C-x><C-i> :YcmDiags<CR>
 
-nmap gt :ALEGoToDefinition<CR>
+nmap gt :YcmCompleter GoTo<CR>
 
 function! LinterStatus() abort
     let l:counts = ale#statusline#Count(bufnr(''))
