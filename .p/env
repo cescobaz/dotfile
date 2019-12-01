@@ -13,3 +13,5 @@ export FZF_DEFAULT_COMMAND="fd --type f"
 export FZF_DEFAULT_OPTS='--layout=reverse --height 40%' 
 
 export MY_TRASH_FOLDER="$HOME/toremove"
+
+export PATH=$PATH:"$HOME/.kotlin-language-server/server/build/install/server/bin"

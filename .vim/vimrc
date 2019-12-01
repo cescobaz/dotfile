@@ -94,6 +94,10 @@ let g:ycm_language_server =
   \     'name': 'sh',
   \     'cmdline': ['bash-language-server', 'start'],
   \     'filetypes': [ 'sh' ]
+  \   },
+  \   { 'name': 'kotlin',
+  \     'filetypes': [ 'kotlin' ], 
+  \     'cmdline': ['kotlin-language-server']
   \   }
   \ ]
 let g:ycm_semantic_triggers =  {
@@ -124,8 +128,9 @@ map <C-x><C-b> :Buffer<CR>
 map <C-x>b :BLines<CR>
 
 map <C-x><C-l> :ALEFix<CR>
-nmap <C-x><C-i> :YcmDiags<CR>
 
+nmap <C-x><C-i> :YcmDiags<CR>
+nmap <C-x><C-h> :YcmCompleter GetHover<CR>
 nmap gt :YcmCompleter GoTo<CR>
 
 function! LinterStatus() abort
