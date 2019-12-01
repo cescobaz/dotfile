@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>AllowClipboardAccess</key>
+	<true/>
 	<key>AlternateMouseScroll</key>
 	<true/>
 	<key>AppleAntiAliasingThreshold</key>
@@ -780,7 +782,7 @@
 	<key>NoSyncLastTipTime</key>
 	<real>549179524.899122</real>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>38</integer>
+	<integer>43</integer>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
@@ -1628,7 +1630,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2019-11-21T23:23:09Z</date>
+	<date>2019-12-01T17:32:15Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SUUpdateRelaunchingMarker</key>
