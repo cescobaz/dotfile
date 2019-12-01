@@ -1,3 +1,5 @@
+let b:ale_linters = ['hie']
+let b:ale_fixers = ['hindent']
 
 nmap gt :ALEGoToDefinition<CR>
 

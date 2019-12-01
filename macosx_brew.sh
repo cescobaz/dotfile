@@ -9,12 +9,12 @@ PACKAGES=(
   macvim
   cmake
   zsh-syntax-highlighting
+  shfmt
 )
 
-for PACKAGE in "${PACKAGES[@]}"
-do
-   echo "[INFO] installing $PACKAGE ..."
-   brew list "$PACKAGE" || brew install "$PACKAGE"
+for PACKAGE in "${PACKAGES[@]}"; do
+  echo "[INFO] installing $PACKAGE ..."
+  brew list "$PACKAGE" || brew install "$PACKAGE"
 done
 
 echo "[INFO] installing zsh-autosuggestions"
