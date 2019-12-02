@@ -18,6 +18,7 @@ LINKS=(
   "$SCRIPT_HOME/.vim/ftplugin/sh.vim:$DHOME/.vim/ftplugin/sh.vim"
   "$SCRIPT_HOME/.vim/ftplugin/javascript.vim:$DHOME/.vim/ftplugin/javascript.vim"
   "$SCRIPT_HOME/.vim/ftplugin/json.vim:$DHOME/.vim/ftplugin/json.vim"
+  "$SCRIPT_HOME/.vim/ftplugin/kotlin.vim:$DHOME/.vim/ftplugin/kotlin.vim"
   "$SCRIPT_HOME/.tmux.conf:$DHOME/.tmux.conf"
   "$SCRIPT_HOME/.iterm2:$DHOME/.iterm2"
   "$SCRIPT_HOME/.stack/config.yaml:$DHOME/.stack/config.yaml"

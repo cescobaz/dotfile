@@ -10,6 +10,7 @@ PACKAGES=(
   cmake
   zsh-syntax-highlighting
   shfmt
+  ktlint
 )
 
 for PACKAGE in "${PACKAGES[@]}"; do

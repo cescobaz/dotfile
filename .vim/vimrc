@@ -71,6 +71,8 @@ let g:javascript_plugin_ngdoc = 1
 let g:javascript_plugin_flow = 1
 Plug 'sheerun/vim-polyglot'
 
+Plug 'udalov/kotlin-vim'
+
 let g:ale_completion_enabled = 0
 let g:ale_linters_explicit = 1
 let g:ale_open_list = 1
