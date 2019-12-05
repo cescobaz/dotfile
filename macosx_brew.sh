@@ -32,3 +32,6 @@ echo "[INFO] installing haskell tools ..."
 
 echo "[INFO] installing bash-language-server"
 npm i -g bash-language-server
+
+echo "[INFO] instaling php tools"
+./macosx_install_php_tools.sh
