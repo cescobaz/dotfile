@@ -14,6 +14,7 @@ LINKS=(
   "$SCRIPT_HOME/.p:$DHOME/.p"
   "$SCRIPT_HOME/.gitignore_global:$DHOME/.gitignore_global"
   "$SCRIPT_HOME/.vim/vimrc:$DHOME/.vim/vimrc"
+  "$SCRIPT_HOME/.vim/ftplugin/elixir.vim:$DHOME/.vim/ftplugin/elixir.vim"
   "$SCRIPT_HOME/.vim/ftplugin/php.vim:$DHOME/.vim/ftplugin/php.vim"
   "$SCRIPT_HOME/.vim/ftplugin/haskell.vim:$DHOME/.vim/ftplugin/haskell.vim"
   "$SCRIPT_HOME/.vim/ftplugin/sh.vim:$DHOME/.vim/ftplugin/sh.vim"
