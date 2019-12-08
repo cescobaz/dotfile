@@ -77,6 +77,7 @@ let g:ale_completion_enabled = 0
 let g:ale_linters_explicit = 1
 let g:ale_open_list = 1
 let g:ale_fix_on_save = 1
+let g:ale_close_preview_on_insert = 1
 Plug 'dense-analysis/ale'
 
 Plug 'Shougo/deoplete.nvim'
@@ -89,6 +90,8 @@ call plug#end()
 call deoplete#custom#option('sources', {
 \ '_': ['ale', 'buffer', 'tag', 'file'],
 \})
+call deoplete#custom#source('_',  'max_menu_width', 80)
+call deoplete#custom#source('_', 'min_pattern_length', 1)
 
 nmap <C-x><C-p> "*p
 nmap <C-x><C-y> "*y
