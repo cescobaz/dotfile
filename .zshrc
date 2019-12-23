@@ -28,3 +28,4 @@ source ~/.p/aliases
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+[ -f "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env" ] && source "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env"

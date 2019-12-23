@@ -18,6 +18,8 @@ for PACKAGE in "${PACKAGES[@]}"; do
   brew list "$PACKAGE" || brew install "$PACKAGE"
 done
 
+pip3 install --user pynvim
+
 echo "[INFO] installing zsh-autosuggestions"
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
