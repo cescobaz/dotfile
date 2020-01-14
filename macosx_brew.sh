@@ -11,6 +11,7 @@ PACKAGES=(
   zsh-syntax-highlighting
   shfmt
   ktlint
+  yamllint
 )
 
 for PACKAGE in "${PACKAGES[@]}"; do
@@ -28,6 +29,9 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 echo "[INFO] installing npm prettier"
 npm i -g prettier
+
+echo "[INFO] installing tsserver"
+npm install -g typescript
 
 echo "[INFO] installing haskell tools ..."
 ./macosx_install_haskell_tools.sh
