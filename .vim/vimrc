@@ -31,9 +31,6 @@ set fileencoding=utf-8
 :set listchars=eol:$,tab:>·,trail:~,extends:>,precedes:<,space:␣
 :set list
 
-" automatically save the file when we change buffers
-:set autowriteall
-
 " Map the <Space> key to toggle a selected fold opened/closed.
 nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
 vnoremap <Space> zf
