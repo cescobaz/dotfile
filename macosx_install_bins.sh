@@ -25,6 +25,16 @@ if [ $ANSWER == "y" ]; then
   done
 fi
 
+echo "[QUESTION] install fzf? (y/n)"
+read ANSWER
+if [ $ANSWER == "y" ]; then
+  echo "[INFO] installing fzf"
+  brew list fzf || (
+    brew install fzf
+    $(brew --prefix)/opt/fzf/install
+  )
+fi
+
 echo "[QUESTION] install zsh-autosuggestionsi? (y/n)"
 read ANSWER
 if [ $ANSWER == "y" ]; then

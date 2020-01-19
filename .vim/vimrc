@@ -47,7 +47,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-obsession'
 
 " Fuzzy File search plugin and shell command
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 
 let g:EasyMotion_smartcase = 1
