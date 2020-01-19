@@ -12,6 +12,7 @@ DHOME="$HOME"
 LINKS=(
   "$SCRIPT_HOME/.zshrc:$DHOME/.zshrc"
   "$SCRIPT_HOME/.p:$DHOME/.p"
+  "$SCRIPT_HOME/.p/vim.sh:$DHOME/.local/bin/v"
   "$SCRIPT_HOME/.gitignore_global:$DHOME/.gitignore_global"
   "$SCRIPT_HOME/.vim/vimrc:$DHOME/.vim/vimrc"
   "$SCRIPT_HOME/.config/yamllint/config:$DHOME/.config/yamllint/config"
