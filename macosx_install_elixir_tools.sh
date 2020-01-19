@@ -1,8 +1,9 @@
 #!/bin/bash
 
 REF=$(realpath $(dirname $0))
+source "$REF/lib.sh"
 
-git clone https://github.com/JakeBecker/elixir-ls.git
+clone_or_pull https://github.com/JakeBecker/elixir-ls.git
 cd elixir-ls
 mix deps.get
 mix compile
