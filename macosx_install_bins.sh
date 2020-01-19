@@ -10,6 +10,7 @@ PACKAGES=(
   cmake
   fd
   ripgrep
+  tmux
   macvim
   zsh-syntax-highlighting
   yamllint
