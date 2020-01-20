@@ -4,6 +4,7 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 
 filetype plugin indent on
+syntax on
 
 set number
 set wrap
@@ -46,7 +47,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-obsession'
 
 " Fuzzy File search plugin and shell command
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 
 let g:EasyMotion_smartcase = 1
@@ -99,6 +100,10 @@ map <C-x><C-f> :Files<CR>
 map <C-x>f :Rg<CR>
 map <C-x><C-b> :Buffer<CR>
 map <C-x>b :BLines<CR>
+" commands history
+map <C-x>hc :History:<CR>
+" search history
+map <C-x>hs :History/<CR>
 
 nmap <C-x><C-l> :ALEFix<CR>
 nmap <C-x><C-i> :ALEDetail<CR>
