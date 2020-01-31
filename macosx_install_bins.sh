@@ -14,6 +14,7 @@ PACKAGES=(
   macvim
   zsh-syntax-highlighting
   yamllint
+  fswatch
 )
 
 echo "[QUESTION] install brew packages? (y/n)"

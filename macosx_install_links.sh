@@ -20,6 +20,7 @@ LINKS=(
   "$SCRIPT_HOME/.vim/ftplugin/elixir.vim:$DHOME/.vim/ftplugin/elixir.vim"
   "$SCRIPT_HOME/.vim/ftplugin/php.vim:$DHOME/.vim/ftplugin/php.vim"
   "$SCRIPT_HOME/.vim/ftplugin/haskell.vim:$DHOME/.vim/ftplugin/haskell.vim"
+  "$SCRIPT_HOME/.vim/ftplugin/swift.vim:$DHOME/.vim/ftplugin/swift.vim"
   "$SCRIPT_HOME/.vim/ftplugin/sh.vim:$DHOME/.vim/ftplugin/sh.vim"
   "$SCRIPT_HOME/.vim/ftplugin/javascript.vim:$DHOME/.vim/ftplugin/javascript.vim"
   "$SCRIPT_HOME/.vim/ftplugin/json.vim:$DHOME/.vim/ftplugin/json.vim"
