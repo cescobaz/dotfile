@@ -78,6 +78,13 @@ if [ $ANSWER == "y" ]; then
   npm install -g typescript
 fi
 
+echo "[QUESTION] install vue-language-server? (y/n)"
+read ANSWER
+if [ $ANSWER == "y" ]; then
+  echo "[INFO] installing vue-language-server"
+  npm install vue-language-server -g
+fi
+
 echo "[QUESTION] install haskell tools? (y/n)"
 read ANSWER
 if [ $ANSWER == "y" ]; then

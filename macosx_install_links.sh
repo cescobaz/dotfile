@@ -23,6 +23,7 @@ LINKS=(
   "$SCRIPT_HOME/.vim/ftplugin/swift.vim:$DHOME/.vim/ftplugin/swift.vim"
   "$SCRIPT_HOME/.vim/ftplugin/sh.vim:$DHOME/.vim/ftplugin/sh.vim"
   "$SCRIPT_HOME/.vim/ftplugin/javascript.vim:$DHOME/.vim/ftplugin/javascript.vim"
+  "$SCRIPT_HOME/.vim/ftplugin/vue.vim:$DHOME/.vim/ftplugin/vue.vim"
   "$SCRIPT_HOME/.vim/ftplugin/json.vim:$DHOME/.vim/ftplugin/json.vim"
   "$SCRIPT_HOME/.vim/ftplugin/kotlin.vim:$DHOME/.vim/ftplugin/kotlin.vim"
   "$SCRIPT_HOME/.tmux.conf:$DHOME/.tmux.conf"
