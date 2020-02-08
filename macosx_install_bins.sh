@@ -12,7 +12,6 @@ PACKAGES=(
   ripgrep
   tmux
   macvim
-  zsh-syntax-highlighting
   yamllint
   fswatch
 )
@@ -26,6 +25,13 @@ if [ $ANSWER == "y" ]; then
   done
 fi
 
+echo "[QUESTION] install zsh and tools? (y/n)"
+read ANSWER
+if [ $ANSWER == "y" ]; then
+  echo "[INFO] installing zsh and tools"
+  "$REF/macosx_install_zsh_and_tools.sh"
+fi
+
 echo "[QUESTION] install fzf? (y/n)"
 read ANSWER
 if [ $ANSWER == "y" ]; then
@@ -34,13 +40,6 @@ if [ $ANSWER == "y" ]; then
     brew install fzf
     $(brew --prefix)/opt/fzf/install
   )
-fi
-
-echo "[QUESTION] install zsh-autosuggestionsi? (y/n)"
-read ANSWER
-if [ $ANSWER == "y" ]; then
-  echo "[INFO] installing zsh-autosuggestions"
-  clone_or_pull https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 fi
 
 echo "[QUESTION] install pynvim? (y/n)"
