@@ -32,6 +32,13 @@ if [ $ANSWER == "y" ]; then
   "$REF/macosx_install_zsh_and_tools.sh"
 fi
 
+echo "[QUESTION] install base16-shell? (y/n)"
+read ANSWER
+if [ $ANSWER == "y" ]; then
+  echo "[INFO] installing base16-shell"
+  clone_or_pull https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
+fi
+
 echo "[QUESTION] install fzf? (y/n)"
 read ANSWER
 if [ $ANSWER == "y" ]; then

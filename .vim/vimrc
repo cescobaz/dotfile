@@ -57,13 +57,8 @@ Plug 'junegunn/fzf.vim'
 let g:EasyMotion_smartcase = 1
 Plug 'https://github.com/easymotion/vim-easymotion'
 
-" Collection of best vim colorscheme
-" angr
-" challenger_deep, alto contrasto
-" happy_haking, molto clean
-" paper_color, pulito, semplice e colorato
-" hybrid_material, non male, semplice
-Plug 'https://github.com/rafi/awesome-vim-colorschemes.git'
+Plug 'chriskempson/base16-vim'
+let base16colorspace=256
 
 " Git plugin
 Plug 'https://github.com/tpope/vim-fugitive.git'
@@ -114,4 +109,4 @@ nmap <C-x><C-i> :ALEDetail<CR>
 nmap <C-x><C-h> :ALEHover<CR>
 nmap gt :ALEGoToDefinition<CR>
 
-colorscheme hybrid_material
+" colorscheme hybrid_material
