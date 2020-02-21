@@ -46,6 +46,13 @@ if [ $ANSWER == "y" ]; then
   clone_or_pull https://github.com/martinlindhe/base16-iterm2.git ~/.config/base16-iterm2
 fi
 
+echo "[QUESTION] install base16-tmux? (y/n)"
+read ANSWER
+if [ $ANSWER == "y" ]; then
+  echo "[INFO] installing base16-tmux"
+  clone_or_pull https://github.com/Kraust/base16-tmux.git ~/.config/base16-tmux
+fi
+
 echo "[QUESTION] install fzf? (y/n)"
 read ANSWER
 if [ $ANSWER == "y" ]; then
