@@ -109,4 +109,10 @@ nmap <C-x><C-i> :ALEDetail<CR>
 nmap <C-x><C-h> :ALEHover<CR>
 nmap gt :ALEGoToDefinition<CR>
 
-colorscheme base16-default-dark
+" the following will set colorschema by base16-shell
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
+else
+  colorscheme base16-default-dark
+endif
