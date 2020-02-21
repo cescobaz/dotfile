@@ -29,7 +29,7 @@ set tabstop=2
 set encoding=utf-8
 set fileencoding=utf-8
 
-:set listchars=eol:$,tab:>·,trail:~,extends:>,precedes:<,space:␣
+:set listchars=eol:$,tab:>·,trail:~,extends:>,precedes:<
 :set list
 
 " Map the <Space> key to toggle a selected fold opened/closed.
@@ -109,4 +109,4 @@ nmap <C-x><C-i> :ALEDetail<CR>
 nmap <C-x><C-h> :ALEHover<CR>
 nmap gt :ALEGoToDefinition<CR>
 
-" colorscheme hybrid_material
+colorscheme base16-default-dark

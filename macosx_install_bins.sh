@@ -39,6 +39,13 @@ if [ $ANSWER == "y" ]; then
   clone_or_pull https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
 fi
 
+echo "[QUESTION] install base16-iterm2? (y/n)"
+read ANSWER
+if [ $ANSWER == "y" ]; then
+  echo "[INFO] installing base16-iterm2"
+  clone_or_pull https://github.com/martinlindhe/base16-iterm2.git ~/.config/base16-iterm2
+fi
+
 echo "[QUESTION] install fzf? (y/n)"
 read ANSWER
 if [ $ANSWER == "y" ]; then
