@@ -44,6 +44,10 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+let g:airline_theme='bubblegum'
+
 Plug 'tpope/vim-obsession'
 
 " Fuzzy File search plugin and shell command
@@ -109,21 +113,5 @@ nmap <C-x><C-l> :ALEFix<CR>
 nmap <C-x><C-i> :ALEDetail<CR>
 nmap <C-x><C-h> :ALEHover<CR>
 nmap gt :ALEGoToDefinition<CR>
-
-function! LinterStatus() abort
-    let l:counts = ale#statusline#Count(bufnr(''))
-
-    let l:all_errors = l:counts.error + l:counts.style_error
-    let l:all_non_errors = l:counts.total - l:all_errors
-
-    return l:counts.total == 0 ? 'OK' : printf(
-    \   '%dW %dE',
-    \   all_non_errors,
-    \   all_errors
-    \)
-endfunction
-
-" Set status line display
-set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ [%{LinterStatus()}]
 
 colorscheme hybrid_material
