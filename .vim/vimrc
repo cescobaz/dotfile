@@ -59,10 +59,7 @@ let base16colorspace=256
 " Git plugin
 Plug 'https://github.com/tpope/vim-fugitive.git'
 
-" let g:javascript_plugin_jsdoc = 1
-" let g:javascript_plugin_ngdoc = 1
-" let g:javascript_plugin_flow = 1
-" Plug 'sheerun/vim-polyglot'
+Plug 'sheerun/vim-polyglot'
 
 Plug 'udalov/kotlin-vim'
 
