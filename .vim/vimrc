@@ -44,9 +44,6 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-
 Plug 'tpope/vim-obsession'
 
 " Fuzzy File search plugin and shell command
@@ -115,3 +112,22 @@ if filereadable(expand("~/.vimrc_background"))
 else
   colorscheme base16-default-dark
 endif
+
+function! LinterStatus() abort
+    let l:counts = ale#statusline#Count(bufnr(''))
+
+    let l:all_errors = l:counts.error + l:counts.style_error
+    let l:all_non_errors = l:counts.total - l:all_errors
+
+    return l:counts.total == 0 ? 'OK' : printf(
+    \   '%dW %dE',
+    \   all_non_errors,
+    \   all_errors
+    \)
+endfunction
+
+set statusline=\ %f%m%r%h%w%=
+set statusline+=\ %Y
+set statusline+=\ \|\ %{strlen(&fenc)?&fenc:'none'}[%{&ff}]
+set statusline+=\ \|\ %3p%%\ %4l/%4L\ %3v
+set statusline+=\ \|\ %{LinterStatus()}\ 
