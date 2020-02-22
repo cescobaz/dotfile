@@ -72,6 +72,7 @@ let g:ale_lint_on_text_changed = 0
 let g:ale_lint_on_insert_leave = 0
 let g:ale_lint_on_enter = 1
 let g:ale_lint_on_save = 1
+let g:ale_set_highlights = 1
 Plug 'dense-analysis/ale'
 
 Plug 'Shougo/deoplete.nvim'
@@ -156,7 +157,13 @@ set statusline+=\ %Y
 set statusline+=\ %2*\ %{strlen(&fenc)?&fenc:'none'}[%{&ff}]
 set statusline+=\ %1*\ %3p%%\ %4l/%4L\ %3v
 set statusline+=%{'\ '}
-hi User1 ctermbg=2 ctermfg=18
-hi User2 ctermbg=18
-hi User3 ctermbg=01 ctermfg=18
-hi User4 ctermbg=03 ctermfg=18
+highlight User1 ctermbg=2 ctermfg=18
+highlight User2 ctermbg=18
+highlight User3 ctermbg=01 ctermfg=18
+highlight User4 ctermbg=03 ctermfg=18
+
+highlight ALEError ctermbg=1 ctermfg=18
+highlight ALEWarning ctermbg=3 ctermfg=18
+highlight ALEInfo ctermbg=4 ctermfg=18
+highlight ALEStyleError ctermbg=5 ctermfg=18
+highlight ALEStyleWarning ctermbg=3 ctermfg=18
