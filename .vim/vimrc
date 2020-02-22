@@ -68,12 +68,32 @@ let g:ale_linters_explicit = 1
 let g:ale_open_list = 1
 let g:ale_fix_on_save = 1
 let g:ale_close_preview_on_insert = 1
+let g:ale_lint_on_text_changed = 0
+let g:ale_lint_on_insert_leave = 0
+let g:ale_lint_on_enter = 1
+let g:ale_lint_on_save = 1
 Plug 'dense-analysis/ale'
 
 Plug 'Shougo/deoplete.nvim'
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
 let g:deoplete#enable_at_startup = 1
+
+"""""""""""""""""""""""""""""""" ultisnips """""""""""""""""""""""
+" Track the engine.
+Plug 'SirVer/ultisnips'
+
+" Snippets are separated from the engine. Add this if you want them:
+Plug 'honza/vim-snippets'
+
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+"""""""""""""""""""""""""""""" """""""""""""""""""""""""""""""""""
 
 call plug#end()
 
