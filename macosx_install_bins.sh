@@ -11,9 +11,9 @@ PACKAGES=(
   fd
   ripgrep
   tmux
-  macvim
-  yamllint
   fswatch
+  yamllint
+  macvim
 )
 
 echo "[QUESTION] install brew packages? (y/n)"
@@ -30,27 +30,6 @@ read ANSWER
 if [ $ANSWER == "y" ]; then
   echo "[INFO] installing zsh and tools"
   "$REF/macosx_install_zsh_and_tools.sh"
-fi
-
-echo "[QUESTION] install base16-shell? (y/n)"
-read ANSWER
-if [ $ANSWER == "y" ]; then
-  echo "[INFO] installing base16-shell"
-  clone_or_pull https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
-fi
-
-echo "[QUESTION] install base16-iterm2? (y/n)"
-read ANSWER
-if [ $ANSWER == "y" ]; then
-  echo "[INFO] installing base16-iterm2"
-  clone_or_pull https://github.com/martinlindhe/base16-iterm2.git ~/.config/base16-iterm2
-fi
-
-echo "[QUESTION] install base16-tmux? (y/n)"
-read ANSWER
-if [ $ANSWER == "y" ]; then
-  echo "[INFO] installing base16-tmux"
-  clone_or_pull https://github.com/Kraust/base16-tmux.git ~/.config/base16-tmux
 fi
 
 echo "[QUESTION] install fzf? (y/n)"
@@ -70,39 +49,11 @@ if [ $ANSWER == "y" ]; then
   pip3 install --user pynvim
 fi
 
-echo "[QUESTION] install tmux plugin manager? (y/n)"
-read ANSWER
-if [ $ANSWER == "y" ]; then
-  echo "[INFO] installing tmux plugin manager"
-  clone_or_pull https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-fi
-
-echo "[QUESTION] install npm prettier? (y/n)"
-read ANSWER
-if [ $ANSWER == "y" ]; then
-  echo "[INFO] installing npm prettier"
-  npm i -g prettier
-fi
-
 echo "[QUESTION] install shell tools? (y/n)"
 read ANSWER
 if [ $ANSWER == "y" ]; then
   echo "[INFO] installing shell tools"
   "$REF/macosx_install_shell_tools.sh"
-fi
-
-echo "[QUESTION] install tsserver? (y/n)"
-read ANSWER
-if [ $ANSWER == "y" ]; then
-  echo "[INFO] installing tsserver"
-  npm install -g typescript
-fi
-
-echo "[QUESTION] install vue-language-server? (y/n)"
-read ANSWER
-if [ $ANSWER == "y" ]; then
-  echo "[INFO] installing vue-language-server"
-  npm install vue-language-server -g
 fi
 
 echo "[QUESTION] install haskell tools? (y/n)"
