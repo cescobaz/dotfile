@@ -1,6 +1,6 @@
-if filereadable("$VIMRUNTIME/defaults.vim")
+if filereadable($VIMRUNTIME."/defaults.vim")
   source $VIMRUNTIME/defaults.vim
-elseif filereadable("$VIMRUNTIME/debian.vim")
+elseif filereadable($VIMRUNTIME."/debian.vim")
   source $VIMRUNTIME/debian.vim
 endif
 
