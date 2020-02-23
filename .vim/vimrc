@@ -1,4 +1,8 @@
-source $VIMRUNTIME/defaults.vim
+if filereadable("$VIMRUNTIME/defaults.vim")
+  source $VIMRUNTIME/defaults.vim
+elseif filereadable("$VIMRUNTIME/debian.vim")
+  source $VIMRUNTIME/debian.vim
+endif
 
 set nocompatible              " be iMproved, required
 filetype off                  " required
