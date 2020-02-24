@@ -63,6 +63,7 @@ let base16colorspace=256
 " Git plugin
 Plug 'https://github.com/tpope/vim-fugitive.git'
 
+let g:vue_pre_processors = 'detect_on_enter'
 Plug 'sheerun/vim-polyglot'
 
 Plug 'udalov/kotlin-vim'

@@ -1,5 +1,5 @@
-let b:ale_fixers = ['prettier']
-let b:ale_linters = ['vls']
+let b:ale_fixers = ['prettier', 'eslint']
+let b:ale_linters = ['eslint', 'vls']
 
 map <C-x><C-m> :s/^/\/\/ /<CR> :noh<CR>
 map <C-x><C-a> :s/^\( *\)\/\/ /\1/<CR> :noh<CR>

@@ -17,6 +17,7 @@ LINKS=(
   "$SCRIPT_HOME/.vim/vimrc:$DHOME/.vim/vimrc"
   "$SCRIPT_HOME/.config/base16-tmux.conf:$DHOME/.config/base16-tmux.conf"
   "$SCRIPT_HOME/.config/yamllint/config:$DHOME/.config/yamllint/config"
+  "$SCRIPT_HOME/.vim/UltiSnips:$DHOME/.vim/UltiSnips"
   "$SCRIPT_HOME/.vim/ftplugin/yaml.vim:$DHOME/.vim/ftplugin/yaml.vim"
   "$SCRIPT_HOME/.vim/ftplugin/elixir.vim:$DHOME/.vim/ftplugin/elixir.vim"
   "$SCRIPT_HOME/.vim/ftplugin/php.vim:$DHOME/.vim/ftplugin/php.vim"

@@ -46,6 +46,7 @@ echo "[QUESTION] install pynvim? (y/n)"
 read ANSWER
 if [ $ANSWER == "y" ]; then
   echo "[INFO] installing pynvim"
+  pip3 install msgpack
   pip3 install --user pynvim
 fi
 
