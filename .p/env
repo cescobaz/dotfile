@@ -1,3 +1,7 @@
+# alacritty fix
+export LC_CTYPE=UTF-8
+export COLORFGBG='7;0'
+
 # ReactNative
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/tools
