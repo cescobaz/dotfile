@@ -156,7 +156,7 @@ function! LinterWarnings() abort
     \)
 endfunction
 
-set statusline=%1*\ %f\ %0*%m%r%h%w
+set statusline=%1*\ %f\ %0*\ %n%m%r%h%w
 set statusline+=\ %4*\%{LinterWarnings()}%0*
 set statusline+=\ %3*\%{LinterErrors()}%0*%=
 set statusline+=\ %Y
