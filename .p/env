@@ -1,4 +1,5 @@
 # alacritty fix
+export LANG=en_US.UTF-8
 export LC_CTYPE=UTF-8
 
 # ReactNative
