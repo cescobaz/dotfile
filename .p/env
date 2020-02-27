@@ -1,6 +1,5 @@
 # alacritty fix
 export LC_CTYPE=UTF-8
-export COLORFGBG='7;0'
 
 # ReactNative
 export PATH=$PATH:$ANDROID_HOME/emulator
@@ -20,3 +19,5 @@ export FZF_DEFAULT_OPTS='--layout=reverse --height 40%'
 export MY_TRASH_FOLDER="$HOME/toremove"
 
 export PATH=$PATH:"$HOME/.kotlin-language-server/server/build/install/server/bin"
+
+export PATH=$PATH:"/Applications/Alacritty.app/Contents/MacOS"

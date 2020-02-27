@@ -529,7 +529,9 @@ key_bindings:
   - {key: LBracket, mods: Alt, chars: "\x5B"}
   - {key: RBracket, mods: Alt, chars: "\x5D"}
   - {key: Semicolon, mods: Alt, chars: "\x40"}
+  - {key: Key2, mods: Alt, chars: "\x40"}
   - {key: Apostrophe, mods: Alt, chars: "\x23"}
+  - {key: Key3, mods: Alt, chars: "\x23"}
   - {key: Caret, mods: Alt, chars: "\x60"}
   - {key: Key5, mods: Alt, chars: "\x7E"}
 # (Windows, Linux, and BSD only)
