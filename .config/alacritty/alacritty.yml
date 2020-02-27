@@ -186,8 +186,8 @@ colors:
   # Colors which should be used to draw the terminal cursor. If these are unset,
   # the cursor color will be the inverse of the cell color.
   cursor:
-    text: '0x000000'
-    cursor: '0xff0000'
+    text: "0x000000"
+    cursor: "0xff0000"
 
   # Selection colors
   #
@@ -516,14 +516,17 @@ mouse:
 # If the same trigger is assigned to multiple actions, all of them are executed
 # at once.
 key_bindings:
-  - {key: Q, mods: Control, chars: "\x11"}
-  - {key: LBracket, mods: Alt|Shift, chars: "\x7B"}
-  - {key: RBracket, mods: Alt|Shift, chars: "\x7D"}
-  - {key: LBracket, mods: Alt, chars: "\x5B"}
-  - {key: RBracket, mods: Alt, chars: "\x5D"}
-  - {key: Semicolon, mods: Alt, chars: "\x40"}
-  - {key: Key2, mods: Alt, chars: "\x40"}
-  - {key: Apostrophe, mods: Alt, chars: "\x23"}
-  - {key: Key3, mods: Alt, chars: "\x23"}
-  - {key: Caret, mods: Alt, chars: "\x60"}
-  - {key: Key5, mods: Alt, chars: "\x7E"}
+  - { key: Q, mods: Control, chars: "\x11" }
+  - { key: LBracket, mods: Alt|Shift, chars: "\x7B" }
+  - { key: RBracket, mods: Alt|Shift, chars: "\x7D" }
+  - { key: LBracket, mods: Alt, chars: "\x5B" }
+  - { key: RBracket, mods: Alt, chars: "\x5D" }
+  - { key: Semicolon, mods: Alt, chars: "\x40" }
+  - { key: Key2, mods: Alt, chars: "\x40" }
+  - { key: Apostrophe, mods: Alt, chars: "\x23" }
+  - { key: Key3, mods: Alt, chars: "\x23" }
+  - { key: Caret, mods: Alt, chars: "\x60" }
+  - { key: Key5, mods: Alt, chars: "\x7E" }
+  - { key: Grave, mods: Alt, chars: "\x7E" }
+#  - { key: Grave, mods: Shift, chars: "\x60" } # backtick
+#  - { key: Key9, mods: Alt, chars: "\x60" } # backtick
