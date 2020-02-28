@@ -530,6 +530,7 @@ key_bindings:
   - { key: 23, mods: Alt, chars: "\x7E" } # tilde ~
 # backtick doesn't appear at first press, but it work for example after "space" pressed.
 # BUT, after the first backtick is inserted, Control+W doesn't work anymore or, better, Control-W is switched with Control-Z. So the need to define Control-W and Control-Z.
+# ASCII chars map here https://donsnotes.com/tech/charsets/ascii.html
 #  - { key: Grave, mods: Alt, chars: "\x7E" } # tilde ~
 #  - { key: Key5, mods: Alt, chars: "\x7E" } # tilde ~
 #  - { key: 25, mods: Alt, chars: "\x60" } # backtick
