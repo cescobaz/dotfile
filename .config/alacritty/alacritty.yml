@@ -86,6 +86,16 @@ font:
   # Point size
   size: 14.0
 
+# Colors (Tomorrow Night Bright)
+colors:
+  # Cursor colors
+  #
+  # Colors which should be used to draw the terminal cursor. If these are unset,
+  # the cursor color will be the inverse of the cell color.
+  cursor:
+    text: "0x000000"
+    cursor: "0xff0000"
+
 # Shell
 #
 # You can set `shell.program` to the path of your favorite shell, e.g. `/bin/fish`.
