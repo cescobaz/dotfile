@@ -14,6 +14,7 @@ PACKAGES=(
   fswatch
   yamllint
   macvim
+  neofetch
 )
 
 echo "[QUESTION] install brew packages? (y/n)"
