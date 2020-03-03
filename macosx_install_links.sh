@@ -13,6 +13,7 @@ LINKS=(
   "$SCRIPT_HOME/.zshrc:$DHOME/.zshrc"
   "$SCRIPT_HOME/.p:$DHOME/.p"
   "$SCRIPT_HOME/.p/vim.sh:$DHOME/.local/bin/v"
+  "$SCRIPT_HOME/.p/notes.sh:$DHOME/.local/bin/notes"
   "$SCRIPT_HOME/.gitignore_global:$DHOME/.gitignore_global"
   "$SCRIPT_HOME/.vim/vimrc:$DHOME/.vim/vimrc"
   "$SCRIPT_HOME/.config/base16-tmux.conf:$DHOME/.config/base16-tmux.conf"
