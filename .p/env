@@ -2,6 +2,8 @@
 export LANG=en_US.UTF-8
 export LC_CTYPE=UTF-8
 
+export HOMEBREW_NO_AUTO_UPDATE=1
+
 # ReactNative
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/tools
