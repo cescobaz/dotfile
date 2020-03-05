@@ -9,7 +9,8 @@ clone_or_pull https://github.com/kovidgoyal/kitty
 
 cd ./kitty
 make
-cp ./kitty/kitty.app /Applications/
+make app
+cp -r ./kitty.app /Applications/
 
 sudo tic -xe xterm-kitty ./terminfo/kitty.terminfo
 
