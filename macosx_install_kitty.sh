@@ -14,6 +14,5 @@ cp -r ./kitty.app /Applications/
 
 sudo tic -xe xterm-kitty ./terminfo/kitty.terminfo
 
-rm -rf ./kitty
-
 cd "$REF"
+rm -rf ./kitty
