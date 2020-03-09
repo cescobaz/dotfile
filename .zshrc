@@ -25,6 +25,13 @@ source $ZSH/oh-my-zsh.sh
 
 fpath+=~/.zsh_functions
 
+# https://linux.die.net/man/1/zshzle
+bindkey '^[[1;3D' backward-word
+bindkey '∫' backward-word
+bindkey '^[[1;3C' forward-word
+bindkey 'ƒ' forward-word
+
+
 BASE16_SHELL="$HOME/.config/base16-shell/"
 [ -n "$PS1" ] && \
 [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
