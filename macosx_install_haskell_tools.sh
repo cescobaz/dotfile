@@ -9,7 +9,7 @@ ghcup install 8.6.5
 ghcup set 8.6.5
 
 echo "[INFO] installing haskell fixer: brittany"
-cabal install brittany
+cabal v2-install floskell
 
 echo "[INFO] installing haskell-ide-engine"
 HASKELL_IDE_ENGINE_DIR="$HOME/.haskell-ide-engine"

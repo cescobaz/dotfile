@@ -34,6 +34,7 @@ LINKS=(
   "$SCRIPT_HOME/.tmux.conf:$DHOME/.tmux.conf"
   "$SCRIPT_HOME/.stack/config.yaml:$DHOME/.stack/config.yaml"
   "$SCRIPT_HOME/.hindent.yaml:$DHOME/.hindent.yaml"
+  "$SCRIPT_HOME/.config/.floskell.json:$DHOME/.config/.floskell.json"
 )
 
 ALL=0
