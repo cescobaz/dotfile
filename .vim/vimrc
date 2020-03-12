@@ -168,7 +168,7 @@ highlight User2 ctermbg=18
 highlight User3 ctermbg=01 ctermfg=18
 highlight User4 ctermbg=03 ctermfg=18
 
-highlight ALEError ctermbg=1 ctermfg=18
+highlight ALEError ctermbg=1 ctermfg=21
 highlight ALEWarning ctermbg=3 ctermfg=18
 highlight ALEInfo ctermbg=4 ctermfg=18
 highlight ALEStyleError ctermbg=5 ctermfg=18

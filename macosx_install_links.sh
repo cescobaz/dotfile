@@ -10,6 +10,7 @@ SCRIPT_HOME=$(realpath $(dirname $0))
 DHOME="$HOME"
 
 LINKS=(
+  "$SCRIPT_HOME/.zsh_custom/themes:$DHOME/.oh-my-zsh/custom/themes"
   "$SCRIPT_HOME/.zshrc:$DHOME/.zshrc"
   "$SCRIPT_HOME/.p:$DHOME/.p"
   "$SCRIPT_HOME/.p/vim.sh:$DHOME/.local/bin/v"
