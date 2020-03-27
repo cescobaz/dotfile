@@ -16,8 +16,10 @@ function _second_line() {
   echo "%(?:%{$fg[green]%}❯ :%{$fg_bold[red]%}❯ )%{$reset_color%}"
 }
 
-_invisible='%([BSUbfksu]|([FBK]|){*})'
-_first_line_content=${(S)$(_first_line)//$~_invisible}
-_padding=${(l,COLUMNS-${#${(%)_first_line_content}},)}
+function _padding() {
+  _invisible='%([BSUbfksu]|([FBK]|){*})'
+  _first_line_content=${(S)$(_first_line)//$~_invisible}
+  echo "${(l,COLUMNS-${#${(%)_first_line_content}},)}"
+}
 
-PROMPT='$(_first_line)$_padding%{$reset_color%}'$'\n''$(_second_line)'
+PROMPT='$(_first_line)$(_padding)%{$reset_color%}'$'\n''$(_second_line)'
