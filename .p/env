@@ -17,7 +17,7 @@ source $HOME/.ghcup/env
 export RIPGREP_CONFIG_PATH="$HOME/.p/.ripgrep"
 # fzf
 export FZF_DEFAULT_COMMAND="fd --type f"
-export FZF_DEFAULT_OPTS='--layout=reverse --height 40%' 
+export FZF_DEFAULT_OPTS="--layout=reverse --history=$HOME/.fzf_history --color='fg:08,bg:0,preview-fg:07,preview-bg:0,hl:15,fg+:10,bg+:00,gutter:00,hl+:15,info:07,border:00,prompt:02,pointer:02,marker:02,spinner:07,header:03' --no-bold"
 
 export TOREMOVE="$HOME/toremove"
 
