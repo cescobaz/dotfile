@@ -3,14 +3,7 @@
 REF=$(realpath $(dirname $0))
 source "$REF/lib.sh"
 
-brew install macvim
-if [ "$?" != 0 ]; then
-  sudo pacman -S vim
-fi
-if [ "$?" != 0 ]; then
-  echo "unable to install vim via package manager"
-  exit 1
-fi
+install_via_pkg_mng_2 vim macvim
 
 echo "[QUESTION] install pynvim? (y/n)"
 read ANSWER
