@@ -12,6 +12,8 @@ bspc config borderless_monocle   true
 bspc config gapless_monocle      true
 
 bspc rule -a firefox desktop='^9'
-bspc rule -a keepassxc desktop='^0'
+bspc rule -a keepassxc desktop='^10'
 
 feh --bg-fill "$HOME/.wallpaper" &
+
+$HOME/.config/lemonbar/run.sh &
