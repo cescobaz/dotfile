@@ -32,6 +32,19 @@ clone_or_pull() {
   fi
 }
 
+AURHOME="$HOME/aur"
+
+install_aur() {
+  PACKAGE=$1
+  mkdir -p "$AURHOME"
+  PWD=$(pwd)
+  cd "$AURHOME"
+  clone_or_pull "https://aur.archlinux.org/$PACKAGE.git"
+  cd "$PACKAGE"
+  makepkg -si
+  cd "$PWD"
+}
+
 make_link() {
   LINK_DIR=$(realpath $(dirname $2))
   mkdir -p $LINK_DIR

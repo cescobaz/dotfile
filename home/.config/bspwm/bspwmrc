@@ -14,4 +14,4 @@ bspc config gapless_monocle      true
 bspc rule -a firefox desktop='^9'
 bspc rule -a keepassxc desktop='^0'
 
-feh --bg-fill "$HOME/wallpapers/forest.jpg" &
+feh --bg-fill "$HOME/.wallpaper" &
