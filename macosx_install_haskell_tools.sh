@@ -7,6 +7,9 @@ echo "[INFO] installing ghcup"
 sudo curl https://get-ghcup.haskell.org -sSf | sh
 ghcup install 8.6.5
 ghcup set 8.6.5
+# maybe the following line shoul be installed to shell
+# source $HOME/.ghcup/env
+# echo 'source $HOME/.ghcup/env' >> "$HOME/.custom_env"
 
 echo "[INFO] installing haskell fixer: brittany"
 cabal install floskell

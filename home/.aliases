@@ -1,3 +1,6 @@
+alias ls='ls --color'
+alias ll='ls --color -lh'
+alias grep='grep --color'
 alias f='fzf'
 alias watch="$HOME/.p/watch.sh"
 alias top='top -o cpu'

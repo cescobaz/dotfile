@@ -1,0 +1,17 @@
+# alacritty fix
+export LANG=en_US.UTF-8
+export LC_CTYPE=UTF-8
+
+export PATH=$PATH:"/Applications/Alacritty.app/Contents/MacOS"
+
+export HOMEBREW_NO_AUTO_UPDATE=1
+
+# ReactNative
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+
+export PATH=$HOME/.cabal/bin:$PATH
+
+export PATH=$PATH:"$HOME/.kotlin-language-server/server/build/install/server/bin"

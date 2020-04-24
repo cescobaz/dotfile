@@ -59,7 +59,7 @@ create_home_link() {
   SLINK="$DHOME/$1"
   echo "[INFO] installing link \"${SLINK}\" that points to \"${REAL_FILE}\""
   if [ ! -e "$SLINK" ] && [ ! -L "$SLINK" ] || [ "$ALL" == 1 ]; then
-    rm -r "$SLINK"
+    rm -fr "$SLINK"
     make_link "$REAL_FILE" "$SLINK"
     return
   fi
