@@ -30,6 +30,10 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
+xsetroot -solid "#555d50" # green
+# xsetroot -solid "#49646b" # green to gray
+# xsetroot -solid "#4f676b" # green to gray, lighter
+
 dropbox &
 sxhkd &
 exec bspwm

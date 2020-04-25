@@ -16,7 +16,7 @@ bspc config gapless_monocle      true
 bspc rule -a firefox desktop='^9'
 bspc rule -a keepassxc desktop='^10'
 
-feh --bg-fill "$HOME/.wallpaper" &
+test -e "$HOME/.wallpaper" && feh --bg-fill "$HOME/.wallpaper" &
 
 [ -e "$PANEL_FIFO" ] && bspc subscribe report > "$PANEL_FIFO" &
 pgrep -x panel > /dev/null || panel &
