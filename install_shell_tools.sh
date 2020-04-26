@@ -6,4 +6,4 @@ source "$REF/lib.sh"
 install_via_pkg_mng shfmt
 npm i -g bash-language-server
 
-cd "$REF"
+create_home_link ".vim/ftplugin/sh.vim"
