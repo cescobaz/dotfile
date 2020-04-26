@@ -10,7 +10,7 @@ if [ "$BSPWM_RESET_PADDING" == "true" ]; then
 fi
 
 bspc config border_width 8
-bspc config window_gap 8
+bspc config window_gap 24
 bspc config normal_border_color "#333333"
 bspc config active_border_color "#DDDDDD"
 bspc config focused_border_color "#99AA99"
