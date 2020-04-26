@@ -1,7 +1,12 @@
-Xft.dpi: 120
+Xft.dpi: 128
+Xft.rgba:      rgba
 Xft.antialias: 1
+Xft.hinting:   1
+Xft.autohint:  0
+Xft.hintstyle: hintslight
+!Xft.lcdfilter: lcddefault
 URxvt.scrollBar: false
-URxvt.font: xft:FreeMono:size=12
+URxvt.font: xft:SourceCodePro:size=12
 URxvt.internalBorder: 0
-URxvt.depth: 0
+URxvt.depth: 24
 URxvt.background: black
