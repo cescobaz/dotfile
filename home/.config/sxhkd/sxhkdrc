@@ -25,11 +25,11 @@ super + F3
   $HOME/scripts/xmonitor-external-above-embedded.sh
 
 XF86AudioRaiseVolume
-  amixer set Master 5%+
+  $HOME/scripts/volume.sh set +5%
 XF86AudioLowerVolume
-  amixer set Master 5%-
+  $HOME/scripts/volume.sh set -5%
 XF86AudioMute
-  amixer set Master toggle
+  $HOME/scripts/volume.sh toggle-mute
 #
 # bspwm hotkeys
 #
