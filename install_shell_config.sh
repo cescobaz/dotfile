@@ -9,6 +9,7 @@ LINKS=(
   ".shell_env"
   ".aliases"
   ".ripgrep"
+  ".zsh_custom"
 )
 
 create_home_links "$LINKS"
