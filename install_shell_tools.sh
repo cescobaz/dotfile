@@ -3,7 +3,7 @@
 REF=$(realpath $(dirname $0))
 source "$REF/lib.sh"
 
-brew list shfmt || brew install shfmt
+install_via_pkg_mng shfmt
 npm i -g bash-language-server
 
-cd "$REF"
+create_home_link ".vim/ftplugin/sh.vim"

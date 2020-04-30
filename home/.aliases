@@ -1,0 +1,7 @@
+alias ls='ls --color'
+alias ll='ls --color -lh'
+alias grep='grep --color'
+alias f='fzf'
+alias watch="$HOME/scripts/watch.sh"
+alias downloads='ls -lt ~/Downloads | head -n 10'
+alias cabalwatch="$HOME/scripts/macos-watch-and-cabal.sh"

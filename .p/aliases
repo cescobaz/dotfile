@@ -1,5 +1,0 @@
-alias f='fzf'
-alias watch="$HOME/.p/watch.sh"
-alias top='top -o cpu'
-alias downloads='ls -lt ~/Downloads | head -n 10'
-alias cabalwatch="$HOME/.p/macos-watch-and-cabal.sh"

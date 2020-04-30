@@ -7,11 +7,7 @@ fi
 
 DIR=$(pwd)
 
-while true; do
-  cabal "$@" &
-  PID=$!
-  echo "PROCESS: $PID"
-
+wait_changes_macosx() {
   fswatch --one-event --latency 2 \
     --exclude '.*' \
     --include '/src/.*\.hs$' \
@@ -19,6 +15,30 @@ while true; do
     --include '/src/.*\.hsc$' \
     --include '.*\.cabal$' \
     --exclude '.*dist-newstyle.*' "$DIR"
+}
+
+wait_changes_linux() {
+  inotifywait -r -e close_write \
+    --include '(src/.*\.hs$)|(test/.*\.hs$)|(.*\.cabal$)' \
+    "$DIR"
+}
+
+wait_changes() {
+  type inotifywait
+  if [ "$?" == "0" ]; then
+    echo "wait_changes_linux ..."
+    wait_changes_linux
+  else
+    wait_changes_macosx
+  fi
+}
+
+while true; do
+  cabal "$@" &
+  PID=$!
+  echo "PROCESS: $PID"
+
+  wait_changes
   echo "CHANGE DETECTED ----------------------------------------------------"
   echo "killing $PID"
   kill $PID
