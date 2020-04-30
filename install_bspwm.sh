@@ -13,11 +13,13 @@ install_via_pkg_mng xorg-xsetroot
 install_via_pkg_mng bspwm
 install_via_pkg_mng sxhkd
 install_aur lemonbar-xft-git
+install_via_pkg_mng rofi
 
 LINKS=(
   ".config/bspwm"
   ".config/sxhkd"
   ".config/lemonbar"
+  ".config/rofi"
 )
 
 create_home_links "$LINKS"

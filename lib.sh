@@ -89,3 +89,9 @@ create_home_links() {
     create_home_link "$LINK"
   done
 }
+
+if [ "$#" -ne 1 ]; then
+  COMMAND=$1
+  shift
+  eval "$COMMAND" "$@"
+fi
