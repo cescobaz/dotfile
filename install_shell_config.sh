@@ -1,11 +1,12 @@
 #!/bin/bash
 
-set -e
+set -ex
 
 REF=$(realpath $(dirname $0))
 source "$REF/lib.sh"
 
 LINKS=(
+  ".zshrc"
   ".shell_env"
   ".aliases"
   ".ripgrep"

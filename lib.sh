@@ -90,7 +90,8 @@ create_home_links() {
   done
 }
 
-if [ "$#" -ne 1 ]; then
+if [ "$#" -ne 0 && "$1" == 'call' ]; then
+  shift
   COMMAND=$1
   shift
   eval "$COMMAND" "$@"
