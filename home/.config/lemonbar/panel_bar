@@ -9,7 +9,7 @@ num_mon=$(bspc query -M | wc -l)
 while read -r line; do
   case $line in
   V*)
-    volume="%{F$COLOR_SYS_FG}%{B$COLOR_SYS_BG} V${line#?}% %{B-}%{F-}"
+    volume="%{F$COLOR_SYS_FG}%{B$COLOR_SYS_BG} V${line#?}%{B-}%{F-}"
     ;;
   S*)
     # clock output
