@@ -10,9 +10,11 @@ trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
 [ -e "$PANEL_FIFO" ] && rm "$PANEL_FIFO"
 mkfifo "$PANEL_FIFO"
 
-$HOME/scripts/volume.sh subscribe-status | sed -u 's/^/V/' > "$PANEL_FIFO" &
+stdbuf -oL $HOME/scripts/cpu.sh subscribe | sed -u 's/^/CPU/' > "$PANEL_FIFO" &
+stdbuf -oL $HOME/scripts/memory.sh subscribe | sed -u 's/^/MEM/' > "$PANEL_FIFO" &
+stdbuf -oL $HOME/scripts/volume.sh subscribe-status | sed -u 's/^/VOL/' > "$PANEL_FIFO" &
 xtitle -sf 'T%s\n' > "$PANEL_FIFO" &
-clock -sf 'S%A %d %B %H:%M' > "$PANEL_FIFO" &
+clock -sf 'CLK%A %d %B %H:%M' > "$PANEL_FIFO" &
 bspc subscribe report > "$PANEL_FIFO" &
 
 . panel_colors
