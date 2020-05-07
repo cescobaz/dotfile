@@ -6,7 +6,7 @@ cpu() {
 
 if [ "$1" == 'subscribe' ]; then
   while true; do
-    cpu 1
+    cpu 3
   done
 else
   cpu

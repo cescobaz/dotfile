@@ -7,7 +7,7 @@ memory() {
 if [ "$1" == 'subscribe' ]; then
   while true; do
     echo $(memory)
-    sleep 1
+    sleep 3
   done
 else
   memory
