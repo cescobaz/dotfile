@@ -31,5 +31,6 @@ elif [ "$ACTION" == "toggle-mute" ]; then
 elif [ "$ACTION" == "get-volume" ]; then
   get_volume
 elif [ "$ACTION" == "subscribe-volume" ]; then
+  get_volume
   pactl subscribe | subscribe_volume
 fi
