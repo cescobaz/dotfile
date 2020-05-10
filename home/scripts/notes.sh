@@ -4,4 +4,4 @@ NOTES_DIR="$HOME/notes"
 
 mkdir -p $NOTES_DIR
 cd $NOTES_DIR
-v
+$HOME/scripts/vim.sh

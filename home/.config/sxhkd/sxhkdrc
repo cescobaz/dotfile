@@ -5,8 +5,6 @@
 # terminal emulator
 super + Return
 	urxvt
-super + shift + Return
-	st
 
 # program launcher
 super + @space
@@ -23,6 +21,9 @@ super + F2
   $HOME/scripts/xmonitor-only-external.sh
 super + F3
   $HOME/scripts/xmonitor-external-above-embedded.sh
+
+F12
+  flameshot gui
 
 XF86AudioRaiseVolume
   $HOME/scripts/volume.sh set +5%

@@ -13,8 +13,6 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 # start user configuration
 
-setopt share_history
-
 test -e ~/.shell_env && source ~/.shell_env || true
 test -e ~/.custom_env && source ~/.custom_env || true
 test -e ~/.aliases && source ~/.aliases || true
