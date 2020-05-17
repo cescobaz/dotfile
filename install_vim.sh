@@ -4,7 +4,7 @@ REF=$(realpath $(dirname $0))
 source "$REF/lib.sh"
 
 install_bins() {
-  install_via_pkg_mng_2 vim macvim
+  install_via_pkg_mng_2 gvim macvim
 
   echo "[QUESTION] install pynvim? (y/n)"
   read ANSWER
