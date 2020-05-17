@@ -16,6 +16,7 @@ install_aur lemonbar-xft-git
 install_via_pkg_mng rofi
 
 LINKS=(
+  ".config/gtk-3.0"
   ".config/bspwm"
   ".config/sxhkd"
   ".config/lemonbar"
