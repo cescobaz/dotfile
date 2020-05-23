@@ -12,7 +12,7 @@ super + @space
 
 # make sxhkd reload its configuration files:
 super + Escape
-	pkill -USR1 -x sxhkd
+	$HOME/scripts/sxhkd-reload.sh
 
 # display commands
 super + F1
