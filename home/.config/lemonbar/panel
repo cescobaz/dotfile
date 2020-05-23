@@ -10,6 +10,7 @@ trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
 [ -e "$PANEL_FIFO" ] && rm "$PANEL_FIFO"
 mkfifo "$PANEL_FIFO"
 
+stdbuf -oL $HOME/scripts/temperature.sh subscribe | sed -u 's/^/TEMP/' > "$PANEL_FIFO" &
 stdbuf -oL $HOME/scripts/cpu.sh subscribe | sed -u 's/^/CPU/' > "$PANEL_FIFO" &
 stdbuf -oL $HOME/scripts/memory.sh subscribe | sed -u 's/^/MEM/' > "$PANEL_FIFO" &
 stdbuf -oL $HOME/scripts/volume.sh subscribe-status | sed -u 's/^/VOL/' > "$PANEL_FIFO" &

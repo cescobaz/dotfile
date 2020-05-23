@@ -10,7 +10,7 @@ max_temperature() {
     fi
   done
 
-  echo $MAXTEMP
+  echo "$MAXTEMP°C"
 }
 
 if [ "$1" == 'subscribe' ]; then
