@@ -11,7 +11,7 @@ super + @space
 	rofi -show combi
 
 # make sxhkd reload its configuration files:
-super + Escape
+super + alt + s
 	$HOME/scripts/sxhkd-reload.sh
 
 # display commands
@@ -22,6 +22,8 @@ super + F2
 super + F3
   $HOME/scripts/xmonitor-external-above-embedded.sh
 
+F11
+  sflock -h
 F12
   flameshot gui
 
@@ -32,12 +34,6 @@ XF86AudioLowerVolume
 XF86AudioMute
   $HOME/scripts/volume.sh toggle-mute
 
-super + alt + i
-  setxkbmap it
-super + alt + u
-  setxkbmap us
-
-#
 # bspwm hotkeys
 #
 
