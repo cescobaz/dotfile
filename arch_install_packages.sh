@@ -5,7 +5,7 @@ set -e
 REF=$(realpath $(dirname $0))
 source "$REF/lib.sh"
 
-pacman -S rxvt-unicode zsh zsh-syntax-highlighting openssh tmux fd ripgrep fzf
+pacman -S rxvt-unicode zsh openssh tmux fd ripgrep fzf
 
 pacman -S lm_sensors
 

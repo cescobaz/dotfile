@@ -17,3 +17,5 @@ sudo tic -xe xterm-kitty ./terminfo/kitty.terminfo
 
 cd "$REF"
 rm -rf ./kitty
+
+create_home_link '.config/kitty'
