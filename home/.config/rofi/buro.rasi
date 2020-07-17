@@ -8,7 +8,7 @@
     background-color:            @background;
     lightbg:                     #534c48;
     red:                         #AB4642;
-    orange:                      #F7CA88; 
+    orange:                      #F7CA88;
     active:                      #A1B56C;
 
     selected-normal-foreground:  @background;

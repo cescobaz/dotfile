@@ -14,8 +14,11 @@ install_via_pkg_mng bspwm
 install_via_pkg_mng sxhkd
 install_aur lemonbar-xft-git
 install_via_pkg_mng rofi
+install_aur qogir-icon-theme-git
+install_aur sflock-git
 
 LINKS=(
+  ".config/gtk-3.0"
   ".config/bspwm"
   ".config/sxhkd"
   ".config/lemonbar"

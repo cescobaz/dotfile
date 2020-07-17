@@ -1,25 +1,18 @@
 #!/bin/bash
 
+set -e
+
 REF=$(realpath $(dirname $0))
 source "$REF/lib.sh"
 
 install_bins() {
-  brew install tmux
-  if [ "$?" != 0 ]; then
-    sudo pacman -S tmux
-  fi
-  if [ "$?" != 0 ]; then
-    echo "unable to install tmux via package manager"
-    exit 1
-  fi
+  npm install --global prettier
 }
 
 install_links() {
   LINKS=(
-    ".tmux.conf"
-    ".config/base16-tmux.conf"
+    ".vim/ftplugin/css.vim"
   )
-
   create_home_links "$LINKS"
 }
 

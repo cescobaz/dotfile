@@ -4,17 +4,15 @@
 
 # terminal emulator
 super + Return
-	urxvt
-super + shift + Return
-	st
+	termite
 
 # program launcher
 super + @space
 	rofi -show combi
 
 # make sxhkd reload its configuration files:
-super + Escape
-	pkill -USR1 -x sxhkd
+super + alt + s
+	$HOME/scripts/sxhkd-reload.sh
 
 # display commands
 super + F1
@@ -24,13 +22,18 @@ super + F2
 super + F3
   $HOME/scripts/xmonitor-external-above-embedded.sh
 
+F11
+  sflock -h
+F12
+  flameshot gui
+
 XF86AudioRaiseVolume
   $HOME/scripts/volume.sh set +5%
 XF86AudioLowerVolume
   $HOME/scripts/volume.sh set -5%
 XF86AudioMute
   $HOME/scripts/volume.sh toggle-mute
-#
+
 # bspwm hotkeys
 #
 

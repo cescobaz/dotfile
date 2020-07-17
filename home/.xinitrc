@@ -8,29 +8,30 @@ sysmodmap=/etc/X11/xinit/.Xmodmap
 # merge in defaults and keymaps
 
 if [ -f $sysresources ]; then
-    xrdb -merge $sysresources
+  xrdb -merge $sysresources
 fi
 
 if [ -f $sysmodmap ]; then
-    xmodmap $sysmodmap
+  xmodmap $sysmodmap
 fi
 
 if [ -f "$userresources" ]; then
-    xrdb -merge "$userresources"
+  xrdb -merge "$userresources"
 fi
 
 if [ -f "$usermodmap" ]; then
-    xmodmap "$usermodmap"
+  xmodmap "$usermodmap"
 fi
 
-if [ -d /etc/X11/xinit/xinitrc.d ] ; then
- for f in /etc/X11/xinit/xinitrc.d/?*.sh ; do
-  [ -x "$f" ] && . "$f"
- done
- unset f
+if [ -d /etc/X11/xinit/xinitrc.d ]; then
+  for f in /etc/X11/xinit/xinitrc.d/?*.sh; do
+    [ -x "$f" ] && . "$f"
+  done
+  unset f
 fi
 
-xsetroot -solid "#555d50" # green
+# xsetroot -solid "#181818" # background
+xsetroot -solid "#32573b" # green
 # xsetroot -solid "#49646b" # green to gray
 # xsetroot -solid "#4f676b" # green to gray, lighter
 

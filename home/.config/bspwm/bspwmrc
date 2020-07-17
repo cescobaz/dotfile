@@ -21,9 +21,10 @@ bspc config split_ratio 0.52
 bspc config borderless_monocle true
 bspc config gapless_monocle true
 
-bspc rule -a spotify desktop='^5'
-bspc rule -a firefox desktop='^9'
-bspc rule -a keepassxc desktop='^10'
+bspc rule -a Gimp desktop='^4' follow=on
+bspc rule -a Spotify desktop='^5' follow=on
+bspc rule -a firefox desktop='^9' follow=on
+bspc rule -a KeePassXC desktop='^10' follow=on
 
 test -e "$HOME/.wallpaper" && feh --bg-fill "$HOME/.wallpaper" &
 
