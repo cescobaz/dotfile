@@ -55,6 +55,7 @@ Plug 'tpope/vim-obsession'
 Plug '/usr/local/opt/fzf'
 " FZF customization on top of FZF
 Plug 'junegunn/fzf.vim'
+let g:fzf_layout = { 'down': '~40%' }
 
 let g:EasyMotion_smartcase = 1
 Plug 'https://github.com/easymotion/vim-easymotion'
