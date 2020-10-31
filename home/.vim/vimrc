@@ -55,6 +55,7 @@ Plug 'tpope/vim-obsession'
 Plug '/usr/local/opt/fzf'
 " FZF customization on top of FZF
 Plug 'junegunn/fzf.vim'
+let g:fzf_layout = { 'down': '~40%' }
 
 let g:EasyMotion_smartcase = 1
 Plug 'https://github.com/easymotion/vim-easymotion'
@@ -87,22 +88,6 @@ Plug 'Shougo/deoplete.nvim'
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
 let g:deoplete#enable_at_startup = 1
-
-"""""""""""""""""""""""""""""""" ultisnips """""""""""""""""""""""
-" Track the engine.
-Plug 'SirVer/ultisnips'
-
-" Snippets are separated from the engine. Add this if you want them:
-Plug 'honza/vim-snippets'
-
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
-"""""""""""""""""""""""""""""" """""""""""""""""""""""""""""""""""
 
 call plug#end()
 

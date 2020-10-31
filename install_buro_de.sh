@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -e
-
 REF=$(realpath $(dirname $0))
 source "$REF/lib.sh"
 
@@ -38,5 +36,5 @@ export PANEL_FIFO PANEL_HEIGHT PANEL_FONT PANEL_WM_NAME
 # end bspwm panel settings" | sudo tee -a /etc/profile 
 
 echo "[INFO] installing shell vars ..."
-echo 'export PATH=$PATH:$HOME/.config/lemonbar >> $HOME/.custom_env
+echo 'export PATH=$PATH:$HOME/.config/lemonbar >> $HOME/.custom_env'
 
