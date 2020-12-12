@@ -4,4 +4,3 @@ alias watch="$HOME/scripts/watch.sh"
 alias downloads='ls -lt ~/Downloads | head -n 10'
 alias cabalwatch="$HOME/scripts/macos-watch-and-cabal.sh"
 alias notes="$HOME/scripts/notes.sh"
-alias v="$HOME/scripts/vim.sh"
