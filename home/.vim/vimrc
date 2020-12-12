@@ -107,7 +107,7 @@ call ale#linter#Define('vlang', {
 \})
 function! FormatV(buffer) abort
     return {
-    \   'command': '(cat - > tmp.v && v fmt tmp.v)'
+    \   'command': '(cat - > tmp.v && v fmt tmp.v && rm tmp.v)'
     \}
 endfunction
 
