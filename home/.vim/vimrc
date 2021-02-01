@@ -87,6 +87,8 @@ Plug 'dense-analysis/ale'
 Plug 'Shougo/deoplete.nvim'
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
+
+Plug 'ollykel/v-vim'
 let g:deoplete#enable_at_startup = 1
 
 call plug#end()
@@ -96,6 +98,20 @@ call deoplete#custom#option('sources', {
 \})
 call deoplete#custom#source('_',  'max_menu_width', 80)
 call deoplete#custom#source('_', 'min_pattern_length', 1)
+call ale#linter#Define('vlang', {
+\   'name': 'vls',
+\   'lsp': 'stdio',
+\   'executable': 'vls',
+\   'command': '%e run',
+\   'project_root': '.',
+\})
+function! FormatV(buffer) abort
+    return {
+    \   'command': '(cat - > tmp.v && v fmt tmp.v && rm tmp.v)'
+    \}
+endfunction
+
+execute ale#fix#registry#Add('vfmt', 'FormatV', ['vlang'], 'vfmt for v')
 
 nmap <C-x><C-p> "*p
 nmap <C-x><C-y> "*y
