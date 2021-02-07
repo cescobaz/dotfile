@@ -4,7 +4,7 @@
 
 # terminal emulator
 super + Return
-	termite
+	urxvt
 
 # program launcher
 super + @space
@@ -43,7 +43,7 @@ super + alt + q
 
 # restart bspwm
 super + alt + r
-	pkill -x panel; bspc wm -r
+	$HOME/scripts/xrestart-wm.sh
 
 # close and kill
 super + {_,shift + }w

@@ -1,7 +1,5 @@
 #!/bin/sh
 
-bspc monitor --reset-desktops I II III IV V VI VII VIII IX X
-
 if [ "$BSPWM_RESET_PADDING" == "true" ]; then
   bspc config top_padding 0
   bspc config bottom_padding 0
