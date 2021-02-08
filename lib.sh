@@ -5,7 +5,7 @@ install_via_pkg_mng_2() {
   BREW_PACKAGE=$2
   brew list $BREW_PACKAGE || brew install $BREW_PACKAGE
   if [ "$?" != 0 ]; then
-    sudo pacman -S $PACMAN_PACKAGE
+    sudo pacman --noconfirm -S $PACMAN_PACKAGE
   fi
   if [ "$?" != 0 ]; then
     echo "unable to install $BREW_PACKAGE or $PACMAN_PACKAGE via package manager"

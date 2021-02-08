@@ -30,6 +30,8 @@ if [ -d /etc/X11/xinit/xinitrc.d ]; then
   unset f
 fi
 
+export XDG_SESSION_TYPE=x11
+
 # xsetroot -solid "#181818" # background
 xsetroot -solid "#32573b" # green
 # xsetroot -solid "#49646b" # green to gray
@@ -37,4 +39,5 @@ xsetroot -solid "#32573b" # green
 
 dropbox &
 sxhkd &
+$HOME/go/bin/remote-touchpad -bind :8081 -secret crSTL2Evnwqyp6eGgiZH &> $HOME/remote-touchpad.log &
 exec bspwm
