@@ -1,8 +1,6 @@
 #!/bin/sh
 
-if [ -z ${NOTES_DIR+x} ]; then
-  NOTES_DIR="$HOME/notes"
-fi
+NOTES_DIR=${NOTES_DIR:-"$HOME/notes"}
 
 mkdir -p $NOTES_DIR
 cd $NOTES_DIR
