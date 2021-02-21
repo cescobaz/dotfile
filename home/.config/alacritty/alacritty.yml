@@ -227,6 +227,7 @@ key_bindings:
   - {key: Minus, mods: Control, action: DecreaseFontSize}
   - {key: Plus, mods: Control, action: IncreaseFontSize}
   - {key: F, mods: Command, action: ToggleSimpleFullscreen}
+  - {key: N, mods: Command, action: SpawnNewInstance}
   - {key: A, mods: Control, chars: "\x01"}
   - {key: B, mods: Control, chars: "\x02"}
   - {key: C, mods: Control, chars: "\x03"}
