@@ -82,6 +82,12 @@ font:
   # Point size
   size: 14.0
 
+# Background opacity
+#
+# Window opacity as a floating point number from `0.0` to `1.0`.
+# The value `0.0` is completely transparent and `1.0` is opaque.
+#background_opacity: 0.9
+
 # Colors (Tomorrow Night Bright)
 colors:
   # Cursor colors
@@ -214,6 +220,12 @@ mouse:
 # If the same trigger is assigned to multiple actions, all of them are executed
 # at once.
 key_bindings:
+  - {key: V, mods: Control|Shift, action: Paste}
+  - {key: C, mods: Control|Shift, action: Copy}
+  - {key: Minus, mods: Control|Shift, action: DecreaseFontSize}
+  - {key: Equals, mods: Control|Shift, action: IncreaseFontSize}
+  - {key: Minus, mods: Control, action: DecreaseFontSize}
+  - {key: Plus, mods: Control, action: IncreaseFontSize}
   - {key: F, mods: Command, action: ToggleSimpleFullscreen}
   - {key: A, mods: Control, chars: "\x01"}
   - {key: B, mods: Control, chars: "\x02"}
