@@ -214,6 +214,7 @@ mouse:
 # If the same trigger is assigned to multiple actions, all of them are executed
 # at once.
 key_bindings:
+  - {key: F, mods: Command, action: ToggleSimpleFullscreen}
   - {key: A, mods: Control, chars: "\x01"}
   - {key: B, mods: Control, chars: "\x02"}
   - {key: C, mods: Control, chars: "\x03"}
