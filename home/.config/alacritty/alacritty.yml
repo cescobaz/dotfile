@@ -219,6 +219,8 @@ mouse:
 #
 # If the same trigger is assigned to multiple actions, all of them are executed
 # at once.
+# https://unix.stackexchange.com/questions/76566/where-do-i-find-a-list-of-terminal-key-codes-to-remap-shortcuts-in-bash
+# use `sed -n l` to get the code: press keys then press return -> you will see octal code
 key_bindings:
   - {key: V, mods: Control|Shift, action: Paste}
   - {key: C, mods: Control|Shift, action: Copy}
@@ -254,6 +256,7 @@ key_bindings:
   - {key: X, mods: Control, chars: "\x18"}
   - {key: Y, mods: Control, chars: "\x19"}
   - {key: Z, mods: Control, chars: "\x1A"}
+  - {key: Key6, mods: Control, chars: "\x1E"}
   - {key: LBracket, mods: Alt|Shift, chars: "\x7B"}
   - {key: RBracket, mods: Alt|Shift, chars: "\x7D"}
   - {key: LBracket, mods: Alt, chars: "\x5B"}
