@@ -6,8 +6,8 @@ endif
 
 set nocompatible              " be iMproved, required
 filetype off                  " required
-
 filetype plugin indent on
+
 syntax on
 
 set number
@@ -67,6 +67,7 @@ let base16colorspace=256
 Plug 'https://github.com/tpope/vim-fugitive.git'
 
 let g:vue_pre_processors = 'detect_on_enter'
+let g:polyglot_disabled = ['autoindent']
 Plug 'sheerun/vim-polyglot'
 
 Plug 'udalov/kotlin-vim'
@@ -103,7 +104,7 @@ call ale#linter#Define('haskell', {
 \   'lsp': 'stdio',
 \   'executable': 'haskell-language-server-wrapper',
 \   'command': '%e --lsp',
-\   'project_root': '.',
+\   'project_root': '*.cabal',
 \})
 call ale#linter#Define('vlang', {
 \   'name': 'vls',
