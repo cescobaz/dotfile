@@ -21,9 +21,9 @@ super + F2
   $HOME/scripts/xmonitor-only-external.sh
 super + F3
   $HOME/scripts/xmonitor-external-above-embedded.sh
-super + F6
+F6
   $HOME/scripts/xset-gk6x-keyboard.sh
-super + F7
+F7
   $HOME/scripts/xset-tokyo-keyboard.sh
 
 F11
