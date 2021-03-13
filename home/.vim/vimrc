@@ -68,6 +68,14 @@ Plug 'https://github.com/tpope/vim-fugitive.git'
 
 let g:vue_pre_processors = 'detect_on_enter'
 let g:polyglot_disabled = ['autoindent']
+let g:haskell_indent_disable = 1
+let g:haskell_enable_quantification = 1   " to enable highlighting of `forall`
+let g:haskell_enable_recursivedo = 1      " to enable highlighting of `mdo` and `rec`
+let g:haskell_enable_arrowsyntax = 1      " to enable highlighting of `proc`
+let g:haskell_enable_pattern_synonyms = 1 " to enable highlighting of `pattern`
+let g:haskell_enable_typeroles = 1        " to enable highlighting of type roles
+let g:haskell_enable_static_pointers = 1  " to enable highlighting of `static`
+let g:haskell_backpack = 1                " to enable highlighting of backpack keywords
 Plug 'sheerun/vim-polyglot'
 
 Plug 'udalov/kotlin-vim'
