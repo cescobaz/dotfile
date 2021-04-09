@@ -6,8 +6,9 @@ source "$REF/lib.sh"
 install_bins() {
   sudo port install ccls-clang-11
 
-  ln -s /opt/local/bin/clang-mp-11 /Users/cescobaz/.local/bin/clang
-  ln -s /opt/local/bin/clang-format-mp-11 /Users/cescobaz/.local/bin/clang-format
+  ln -s /opt/local/bin/clang-mp-11 $HOME/.local/bin/clang
+  ln -s /opt/local/bin/clangd-mp-11 $HOME/.local/bin/clangd
+  ln -s /opt/local/bin/clang-format-mp-11 $HOME/.local/bin/clang-format
 }
 
 install_links() {
