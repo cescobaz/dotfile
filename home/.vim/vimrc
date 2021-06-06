@@ -78,12 +78,36 @@ let g:haskell_enable_static_pointers = 1  " to enable highlighting of `static`
 let g:haskell_backpack = 1                " to enable highlighting of backpack keywords
 Plug 'sheerun/vim-polyglot'
 
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-let g:UltiSnipsEditSplit="vertical"
-
 Plug 'udalov/kotlin-vim'
 
+let g:ale_completion_symbols = {
+\ 'text': 't',
+\ 'method': 'method',
+\ 'function': 'fun',
+\ 'constructor': 'constructor',
+\ 'field': 'field',
+\ 'variable': 'var',
+\ 'class': 'class',
+\ 'interface': 'interface',
+\ 'module': 'module',
+\ 'property': 'prop',
+\ 'unit': 'unit',
+\ 'value': 'val',
+\ 'enum': 'enum',
+\ 'keyword': 'keyword',
+\ 'snippet': 'snippet',
+\ 'color': 'color',
+\ 'file': 'file',
+\ 'reference': 'ref',
+\ 'folder': 'folder',
+\ 'enum member': 'enum m',
+\ 'constant': 'constant',
+\ 'struct': 'struct',
+\ 'event': 'event',
+\ 'operator': 'operator',
+\ 'type_parameter': 'type param',
+\ '<default>': 'v'
+\ }
 let g:ale_completion_enabled = 0
 let g:ale_linters_explicit = 1
 let g:ale_open_list = 1
@@ -100,14 +124,19 @@ Plug 'dense-analysis/ale'
 Plug 'Shougo/deoplete.nvim'
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
+let g:deoplete#enable_at_startup = 1
+Plug 'honza/vim-snippets'
+Plug 'Shougo/neosnippet.vim'
+Plug 'Shougo/neosnippet-snippets'
+let g:neosnippet#enable_snipmate_compatibility = 1
+let g:neosnippet#snippets_directory='~/.vim/plugged/vim-snippets/snippets'
 
 Plug 'ollykel/v-vim'
-let g:deoplete#enable_at_startup = 1
 
 call plug#end()
 
 call deoplete#custom#option('sources', {
-\ '_': ['ale', 'buffer', 'tag', 'file'],
+\ '_': ['ale', 'buffer', 'tag', 'neosnippet', 'file'],
 \})
 call deoplete#custom#source('_',  'max_menu_width', 80)
 call deoplete#custom#source('_', 'min_pattern_length', 1)
@@ -146,8 +175,11 @@ map <C-x>b :BLines<CR>
 map <C-x>hc :History:<CR>
 " search history
 map <C-x>hs :History/<CR>
-" search snippets
-nmap <C-x><C-t> :Snippets<CR>
+
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 
 nmap <C-x><C-l> :ALEFix<CR>
 nmap <C-x><C-i> :ALEDetail<CR>
