@@ -13,6 +13,7 @@ syntax on
 set number
 set cursorline
 set wrap
+set ruler
 
 " Status bar
 set laststatus=2
@@ -22,6 +23,10 @@ set showcmd
 
 " Highlight matching search patterns
 set hlsearch
+set incsearch
+if has('nvim')
+  set inccommand=split
+endif
 " Include matching uppercase words with lowercase search term
 set ignorecase
 " Include only uppercase words with uppercase search term
@@ -34,8 +39,10 @@ set tabstop=2
 set encoding=utf-8
 set fileencoding=utf-8
 
-:set listchars=eol:$,tab:>·,trail:~,extends:>,precedes:<
-:set list
+set listchars=eol:$,tab:>·,trail:~,extends:>,precedes:<
+set list
+
+set history=10000
 
 " Map the <Space> key to toggle a selected fold opened/closed.
 nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
@@ -121,15 +128,21 @@ let g:ale_set_highlights = 1
 set completeopt-=preview
 Plug 'dense-analysis/ale'
 
-Plug 'Shougo/deoplete.nvim'
-Plug 'roxma/nvim-yarp'
-Plug 'roxma/vim-hug-neovim-rpc'
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
 let g:deoplete#enable_at_startup = 1
 Plug 'honza/vim-snippets'
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 let g:neosnippet#enable_snipmate_compatibility = 1
 let g:neosnippet#snippets_directory='~/.vim/plugged/vim-snippets/snippets'
+
+Plug 'tpope/vim-surround'
 
 Plug 'ollykel/v-vim'
 

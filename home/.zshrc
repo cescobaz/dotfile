@@ -21,8 +21,8 @@ PROMPT='%B%F{green}%~ %(1j.%j.)
 RPROMPT="%(?.%F{green}[%?]%f.%B%F{red}[%?]%f%b"
 
 setopt share_history
-export HISTSIZE=10000
-export SAVEHIST=10000
+export HISTSIZE=100000
+export SAVEHIST=100000
 
 test -e ~/.shell_env && source ~/.shell_env || true
 test -e ~/.custom_env && source ~/.custom_env || true
