@@ -21,6 +21,7 @@ PROMPT='%B%F{green}%~ %(1j.%j.)
 RPROMPT="%(?.%F{green}[%?]%f.%B%F{red}[%?]%f%b"
 
 setopt share_history
+export HISTFILE=~/.zsh_history
 export HISTSIZE=100000
 export SAVEHIST=100000
 
