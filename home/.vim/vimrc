@@ -153,6 +153,7 @@ call deoplete#custom#option('sources', {
 \})
 call deoplete#custom#source('_',  'max_menu_width', 80)
 call deoplete#custom#source('_', 'min_pattern_length', 1)
+call deoplete#custom#source('_', 'smart_case', v:true)
 call ale#linter#Define('haskell', {
 \   'name': 'hls',
 \   'lsp': 'stdio',
