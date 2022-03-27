@@ -1,5 +1,6 @@
 alias ls='exa --color=always'
 alias ll='exa -l --color=always'
+alias lla='exa -la --color=always'
 alias grep='grep --color'
 alias f='fzf'
 alias watch="$HOME/scripts/watch.sh"
