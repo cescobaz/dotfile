@@ -1,7 +1,7 @@
 #!/bin/bash
 
 cpu() {
-  vmstat --one-header $1 100 | awk 'NR>2{print 100 - $(NF-2)"%"}'
+  vmstat --one-header $1 | awk 'NR>2{print 100 - $(NF-2)"%"}'
 }
 
 if [ "$1" == 'subscribe' ]; then

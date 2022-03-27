@@ -4,21 +4,45 @@
 
 . panel_colors
 
+to_number() {
+  sed 's/\([0-9]\+\).*/\1/'
+}
+
+is_value_gt() {
+  VALUE=$1
+  THREADSHOLD=$2
+  [ $(echo $VALUE | to_number) -gt $THREADSHOLD ]
+}
+
+style_value() {
+  LABEL=$1
+  VALUE=$2
+  THREADSHOLD=$3
+  if is_value_gt $VALUE $THREADSHOLD; then
+    echo "%{F$COLOR_URGENT_FG}%{B$COLOR_URGENT_BG}${LABEL}:${VALUE}%{B-}%{F-}"
+  else
+    echo "%{F$COLOR_DEFAULT_FG}%{B$COLOR_DEFAULT_BG}${LABEL}:${VALUE}%{B-}%{F-}"
+  fi
+}
+
 num_mon=$(bspc query -M | wc -l)
 
 while read -r line; do
   case $line in
   TEMP*)
-    temp="%{F$COLOR_DEFAULT_FG}%{B$COLOR_DEFAULT_BG}temp:${line#TEMP}%{B-}%{F-}"
+    temp=$(style_value "temp" "${line#TEMP}" 75)
     ;;
   CPU*)
-    cpu="%{F$COLOR_DEFAULT_FG}%{B$COLOR_DEFAULT_BG}cpu:${line#CPU}%{B-}%{F-}"
+    cpu=$(style_value "cpu" "${line#CPU}" 60)
     ;;
   MEM*)
-    mem="%{F$COLOR_DEFAULT_FG}%{B$COLOR_DEFAULT_BG}mem:${line#MEM}%{B-}%{F-}"
+    mem=$(style_value "mem" "${line#MEM}" 60)
     ;;
   VOL*)
-    volume="%{F$COLOR_DEFAULT_FG}%{B$COLOR_DEFAULT_BG}vol:${line#VOL}%{B-}%{F-}"
+    volume=$(style_value "vol" "${line#VOL}" 50)
+    ;;
+  NET*)
+    network="%{F$COLOR_DEFAULT_FG}%{B$COLOR_DEFAULT_BG}${line#NET}%{B-}%{F-}"
     ;;
   CLK*)
     # clock output
@@ -126,5 +150,5 @@ while read -r line; do
     done
     ;;
   esac
-  printf "%s\n" "%{l}${wm}%{c}${title}%{r}${temp} ${cpu} ${mem} ${volume} | ${clock} "
+  printf "%s\n" "%{l}${wm}%{c}${title}%{r}${temp} ${cpu} ${mem} ${volume} | ${network} | ${clock} "
 done

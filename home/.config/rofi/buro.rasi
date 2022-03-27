@@ -99,6 +99,14 @@
     text-color: @alternate-active-foreground;
     background-color: @alternate-active-background;
 }
+#element-icon.selected {
+    text-color: @background;
+    background-color: @active;
+}
+#element-text.selected {
+    text-color: @background;
+    background-color: @active;
+}
 #mode-switcher {
     border: 1px dash 0px 0px ;
 }

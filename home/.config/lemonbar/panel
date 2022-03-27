@@ -14,6 +14,7 @@ stdbuf -oL $HOME/scripts/temperature.sh subscribe | sed -u 's/^/TEMP/' > "$PANEL
 stdbuf -oL $HOME/scripts/cpu.sh subscribe | sed -u 's/^/CPU/' > "$PANEL_FIFO" &
 stdbuf -oL $HOME/scripts/memory.sh subscribe | sed -u 's/^/MEM/' > "$PANEL_FIFO" &
 stdbuf -oL $HOME/scripts/volume.sh subscribe-status | sed -u 's/^/VOL/' > "$PANEL_FIFO" &
+stdbuf -oL $HOME/scripts/network.sh subscribe | sed -u 's/^/NET/' > "$PANEL_FIFO" &
 xtitle -sf 'T%s\n' > "$PANEL_FIFO" &
 clock -sf 'CLK%a %d %b %H:%M' > "$PANEL_FIFO" &
 bspc subscribe report > "$PANEL_FIFO" &
