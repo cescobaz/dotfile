@@ -2,6 +2,8 @@ export PATH=$HOME/.local/bin:$PATH
 export EDITOR='vim'
 export TOREMOVE="$HOME/toremove"
 
+export QT_QPA_PLATFORMTHEME=qt5ct
+
 # ripgrep
 export RIPGREP_CONFIG_PATH="$HOME/.ripgrep"
 # fzf
