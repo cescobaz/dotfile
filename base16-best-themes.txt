@@ -17,4 +17,13 @@ base16_eighties
 dark e vivace
 base16_helios
 
+dark ok
+base16_monokai
+
+dark con sfondo nerissimo, bello deciso nei colori
+base16_synth-midnight-dark
+
+dark discreto
+base16_tomorrow-night
+
 
