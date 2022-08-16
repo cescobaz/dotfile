@@ -18,6 +18,7 @@ install_bins() {
 install_links() {
   LINKS=(
     ".vim/vimrc"
+    ".vim/init.vim"
     ".vim/UltiSnips"
     ".vim/ftplugin/haskell.vim"
     ".vim/ftplugin/sh.vim"
