@@ -17,7 +17,7 @@ bindkey -e
 
 # http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html
 PROMPT='%F{green}%~ %(1j.%j.)
-%n %F{green}> %b%f'
+%F{green}> %b%f'
 RPROMPT="%(?.%F{green}[%?]%f.%B%F{red}[%?]%f%b"
 
 setopt share_history
