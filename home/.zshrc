@@ -16,8 +16,8 @@ bindkey -e
 # End of lines configured by zsh-newuser-install
 
 # http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html
-PROMPT='%F{white}%m %F{green}%~ %(1j.%j.)
-%F{white}%n %F{green}> %b%f'
+PROMPT='%F{green}%~ %(1j.%j.)
+%n %F{green}> %b%f'
 RPROMPT="%(?.%F{green}[%?]%f.%B%F{red}[%?]%f%b"
 
 setopt share_history
