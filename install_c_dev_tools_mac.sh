@@ -14,6 +14,7 @@ install_bins() {
 install_links() {
   LINKS=(
     ".vim/ftplugin/c.vim"
+    ".vim/ftplugin/objc.vim"
   )
 
   create_home_links "$LINKS"

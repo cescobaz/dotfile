@@ -7,6 +7,7 @@ endif
 set nocompatible              " be iMproved, required
 filetype off                  " required
 filetype plugin indent on
+let g:filetype_m = "objc"
 
 syntax on
 
@@ -136,11 +137,12 @@ else
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
 let g:deoplete#enable_at_startup = 1
-Plug 'honza/vim-snippets'
+"Plug 'cescobaz/vim-snippets'
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 let g:neosnippet#enable_snipmate_compatibility = 1
 let g:neosnippet#snippets_directory='~/.vim/plugged/vim-snippets/snippets'
+"let g:neosnippet#snippets_directory='~/Projects/vim-snippets/snippets'
 
 Plug 'tpope/vim-surround'
 
