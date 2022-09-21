@@ -137,7 +137,7 @@ else
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
 let g:deoplete#enable_at_startup = 1
-"Plug 'cescobaz/vim-snippets'
+Plug 'cescobaz/vim-snippets'
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 let g:neosnippet#enable_snipmate_compatibility = 1
