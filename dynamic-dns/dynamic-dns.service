@@ -1,0 +1,14 @@
+[Unit]
+Description=Dynamic DNS Service
+After=network.target
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=120
+User=buro
+WorkingDirectory=/home/buro/
+ExecStart=execstart_placeholder
+
+[Install]
+WantedBy=multi-user.target
