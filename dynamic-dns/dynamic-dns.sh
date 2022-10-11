@@ -15,6 +15,11 @@ while [ 0 ]; do
       -d "{ \"type\": \"A\", \"data\": \"$IP\" }" \
       -X PATCH \
       "https://api.digitalocean.com/v2/domains/burelli.xyz/records/160453700" > /dev/null
+    curl --fail -H "Authorization: Bearer $DIGITALOCEAN_TOKEN" \
+      -H "Content-Type: application/json" \
+      -d "{ \"type\": \"A\", \"data\": \"$IP\" }" \
+      -X PATCH \
+      "https://api.digitalocean.com/v2/domains/burelli.xyz/records/341921471" > /dev/null
     PREVIOUS_IP=$IP
   fi
 
