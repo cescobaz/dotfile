@@ -208,7 +208,7 @@ bindsym $mod+r mode "resize"
 #
 # Read `man 5 sway-bar` for more information about this section.
 bar {
-    position bottom
+    position top
 
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
@@ -225,6 +225,7 @@ bar {
 gaps inner 24
 # default_border none
 smart_borders on
+smart_gaps on
 titlebar_border_thickness 0
 
 client.focused #A1B56C #A1B56C #000000
