@@ -51,7 +51,7 @@ make_link() {
   ln -s $1 $2
 }
 
-SCRIPT_HOME=$(realpath $(dirname $0))/home
+SCRIPT_HOME=$(realpath $(dirname $0)/../home)
 DHOME="$HOME"
 
 create_home_link() {

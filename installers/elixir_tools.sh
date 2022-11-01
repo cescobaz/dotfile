@@ -1,8 +1,5 @@
 #!/bin/bash
 
-REF=$(realpath $(dirname $0))
-source "$REF/lib.sh"
-
 install_bins() {
   DEST=$HOME/.elixir-ls
   clone_or_pull https://github.com/JakeBecker/elixir-ls.git "$DEST"
