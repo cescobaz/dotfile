@@ -37,7 +37,6 @@ xsetroot -solid "#32573b" # green
 # xsetroot -solid "#49646b" # green to gray
 # xsetroot -solid "#4f676b" # green to gray, lighter
 
-dropbox &
 sxhkd &
 $HOME/go/bin/remote-touchpad -bind :8081 -secret crSTL2Evnwqyp6eGgiZH &> $HOME/remote-touchpad.log &
 exec bspwm

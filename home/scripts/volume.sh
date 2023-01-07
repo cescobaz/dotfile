@@ -3,17 +3,17 @@
 ACTION=$1
 VALUE=$2
 
-INDEX=$(pactl list sinks short | awk '{print $1}')
+INDEX=$(pactl list sinks short | grep -i analog | awk '{print $1}')
 
 get_volume() {
-  VOLUMES=$(pactl list sinks | grep 'Volume' | grep -iv 'base volume' | sed 's/.* \([0-9]\+\)%.* \([0-9]\+\)%.*/\1 \2/g')
+  VOLUMES=$(pactl get-sink-volume $INDEX | head -n 1 | sed 's/.* \([0-9]\+\)%.* \([0-9]\+\)%.*/\1 \2/g')
   LEFT=$(echo "$VOLUMES" | awk '{print $1}')
   RIGHT=$(echo "$VOLUMES" | awk '{print $2}')
   echo "$((($LEFT + $RIGHT) / 2))%"
 }
 
 get_mute() {
-  pactl list sinks | grep -i mute: | sed 's/.* \(\w\+\)$/\1/'
+  pactl get-sink-mute $INDEX | sed 's/.* \(\w\+\)$/\1/'
 }
 
 get_status() {

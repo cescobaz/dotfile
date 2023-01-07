@@ -8,7 +8,9 @@ if [ "$BSPWM_RESET_PADDING" == "true" ]; then
 fi
 
 bspc config border_width 16
+#bspc config border_width 0
 bspc config window_gap 24
+#bspc config window_gap 0
 bspc config normal_border_color "#333333"
 bspc config active_border_color "#DDDDDD"
 bspc config focused_border_color "#99AA99"
@@ -24,7 +26,9 @@ bspc rule -a Spotify desktop='^5' follow=on
 bspc rule -a firefox desktop='^9' follow=on
 bspc rule -a KeePassXC desktop='^10' follow=on
 
-test -e "$HOME/.wallpaper" && feh --bg-fill "$HOME/.wallpaper" &
+bspc monitor any --reset-desktops I II III IV V VI VII VIII IX X
+
+test -e "$HOME/.wallpaper" && feh --bg-fill -xZ "$HOME/.wallpaper" &
 
 [ -e "$PANEL_FIFO" ] && bspc subscribe report > "$PANEL_FIFO" &
 pgrep -x panel > /dev/null || panel &
