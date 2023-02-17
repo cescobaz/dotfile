@@ -31,7 +31,8 @@ set $menu rofi -show combi | xargs swaymsg exec --
 # output * bg #32573b solid_color
 # violet
 # output * bg #350066 solid_color
-output * bg /home/buro/wallpaper/tiger-violet.jpg fill #350066
+# output * bg /home/buro/wallpaper/tiger-violet.jpg fill #350066
+output * bg /home/buro/wallpaper/rainbow-linux.jpg fill #350066
 
 seat seat0 xcursor_theme Qogir-dark 24
 #
@@ -47,7 +48,7 @@ seat seat0 xcursor_theme Qogir-dark 24
 #
 exec swayidle -w \
          timeout 300 'swaylock -f -c 000000' \
-         timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+         timeout 310 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
          before-sleep 'swaylock -f -c 000000'
 
 # This will lock your screen after 300 seconds of inactivity, then turn off
@@ -70,6 +71,11 @@ exec swayidle -w \
 
 input "6127:24601:PixArt_Lenovo_USB_Optical_Mouse" {
        natural_scroll enabled
+}
+
+input type:keyboard {
+    xkb_layout us,it
+    xkb_options grp:shifts_toggle
 }
 
 ### Key bindings
@@ -98,7 +104,9 @@ input "6127:24601:PixArt_Lenovo_USB_Optical_Mouse" {
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 
+    bindsym F5 exec ~/scripts/wayland-screenshot.sh
     bindsym F9 exec swaylock -f --color 000000
+    bindsym F10 exec ~/scripts/wayland-lock-and-hibernate.sh
 
     bindsym XF86AudioRaiseVolume exec "~/scripts/volume.sh set +5%"
     bindsym XF86AudioLowerVolume exec "~/scripts/volume.sh set -5%"
@@ -166,13 +174,10 @@ input "6127:24601:PixArt_Lenovo_USB_Optical_Mouse" {
     # Switch the current container between different layout styles
     # bindsym $mod+s layout stacking
     # bindsym $mod+w layout tabbed
-    bindsym $mod+s layout toggle split
-
-    # Make the current focus fullscreen
+    bindsym $mod+s floating enable
+    bindsym $mod+t floating disable
     bindsym $mod+f fullscreen
-
-    # Toggle the current focus between tiling and floating mode
-    bindsym $mod+Shift+space floating toggle
+    bindsym $mod+Shift+Space layout toggle split
 
     # Swap focus between the tiling area and the floating area
     # bindsym $mod+space focus mode_toggle
@@ -247,5 +252,7 @@ titlebar_border_thickness 0
 
 # client.focused #A1B56C #A1B56C #000000
 client.focused #5e00b2 #5e00b2 #FFFFFF
+
+font pango:SourceCodePro 12
 
 include /etc/sway/config.d/*

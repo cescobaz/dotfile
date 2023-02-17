@@ -4,6 +4,7 @@ ACTION=$1
 VALUE=$2
 
 INDEX=$(pactl list sinks short | grep -i analog | awk '{print $1}')
+INDEX='@DEFAULT_SINK@'
 
 get_volume() {
   VOLUMES=$(pactl get-sink-volume $INDEX | head -n 1 | sed 's/.* \([0-9]\+\)%.* \([0-9]\+\)%.*/\1 \2/g')

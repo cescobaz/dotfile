@@ -3,7 +3,7 @@ alias ll='exa -l --color=always'
 alias lla='exa -la --color=always'
 alias grep='grep --color'
 alias f='fzf'
-alias watch="$HOME/scripts/watch.sh"
+alias burowatch="$HOME/scripts/watch.sh"
 alias downloads='ls -l --reverse --sort=date ~/Downloads | head -n 10'
 alias cabalwatch="$HOME/scripts/macos-watch-and-cabal.sh"
 alias notes="$HOME/scripts/notes.sh"

@@ -7,7 +7,7 @@ Xft.hintstyle: hintslight
 !Xft.lcdfilter: lcddefault
 Xcursor.theme: Qogir-dark
 URxvt.scrollBar: false
-URxvt.font: xft:SourceCodePro:size=14
+URxvt.font: xft:SourceCodePro:size=12
 URxvt.internalBorder: 0
 URxvt.depth: 24
 URxvt.background: black
