@@ -32,7 +32,8 @@ set $menu rofi -show combi | xargs swaymsg exec --
 # violet
 # output * bg #350066 solid_color
 # output * bg /home/buro/wallpaper/tiger-violet.jpg fill #350066
-output * bg /home/buro/wallpaper/rainbow-linux.jpg fill #350066
+# output * bg /home/buro/wallpaper/rainbow-linux.jpg fill #350066
+output * bg /home/buro/wallpaper/sfondi/Flat/arcify-2560x1600.png fill #350066
 
 seat seat0 xcursor_theme Qogir-dark 24
 #
@@ -250,8 +251,10 @@ smart_borders on
 smart_gaps on
 titlebar_border_thickness 0
 
+
 # client.focused #A1B56C #A1B56C #000000
-client.focused #5e00b2 #5e00b2 #FFFFFF
+client.focused #FFD000 #FFD000 #000000
+client.unfocused #000000 #000000 #DDDDDD
 
 font pango:SourceCodePro 12
 
