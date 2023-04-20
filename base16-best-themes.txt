@@ -26,4 +26,8 @@ base16_synth-midnight-dark
 dark discreto
 base16_tomorrow-night
 
+marroncino dark
+eighties
 
+dark DECISO
+chalk

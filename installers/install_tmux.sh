@@ -23,7 +23,7 @@ install_links() {
   create_home_links "$LINKS"
 }
 
-if [ "$1" == "--only-links" ]; then
+if [ "$1" = "--only-links" ]; then
   install_links
 else
   install_bins
