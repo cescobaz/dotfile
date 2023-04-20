@@ -49,6 +49,8 @@ set history=10000
 nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
 vnoremap <Space> zf
 
+" set rtp+=/usr/local/opt/fzf
+
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -57,25 +59,22 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'tpope/vim-obsession'
-
 " Fuzzy File search plugin (:FZF)
 Plug '~/.fzf'
 " FZF customization on top of FZF
 Plug 'junegunn/fzf.vim'
 let g:fzf_layout = { 'down': '~40%' }
 
+Plug 'chriskempson/base16-vim'
+
 let g:EasyMotion_smartcase = 1
 Plug 'https://github.com/easymotion/vim-easymotion'
-
-Plug 'chriskempson/base16-vim'
-let base16colorspace=256
 
 " Git plugin
 Plug 'https://github.com/tpope/vim-fugitive.git'
 
 let g:vue_pre_processors = 'detect_on_enter'
-let g:polyglot_disabled = ['autoindent']
+let g:polyglot_disabled = ['autoindent', 'sensible']
 let g:haskell_indent_disable = 1
 let g:haskell_enable_quantification = 1   " to enable highlighting of `forall`
 let g:haskell_enable_recursivedo = 1      " to enable highlighting of `mdo` and `rec`
@@ -146,8 +145,6 @@ let g:neosnippet#snippets_directory='~/.vim/plugged/vim-snippets/snippets'
 
 Plug 'tpope/vim-surround'
 
-Plug 'ollykel/v-vim'
-
 call plug#end()
 
 call deoplete#custom#option('sources', {
@@ -205,11 +202,10 @@ nmap gt :ALEGoToDefinition<CR>
 command BO :%bd|e#
 
 " the following will set colorscheme by base16-shell
-if filereadable(expand("~/.vimrc_background"))
-  let base16colorspace=256
-  source ~/.vimrc_background
-else
-  colorscheme base16-default-dark
+if exists('$BASE16_THEME')
+      \ && (!exists('g:colors_name') || g:colors_name != 'base16-$BASE16_THEME')
+    let base16colorspace=256
+    colorscheme base16-$BASE16_THEME
 endif
 
 function! LinterErrors() abort
@@ -231,35 +227,29 @@ function! LinterWarnings() abort
     \)
 endfunction
 
-set statusline=%1*\ %f\ %0*\ %n%m%r%h%w
-set statusline+=\ %4*\%{LinterWarnings()}%0*
-set statusline+=\ %3*\%{LinterErrors()}%0*%=
-set statusline+=\ %Y
+set statusline=%1*\ %f\ %2*\ %n%m%r%h%w
+set statusline+=\ %4*\%{LinterWarnings()}%2*
+set statusline+=\ %3*\%{LinterErrors()}%2*%=
+set statusline+=\ %5*\%Y
 set statusline+=\ %2*\ %{strlen(&fenc)?&fenc:'none'}[%{&ff}]
-set statusline+=\ %1*\ %3p%%\ %4l/%4L\ %3v
+set statusline+=\ %2*\ %3p%%\ %4l/%4L\ %3v
 set statusline+=%{'\ '}
-highlight User1 ctermbg=2 ctermfg=18
-highlight User2 ctermbg=18
+highlight User1 ctermbg=03 ctermfg=18
+highlight User2 ctermbg=18 ctermfg=07
 highlight User3 ctermbg=01 ctermfg=18
 highlight User4 ctermbg=03 ctermfg=18
+highlight User5 ctermbg=18 ctermfg=03
 
 highlight Search ctermbg=02 ctermfg=18
 
-highlight LineNr ctermfg=19 ctermbg=0
+highlight LineNr ctermfg=07 ctermbg=18
+highlight CursorLineNr ctermfg=18 ctermbg=03
+highlight Cursor ctermfg=18 ctermbg=03
+highlight lCursor ctermfg=18 ctermbg=03
 
-highlight ALEError ctermbg=1 ctermfg=21
-highlight ALEWarning ctermbg=3 ctermfg=18
-highlight ALEInfo ctermbg=4 ctermfg=18
-highlight ALEStyleError ctermbg=5 ctermfg=18
-highlight ALEStyleWarning ctermbg=3 ctermfg=18
+highlight ALEError ctermbg=01 ctermfg=07
+highlight ALEWarning ctermbg=03 ctermfg=18
+highlight ALEInfo ctermbg=04 ctermfg=18
+highlight ALEStyleError ctermbg=01 ctermfg=07
+highlight ALEStyleWarning ctermbg=03 ctermfg=18
 
-" from https://gist.github.com/nepsilon/003dd7cfefc20ce1e894db9c94749755
-set backup
-silent !mkdir -p ~/.vim/backup
-set backupdir=~/.vim/backup//
-set writebackup
-" this is needed for some file watcher
-" https://github.com/tailwindlabs/tailwindcss/issues/7759#issuecomment-1060715872
-set backupcopy=yes
-"Meaningful backup name, ex: filename@2015-04-05.14:59
-au BufWritePre * let &bex = '@' . strftime("%F.%H:%M")
