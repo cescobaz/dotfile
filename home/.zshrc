@@ -15,6 +15,9 @@ unsetopt beep
 bindkey -e
 # End of lines configured by zsh-newuser-install
 
+bindkey "^[[1;3D" backward-word
+bindkey "^[[1;3C" forward-word
+
 # http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html
 PROMPT='%F{green}%~ %(1j.%j.)
 %F{green}> %b%f'
