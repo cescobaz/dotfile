@@ -18,7 +18,7 @@ install_bins() {
 install_links() {
   LINKS=(
     ".vim/vimrc"
-    ".config/nvim/init.vim"
+    ".config/nvim/init.lua"
     ".vim/UltiSnips"
     ".vim/ftplugin"
   )
