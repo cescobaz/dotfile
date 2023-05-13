@@ -40,21 +40,43 @@ end
 
 require('telescope').setup({
   defaults = {
-    layout_strategy = 'vertical',
+    layout_strategy = 'center',
     layout_config = {
-      vertical = { width = 0.9, height = 0.9 }
-      -- other layout configuration here
+      vertical = { width = 0.9, height = 0.9, anchor = 'CENTER' },
     },
-    -- other defaults configuration here
   },
-  -- other configuration values here
+  pickers = {
+    builtin = {
+      theme = "dropdown",
+    },
+    find_files = {
+      theme = "dropdown",
+    },
+    live_grep = {
+      theme = "dropdown",
+    },
+    buffers = {
+      theme = "dropdown",
+    },
+    current_buffer_fuzzy_find = {
+      theme = "dropdown",
+    },
+    command_history = {
+      theme = "dropdown",
+    },
+    help_tags = {
+      theme = "dropdown",
+    },
+  },
 })
 local builtin = require('telescope.builtin')
+local themes = require('telescope.themes')
 vim.keymap.set('n', '<space>t',  builtin.builtin, {})
 vim.keymap.set('n', '<space>ff', builtin.find_files, {})
 vim.keymap.set('n', '<space>fF', builtin.live_grep, {})
 vim.keymap.set('n', '<space>fb', builtin.buffers, {})
 vim.keymap.set('n', '<space>fB', builtin.current_buffer_fuzzy_find, {})
+vim.keymap.set('n', '<space>fch', builtin.command_history, {})
 vim.keymap.set('n', '<space>fh', builtin.help_tags, {})
 
 require("nvim-treesitter.configs").setup({
