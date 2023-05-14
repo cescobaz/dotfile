@@ -1,3 +1,6 @@
 home/.zsh_custom/plugins
 *.swp
 Session.vim
+.DS_Store
+ansible/*password*
+ansible/*logs*
