@@ -34,7 +34,7 @@ require("lazy").setup({
 
 if not (vim.env.BASE16_THEME == nil) then
   vim.g.base16colorspace = 256
-  command = string.format("colorscheme base16-%s", vim.env.BASE16_THEME)
+  local command = string.format("colorscheme base16-%s", vim.env.BASE16_THEME)
   vim.cmd(command)
 end
 
@@ -70,13 +70,12 @@ require('telescope').setup({
   },
 })
 local builtin = require('telescope.builtin')
-local themes = require('telescope.themes')
 vim.keymap.set('n', '<space>t',  builtin.builtin, {})
 vim.keymap.set('n', '<space>ff', builtin.find_files, {})
 vim.keymap.set('n', '<space>fF', builtin.live_grep, {})
 vim.keymap.set('n', '<space>fb', builtin.buffers, {})
 vim.keymap.set('n', '<space>fB', builtin.current_buffer_fuzzy_find, {})
-vim.keymap.set('n', '<space>fch', builtin.command_history, {})
+vim.keymap.set('n', '<space>fc', builtin.command_history, {})
 vim.keymap.set('n', '<space>fh', builtin.help_tags, {})
 
 require("nvim-treesitter.configs").setup({
@@ -147,6 +146,17 @@ vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
 vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
 
 local lspconfig = require("lspconfig")
+lspconfig.lua_ls.setup({
+  capabilities = capabilities,
+  settings = {
+    Lua = {
+      diagnostics = {
+        -- Get the language server to recognize the `vim` global
+        globals = {'vim'},
+      },
+    },
+  },
+})
 lspconfig.elixirls.setup({
   capabilities = capabilities,
   cmd = {"elixir-ls"}
