@@ -7,19 +7,10 @@
       ansible.builtin.package:
         name:
           - neovim
+          - fzf
         state: latest
     - name: Install neovim config
       ansible.builtin.file:
         src: "{{ config_home }}/home/.config/nvim/init.lua"
         dest: "{{ user_home }}/.config/nvim/init.lua"
         state: link
-    - name: Download NerdFont
-      ansible.builtin.get_url:
-        url: "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.1/AnonymousPro.zip"
-        dest: "{{ user_home }}/NerdFont.zip"
-      register: nerdfont_zip
-    - name: Install NerdFont
-      ansible.builtin.unarchive:
-        remote_src: true
-        src: "{{ nerdfont_zip.dest }}"
-        dest: "{{ user_home }}/"
