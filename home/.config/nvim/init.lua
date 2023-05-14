@@ -26,13 +26,15 @@ require("lazy").setup({
   {'nvim-telescope/telescope.nvim', dependencies = { 'nvim-lua/plenary.nvim' }},
   "tpope/vim-fugitive",
   {"nvim-treesitter/nvim-treesitter", cmd = "TSUpdate"},
+  'cescobaz/vim-snippets',
+  {"L3MON4D3/LuaSnip", build = "make install_jsregexp"},
+  'saadparwaiz1/cmp_luasnip',
   'hrsh7th/cmp-nvim-lsp',
   'hrsh7th/cmp-buffer',
   'hrsh7th/cmp-path',
   'hrsh7th/cmp-cmdline',
   'hrsh7th/nvim-cmp',
   "neovim/nvim-lspconfig",
-  "L3MON4D3/LuaSnip",
   {"nvim-lualine/lualine.nvim", dependencies = { "nvim-tree/nvim-web-devicons" }},
 })
 
@@ -105,16 +107,21 @@ require("nvim-treesitter.configs").setup({
   },
 })
 
-local cmp = require'cmp'
+-- LuaSnip
+local luasnip = require('luasnip')
+local snippets_path =  vim.fn.stdpath('data') .. "/lazy/vim-snippets/snippets"
+print(snippets_path)
+require("luasnip.loaders.from_snipmate").lazy_load({paths = snippets_path})
 
+vim.keymap.set({'i', 's'}, '<C-j>', '<Plug>luasnip-expand-or-jump')
+vim.keymap.set({'i', 's'}, '<C-k>', function() luasnip.jump(-1) end, {})
+
+-- nvim-cmp
+local cmp = require'cmp'
 cmp.setup({
   snippet = {
-    -- REQUIRED - you must specify a snippet engine
     expand = function(args)
-      -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-      -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-      -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
-      -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+      luasnip.lsp_expand(args.body)
     end,
   },
   window = {
@@ -127,13 +134,11 @@ cmp.setup({
     ['<C-e>'] = cmp.mapping.complete(),
     ['<C-a>'] = cmp.mapping.abort(),
     ['<CR>'] = cmp.mapping.confirm({ select = false }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    ['<C-j>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
   }),
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
-    -- { name = 'vsnip' }, -- For vsnip users.
-    -- { name = 'luasnip' }, -- For luasnip users.
-    -- { name = 'ultisnips' }, -- For ultisnips users.
-    -- { name = 'snippy' }, -- For snippy users.
+    { name = 'luasnip' },
   }, {
     { name = 'buffer' },
   })

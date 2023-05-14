@@ -186,10 +186,10 @@ map <space>fB :BLines<CR>
 map <space>fc :History:<CR>
 map <space>fh :History/<CR>
 
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+imap <C-j>     <Plug>(neosnippet_expand_or_jump)
+smap <C-j>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-j>     <Plug>(neosnippet_expand_target)
+
 
 nmap <space>l :ALEFix<CR>
 nmap gD :ALEDetail<CR>
