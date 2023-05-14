@@ -1,0 +1,11 @@
+#!/bin/ansible-playbook
+
+- hosts:
+    - buro-mbp
+  tasks:
+    - name: Install config
+      ansible.builtin.git:
+        repo: 'https://github.com/cescobaz/dotfile.git'
+        dest: '{{ config_home }}'
+        version: latest
+
