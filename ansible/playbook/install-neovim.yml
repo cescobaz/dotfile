@@ -7,7 +7,8 @@
       ansible.builtin.package:
         name:
           - neovim
-          - fzf
+          - cmake
+          - cmake-docs
         state: latest
     - name: Install neovim config
       ansible.builtin.file:
