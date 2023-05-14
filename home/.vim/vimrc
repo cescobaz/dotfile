@@ -190,10 +190,10 @@ smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-k>     <Plug>(neosnippet_expand_target)
 smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 
-nmap <C-x><C-l> :ALEFix<CR>
-nmap <C-x><C-i> :ALEDetail<CR>
-nmap <C-x><C-h> :ALEHover<CR>
-nmap gt :ALEGoToDefinition<CR>
+nmap <space>l :ALEFix<CR>
+nmap gD :ALEDetail<CR>
+nmap K :ALEHover<CR>
+nmap gd :ALEGoToDefinition<CR>
 
 command BO :%bd|e#
 
