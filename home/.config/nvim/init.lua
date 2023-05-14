@@ -106,6 +106,7 @@ vim.keymap.set('n', '<Leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<Leader>fg', builtin.live_grep, {})
 vim.keymap.set('n', '<Leader>fF', builtin.live_grep, {})
 vim.keymap.set('n', '<Leader>fb', builtin.buffers, {})
+vim.keymap.set('n', '<Leader>bb', builtin.current_buffer_fuzzy_find, {})
 vim.keymap.set('n', '<Leader>fB', builtin.current_buffer_fuzzy_find, {})
 vim.keymap.set('n', '<Leader>fc', builtin.command_history, {})
 vim.keymap.set('n', '<Leader>fh', builtin.help_tags, {})
@@ -200,8 +201,9 @@ lspconfig.lua_ls.setup({
     },
   },
 })
-require('lspconfig').bashls.setup({})
+lspconfig.bashls.setup({})
 lspconfig.ansiblels.setup({})
+lspconfig.clangd.setup{}
 lspconfig.tailwindcss.setup({
   init_options = {
     userLanguages = {
