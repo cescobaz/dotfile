@@ -1,3 +1,5 @@
+vim.cmd('map <Space> <Leader>')
+vim.g.mapleader = ' '
 vim.o.number = true
 vim.o.cursorline = true
 vim.o.ignorecase = true
@@ -79,14 +81,14 @@ require('telescope').setup({
   },
 })
 local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<space>t',  builtin.builtin, {})
-vim.keymap.set('n', '<space>ff', builtin.find_files, {})
-vim.keymap.set('n', '<space>fg', builtin.live_grep, {})
-vim.keymap.set('n', '<space>fF', builtin.live_grep, {})
-vim.keymap.set('n', '<space>fb', builtin.buffers, {})
-vim.keymap.set('n', '<space>fB', builtin.current_buffer_fuzzy_find, {})
-vim.keymap.set('n', '<space>fc', builtin.command_history, {})
-vim.keymap.set('n', '<space>fh', builtin.help_tags, {})
+vim.keymap.set('n', '<Leader>t',  builtin.builtin, {})
+vim.keymap.set('n', '<Leader>ff', builtin.find_files, {})
+vim.keymap.set('n', '<Leader>fg', builtin.live_grep, {})
+vim.keymap.set('n', '<Leader>fF', builtin.live_grep, {})
+vim.keymap.set('n', '<Leader>fb', builtin.buffers, {})
+vim.keymap.set('n', '<Leader>fB', builtin.current_buffer_fuzzy_find, {})
+vim.keymap.set('n', '<Leader>fc', builtin.command_history, {})
+vim.keymap.set('n', '<Leader>fh', builtin.help_tags, {})
 
 require("nvim-treesitter.configs").setup({
   ensure_installed = { "elixir", "heex", "lua", "vim", "vimdoc", "html" },
@@ -150,10 +152,10 @@ cmp.setup.cmdline(':', {
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
+vim.keymap.set('n', '<Leader>e', vim.diagnostic.open_float)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
-vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
+vim.keymap.set('n', '<Leader>q', vim.diagnostic.setloclist)
 
 local lspconfig = require("lspconfig")
 lspconfig.lua_ls.setup({
@@ -198,17 +200,17 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
     vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
     vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
-    vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
-    vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
-    vim.keymap.set('n', '<space>wl', function()
+    vim.keymap.set('n', '<Leader>wa', vim.lsp.buf.add_workspace_folder, opts)
+    vim.keymap.set('n', '<Leader>wr', vim.lsp.buf.remove_workspace_folder, opts)
+    vim.keymap.set('n', '<Leader>wl', function()
       print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
     end, opts)
-    vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
-    vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
-    vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
+    vim.keymap.set('n', '<Leader>D', vim.lsp.buf.type_definition, opts)
+    vim.keymap.set('n', '<Leader>rn', vim.lsp.buf.rename, opts)
+    vim.keymap.set({ 'n', 'v' }, '<Leader>ca', vim.lsp.buf.code_action, opts)
     vim.keymap.set('n', 'gr', '<cmd>Telescope lsp_references theme=dropdown<cr>')
     --vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
-    vim.keymap.set('n', '<space>l', function()
+    vim.keymap.set('n', '<Leader>l', function()
       vim.lsp.buf.format { async = true }
     end, opts)
   end,
