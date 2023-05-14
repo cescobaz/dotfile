@@ -38,8 +38,15 @@ if not (vim.env.BASE16_THEME == nil) then
   vim.cmd(command)
 end
 
+local actions = require('telescope.actions')
 require('telescope').setup({
   defaults = {
+    mappings = {
+      i = {
+        ['<C-j>'] = actions.move_selection_next,
+        ['<C-k>'] = actions.move_selection_previous,
+      },
+    },
     layout_strategy = 'center',
     layout_config = {
       vertical = { width = 0.9, height = 0.9, anchor = 'CENTER' },
@@ -157,6 +164,7 @@ lspconfig.lua_ls.setup({
     },
   },
 })
+lspconfig.tailwindcss.setup({})
 lspconfig.elixirls.setup({
   capabilities = capabilities,
   cmd = {"elixir-ls"}
