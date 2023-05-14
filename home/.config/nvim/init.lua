@@ -20,7 +20,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-  "chriskempson/base16-vim",
+  "RRethy/nvim-base16",
   {'nvim-telescope/telescope.nvim', dependencies = { 'nvim-lua/plenary.nvim' }},
   "tpope/vim-fugitive",
   {"nvim-treesitter/nvim-treesitter", cmd = "TSUpdate"},
@@ -30,6 +30,7 @@ require("lazy").setup({
   'hrsh7th/cmp-cmdline',
   'hrsh7th/nvim-cmp',
   "neovim/nvim-lspconfig",
+  {"nvim-lualine/lualine.nvim", dependencies = { "nvim-tree/nvim-web-devicons" }},
 })
 
 if not (vim.env.BASE16_THEME == nil) then
@@ -86,7 +87,7 @@ vim.keymap.set('n', '<space>fc', builtin.command_history, {})
 vim.keymap.set('n', '<space>fh', builtin.help_tags, {})
 
 require("nvim-treesitter.configs").setup({
-  ensure_installed = { "elixir", "lua", "vim", "vimdoc" },
+  ensure_installed = { "elixir", "heex", "lua", "vim", "vimdoc", "html" },
   highlight = { enable = true },
   additional_vim_regex_highlighting = false,
 })
@@ -164,7 +165,15 @@ lspconfig.lua_ls.setup({
     },
   },
 })
-lspconfig.tailwindcss.setup({})
+lspconfig.ansiblels.setup({})
+lspconfig.tailwindcss.setup({
+  init_options = {
+    userLanguages = {
+      eelixir = "html-eex",
+      elixir = "html-eex",
+    },
+  },
+})
 lspconfig.elixirls.setup({
   capabilities = capabilities,
   cmd = {"elixir-ls"}
@@ -199,4 +208,20 @@ vim.api.nvim_create_autocmd('LspAttach', {
       vim.lsp.buf.format { async = true }
     end, opts)
   end,
+})
+
+require("lualine").setup({
+  options = {
+    icons_enabled = true,
+    section_separators = '', component_separators = '',
+  },
+  sections = {
+    lualine_a = {
+      {'mode',
+        color = 'Search',
+      },
+    },
+    lualine_b = {},
+    lualine_c = {'filename', 'diagnostics'},
+  },
 })
