@@ -93,7 +93,16 @@ vim.keymap.set('n', '<Leader>fh', builtin.help_tags, {})
 require("nvim-treesitter.configs").setup({
   ensure_installed = { "elixir", "heex", "lua", "vim", "vimdoc", "html" },
   highlight = { enable = true },
-  additional_vim_regex_highlighting = false,
+  additional_vcc_regex_highlighting = false,
+  incremental_selection = {
+    enable = true,
+    keymaps = {
+      init_selection = "<Leader>s",
+      node_incremental = "<Leader>s",
+      scope_incremental = "<Leader>S",
+      node_decremental = "<Leader>-s",
+    },
+  },
 })
 
 local cmp = require'cmp'
