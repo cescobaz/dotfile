@@ -179,6 +179,7 @@ nmap <C-x>c :noh<CR>
 
 map s <Plug>(easymotion-bd-f)
 map <space>ff :Files<CR>
+map <space>fg :Rg<CR>
 map <space>fF :Rg<CR>
 map <space>fb :Buffer<CR>
 map <space>fB :BLines<CR>

@@ -30,6 +30,7 @@ require("lazy").setup({
   'hrsh7th/cmp-cmdline',
   'hrsh7th/nvim-cmp',
   "neovim/nvim-lspconfig",
+  "L3MON4D3/LuaSnip",
   {"nvim-lualine/lualine.nvim", dependencies = { "nvim-tree/nvim-web-devicons" }},
 })
 
@@ -80,6 +81,7 @@ require('telescope').setup({
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<space>t',  builtin.builtin, {})
 vim.keymap.set('n', '<space>ff', builtin.find_files, {})
+vim.keymap.set('n', '<space>fg', builtin.live_grep, {})
 vim.keymap.set('n', '<space>fF', builtin.live_grep, {})
 vim.keymap.set('n', '<space>fb', builtin.buffers, {})
 vim.keymap.set('n', '<space>fB', builtin.current_buffer_fuzzy_find, {})
@@ -203,8 +205,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
     vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
     vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
-    vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
-    vim.keymap.set('n', '<space>f', function()
+    vim.keymap.set('n', 'gr', '<cmd>Telescope lsp_references theme=dropdown<cr>')
+    --vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+    vim.keymap.set('n', '<space>l', function()
       vim.lsp.buf.format { async = true }
     end, opts)
   end,
@@ -222,6 +225,10 @@ require("lualine").setup({
       },
     },
     lualine_b = {},
-    lualine_c = {'filename', 'diagnostics'},
+    lualine_c = {{'filename', path=1}, 'diagnostics'},
+    lualine_z = {{'location', color = 'StatusLine'}}
+  },
+  inactive_sections = {
+    lualine_c = {{'filename', path=1, color='Search'}, 'diagnostics'},
   },
 })
