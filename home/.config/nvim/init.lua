@@ -23,13 +23,16 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
   "RRethy/nvim-base16",
-  {'nvim-telescope/telescope-fzf-native.nvim',
-  build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' },
-  {'nvim-telescope/telescope.nvim', dependencies = { 'nvim-lua/plenary.nvim' }},
+  {
+    'nvim-telescope/telescope-fzf-native.nvim',
+    build =
+    'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
+  },
+  { 'nvim-telescope/telescope.nvim',   dependencies = { 'nvim-lua/plenary.nvim' } },
   "tpope/vim-fugitive",
-  {"nvim-treesitter/nvim-treesitter", cmd = "TSUpdate"},
+  { "nvim-treesitter/nvim-treesitter", cmd = "TSUpdate" },
   'cescobaz/vim-snippets',
-  {"L3MON4D3/LuaSnip", build = "make install_jsregexp"},
+  { "L3MON4D3/LuaSnip",          build = "make install_jsregexp" },
   'saadparwaiz1/cmp_luasnip',
   'hrsh7th/cmp-nvim-lsp',
   'hrsh7th/cmp-buffer',
@@ -37,7 +40,7 @@ require("lazy").setup({
   'hrsh7th/cmp-cmdline',
   'hrsh7th/nvim-cmp',
   "neovim/nvim-lspconfig",
-  {"nvim-lualine/lualine.nvim", dependencies = { "nvim-tree/nvim-web-devicons" }},
+  { "nvim-lualine/lualine.nvim", dependencies = { "nvim-tree/nvim-web-devicons" } },
 })
 
 if not (vim.env.BASE16_THEME == nil) then
@@ -50,10 +53,10 @@ local actions = require('telescope.actions')
 require('telescope').setup({
   extensions = {
     fzf = {
-      fuzzy = true,                    -- false will only do exact matching
-      override_generic_sorter = true,  -- override the generic sorter
-      override_file_sorter = true,     -- override the file sorter
-      case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
+      fuzzy = true,                   -- false will only do exact matching
+      override_generic_sorter = true, -- override the generic sorter
+      override_file_sorter = true,    -- override the file sorter
+      case_mode = "smart_case",       -- or "ignore_case" or "respect_case"
     },
   },
   defaults = {
@@ -95,7 +98,7 @@ require('telescope').setup({
 require('telescope').load_extension('fzf')
 
 local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<Leader>t',  builtin.builtin, {})
+vim.keymap.set('n', '<Leader>t', builtin.builtin, {})
 vim.keymap.set('n', '<Leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<Leader>fg', builtin.live_grep, {})
 vim.keymap.set('n', '<Leader>fF', builtin.live_grep, {})
@@ -121,14 +124,14 @@ require("nvim-treesitter.configs").setup({
 
 -- LuaSnip
 local luasnip = require('luasnip')
-local snippets_path =  vim.fn.stdpath('data') .. "/lazy/vim-snippets/snippets"
-require("luasnip.loaders.from_snipmate").lazy_load({paths = snippets_path})
+local snippets_path = vim.fn.stdpath('data') .. "/lazy/vim-snippets/snippets"
+require("luasnip.loaders.from_snipmate").lazy_load({ paths = snippets_path })
 
-vim.keymap.set({'i', 's'}, '<C-j>', '<Plug>luasnip-expand-or-jump')
-vim.keymap.set({'i', 's'}, '<C-k>', function() luasnip.jump(-1) end, {})
+vim.keymap.set({ 'i', 's' }, '<C-j>', '<Plug>luasnip-expand-or-jump')
+vim.keymap.set({ 'i', 's' }, '<C-k>', function() luasnip.jump(-1) end, {})
 
 -- nvim-cmp
-local cmp = require'cmp'
+local cmp = require 'cmp'
 cmp.setup({
   snippet = {
     expand = function(args)
@@ -189,7 +192,7 @@ lspconfig.lua_ls.setup({
     Lua = {
       diagnostics = {
         -- Get the language server to recognize the `vim` global
-        globals = {'vim'},
+        globals = { 'vim' },
       },
     },
   },
@@ -206,7 +209,7 @@ lspconfig.tailwindcss.setup({
 })
 lspconfig.elixirls.setup({
   capabilities = capabilities,
-  cmd = {"elixir-ls"}
+  cmd = { "elixir-ls" }
 })
 
 -- Use LspAttach autocommand to only map the following keys
@@ -244,19 +247,21 @@ vim.api.nvim_create_autocmd('LspAttach', {
 require("lualine").setup({
   options = {
     icons_enabled = true,
-    section_separators = '', component_separators = '',
+    section_separators = '',
+    component_separators = '',
   },
   sections = {
     lualine_a = {
-      {'mode',
+      {
+        'mode',
         color = 'Search',
       },
     },
     lualine_b = {},
-    lualine_c = {{'filename', path=1}, 'diagnostics'},
-    lualine_z = {{'location', color = 'StatusLine'}}
+    lualine_c = { { 'filename', path = 1 }, 'diagnostics' },
+    lualine_z = { { 'location', color = 'StatusLine' } }
   },
   inactive_sections = {
-    lualine_c = {{'filename', path=1, color='Search'}, 'diagnostics'},
+    lualine_c = { { 'filename', path = 1, color = 'Search' }, 'diagnostics' },
   },
 })
