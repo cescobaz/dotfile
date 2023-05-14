@@ -1,0 +1,15 @@
+#!/bin/ansible-playbook
+
+- hosts:
+    - buro-mbp
+  tasks:
+    - name: Install neovim
+      ansible.builtin.package:
+        name:
+          - neovim
+        state: latest
+    - name: Install neovim config
+      ansible.builtin.file:
+        src: "{{ config_home }}/home/.config/nvim/init.lua"
+        dest: "{{ user_home }}/.config/nvim/init.lua"
+        state: link

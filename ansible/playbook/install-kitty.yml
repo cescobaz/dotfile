@@ -1,8 +1,7 @@
 #!/bin/ansible-playbook
 
 - hosts:
-    - arch-tower
-  become: yes
+    - buro-mbp
   tasks:
     - name: Install kitty
       ansible.builtin.package:
@@ -12,5 +11,5 @@
     - name: Install kitty config
       ansible.builtin.file:
         src: "{{ config_home }}/home/.config/kitty/kitty.conf"
-        path: "{{ user_home }}/.config/kitty/kitty.conf"
+        dest: "{{ user_home }}/.config/kitty/kitty.conf"
         state: link
