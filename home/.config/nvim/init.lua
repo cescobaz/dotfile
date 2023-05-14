@@ -7,6 +7,9 @@ vim.o.smartcase = true
 vim.o.expandtab = true
 vim.o.tabstop = 2
 vim.o.shiftwidth = 2
+-- show not visible chars
+vim.o.listchars = 'eol:$,tab:>·,trail:~,extends:>,precedes:<'
+vim.o.list = true
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
