@@ -32,6 +32,7 @@ M.setup = function(capabilities)
     capabilities = capabilities,
     cmd = { "elixir-ls" }
   })
+  lspconfig.tsserver.setup({})
 
   -- Use LspAttach autocommand to only map the following keys
   -- after the language server attaches to the current buffer
