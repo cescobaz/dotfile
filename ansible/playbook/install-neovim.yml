@@ -10,8 +10,20 @@
           - cmake
           - cmake-docs
         state: latest
+    - name: Create neovim config dir
+      ansible.builtin.file:
+        dest: "{{ user_home }}/.config/nvim"
+        state: directory
+      loop:
+        - dest: "{{ user_home }}/.config/nvim"
+        - dest: "{{ user_home }}/.config/nvim/lua"
     - name: Install neovim config
       ansible.builtin.file:
         src: "{{ config_home }}/home/.config/nvim/init.lua"
         dest: "{{ user_home }}/.config/nvim/init.lua"
         state: link
+      loop:
+        - src: "{{ config_home }}/home/.config/nvim/init.lua"
+          dest: "{{ user_home }}/.config/nvim/init.lua"
+        - src: "{{ config_home }}/home/.config/nvim/lua"
+          dest: "{{ user_home }}/.config/nvim/lua"
