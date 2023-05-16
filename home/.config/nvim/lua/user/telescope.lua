@@ -5,10 +5,10 @@ M.setup = function()
   require('telescope').setup({
     extensions = {
       fzf = {
-        fuzzy = true,                 -- false will only do exact matching
+        fuzzy = true,                   -- false will only do exact matching
         override_generic_sorter = true, -- override the generic sorter
-        override_file_sorter = true,  -- override the file sorter
-        case_mode = "smart_case",     -- or "ignore_case" or "respect_case"
+        override_file_sorter = true,    -- override the file sorter
+        case_mode = "smart_case",       -- or "ignore_case" or "respect_case"
       },
     },
     defaults = {
@@ -51,14 +51,12 @@ M.setup = function()
 
   local builtin = require('telescope.builtin')
   vim.keymap.set('n', '<Leader>t', builtin.builtin, {})
-  vim.keymap.set('n', '<Leader>ff', builtin.find_files, {})
-  vim.keymap.set('n', '<Leader>fg', builtin.live_grep, {})
-  vim.keymap.set('n', '<Leader>fF', builtin.live_grep, {})
+  vim.keymap.set('n', '<Leader>fp', builtin.find_files, {})
+  vim.keymap.set('n', '<Leader>gp', builtin.live_grep, {})
   vim.keymap.set('n', '<Leader>fb', builtin.buffers, {})
-  vim.keymap.set('n', '<Leader>bb', builtin.current_buffer_fuzzy_find, {})
-  vim.keymap.set('n', '<Leader>fB', builtin.current_buffer_fuzzy_find, {})
+  vim.keymap.set('n', '<Leader>gb', builtin.current_buffer_fuzzy_find, {})
   vim.keymap.set('n', '<Leader>fc', builtin.command_history, {})
-  vim.keymap.set('n', '<Leader>fh', builtin.help_tags, {})
+  vim.keymap.set('n', '<Leader>h', builtin.help_tags, {})
 end
 
 return M
