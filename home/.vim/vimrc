@@ -63,8 +63,6 @@ Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 let g:fzf_layout = { 'down': '~40%' }
 
-Plug 'chriskempson/base16-vim'
-
 let g:EasyMotion_smartcase = 1
 Plug 'https://github.com/easymotion/vim-easymotion'
 
@@ -200,6 +198,7 @@ command BO :%bd|e#
 " the following will set colorscheme by base16-shell
 if exists('$BASE16_THEME')
       \ && (!exists('g:colors_name') || g:colors_name != 'base16-$BASE16_THEME')
+    set termguicolors " set notermguicolors for live update when shell change theme
     let base16colorspace=256
     colorscheme base16-$BASE16_THEME
 endif

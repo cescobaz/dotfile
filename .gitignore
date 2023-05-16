@@ -4,3 +4,6 @@ Session.vim
 .DS_Store
 ansible/*password*
 ansible/*logs*
+
+base16/builder
+base16/_build

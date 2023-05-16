@@ -1,0 +1,21 @@
+#!/bin/ansible-playbook
+
+# playbook NOT READY
+# please have a look to base16/build-and-update.sh
+
+- hosts:
+    - buro-mbp
+  tasks:
+    - name: Install base16-shell to ~/.config/base16-shell
+      ansible.builtin.git:
+        repo: 'https://github.com/chriskempson/base16-shell.git'
+        dest: '{{ user_home }}/.config/base16-shell'
+        version: latest
+    - name: Install pybase16-builder
+      ansible.builtin.pip:
+        name: "pybase16-builder"
+        state: "present"
+    - name: Create pybase16-builder directory
+      ansible.builtin.file:
+        dest: "{{ user_home }}/.config/pybase16-builder"
+        state: directory
