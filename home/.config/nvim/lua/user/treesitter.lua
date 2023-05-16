@@ -2,7 +2,7 @@ local M = {}
 
 M.setup = function()
   require("nvim-treesitter.configs").setup({
-    ensure_installed = { "javascript", "c", "elixir", "heex", "lua", "vim", "vimdoc", "html" },
+    ensure_installed = { "bash", "javascript", "c", "elixir", "heex", "lua", "vim", "vimdoc", "html" },
     highlight = { enable = true },
     additional_vcc_regex_highlighting = false,
     incremental_selection = {
