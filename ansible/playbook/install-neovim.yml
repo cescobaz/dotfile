@@ -9,6 +9,7 @@
           - neovim
           - cmake
           - cmake-docs
+          - ripgrep
         state: latest
     - name: Create neovim config dir
       ansible.builtin.file:
