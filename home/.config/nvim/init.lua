@@ -12,6 +12,14 @@ vim.o.scrolloff = 8
 vim.o.listchars = 'eol:$,tab:>·,trail:~,extends:>,precedes:<'
 vim.o.list = true
 
+-- move selection up and down
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
+vim.keymap.set({ "n", "v" }, "<leader>y", '"+y')
+vim.keymap.set({ "n", "v" }, "<leader>Y", '"+Y')
+vim.keymap.set({ "n", "v" }, "<leader>p", '"+p')
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -26,7 +34,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-  "RRethy/nvim-base16",
   {
     'nvim-telescope/telescope-fzf-native.nvim',
     build =
@@ -48,11 +55,11 @@ require("lazy").setup({
   'mfussenegger/nvim-dap',
 })
 
-require("user.base16").setup()
+require("user.base16")
 require("user.telescope")
 require("user.treesitter").setup()
 require("user.luasnip").setup()
-local capabilities = require('user.cmp').setup()
+local capabilities = require('user.cmp')
 
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 vim.keymap.set('n', '<Leader>e', vim.diagnostic.open_float)
@@ -61,5 +68,5 @@ vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
 vim.keymap.set('n', '<Leader>q', vim.diagnostic.setloclist)
 
 require("user.lspconfig").setup(capabilities)
-require("user.lualine").setup()
-require("user.dap").setup()
+require("user.lualine")
+-- require("user.dap").setup()
