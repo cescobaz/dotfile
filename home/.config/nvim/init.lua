@@ -34,6 +34,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
+  'RRethy/nvim-base16',
   {
     'nvim-telescope/telescope-fzf-native.nvim',
     build =
