@@ -1,0 +1,8 @@
+# fzf
+export BASE16_THEMES_PATH="$HOME/.config/base16-themes"
+FZF_BASE16_THEMES_PATH="$BASE16_THEMES_PATH/fzf/bash"
+FZF_BASE16_THEME="$FZF_BASE16_THEMES_PATH/base16-$BASE16_THEME.config"
+
+if [ -f "$FZF_BASE16_THEME" ]; then
+  source "$FZF_BASE16_THEME"
+fi

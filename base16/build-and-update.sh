@@ -3,13 +3,13 @@
 dir=$(dirname $(realpath $0))
 
 builder_dir="$dir/builder"
-build_dir="$dir/_build"
+build_dir="$HOME/.config/base16-themes"
 
 mkdir -p "$builder_dir"
 cd "$builder_dir"
 pybase16 update
 # '-t neovim' points to a not updated (and not working for me because of require('vim')) repo
-pybase16 build -t shell -t nvim -t vim -o "$build_dir"
+pybase16 build -t shell -t nvim -t vim -t fzf -o "$build_dir"
 
 echo "Copying to base16-shell"
 cp "$build_dir/shell/scripts/*" $HOME/.config/base16-shell/scripts/
