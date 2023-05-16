@@ -7,6 +7,7 @@ vim.o.smartcase = true
 vim.o.expandtab = true
 vim.o.tabstop = 2
 vim.o.shiftwidth = 2
+vim.o.scrolloff = 8
 -- show not visible chars
 vim.o.listchars = 'eol:$,tab:>·,trail:~,extends:>,precedes:<'
 vim.o.list = true
@@ -48,7 +49,7 @@ require("lazy").setup({
 })
 
 require("user.base16").setup()
-require("user.telescope").setup()
+require("user.telescope")
 require("user.treesitter").setup()
 require("user.luasnip").setup()
 local capabilities = require('user.cmp').setup()
