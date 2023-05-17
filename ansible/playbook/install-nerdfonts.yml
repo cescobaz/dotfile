@@ -1,0 +1,36 @@
+#!/bin/ansible-playbook
+
+- hosts:
+    - arch-tower
+  vars:
+    fonts_path: "{{ user_home }}/.local/share/fonts"
+  tasks:
+    - name: Create temporary directory for download fonts
+      ansible.builtin.file:
+        path: "{{ user_home }}/tmp/NerdFont"
+        state: directory
+    - name: Download NerdFont
+      ansible.builtin.get_url:
+        url: "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.1/AnonymousPro.zip"
+        dest: "{{ user_home }}/tmp/NerdFont/NerdFont.zip"
+      register: nerdfont_zip
+    - name: Unarchive NerdFont.zip
+      ansible.builtin.unarchive:
+        remote_src: true
+        src: "{{ nerdfont_zip.dest }}"
+        dest: "{{ user_home }}/tmp/NerdFont"
+    - name: Create ttf folder for fonts
+      ansible.builtin.file:
+        path: "{{ fonts_path }}/ttf"
+        state: directory
+    - name: Install NerdFont
+      ansible.builtin.copy:
+        remote_src: true
+        src: "{{ item }}"
+        dest: "{{ fonts_path }}/ttf/"
+      with_fileglob:
+        - "{{ user_home }}/tmp/NerdFont/*.ttf"
+    - name: Cleanup NerdFont
+      ansible.builtin.file:
+        path: "{{ user_home }}/tmp"
+        state: "absent"

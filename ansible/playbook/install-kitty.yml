@@ -1,7 +1,9 @@
 #!/bin/ansible-playbook
 
 - hosts:
-    - buro-mbp
+    - arch-tower
+  vars:
+    fonts_path: "{{ user_home }}/.local/share/fonts/ttf"
   tasks:
     - name: Install kitty
       ansible.builtin.package:
@@ -13,13 +15,3 @@
         src: "{{ config_home }}/home/.config/kitty/kitty.conf"
         dest: "{{ user_home }}/.config/kitty/kitty.conf"
         state: link
-    - name: Download NerdFont
-      ansible.builtin.get_url:
-        url: "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.1/AnonymousPro.zip"
-        dest: "{{ user_home }}/NerdFont.zip"
-      register: nerdfont_zip
-    - name: Install NerdFont
-      ansible.builtin.unarchive:
-        remote_src: true
-        src: "{{ nerdfont_zip.dest }}"
-        dest: "{{ user_home }}/"
