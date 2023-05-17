@@ -10,6 +10,9 @@
           - neovim
           - cmake
           - ripgrep
+          - bash-language-server
+          - lua-language-server
+          - elixir-ls
         state: latest
     - name: Create neovim config dir
       ansible.builtin.file:
