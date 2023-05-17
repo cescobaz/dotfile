@@ -16,7 +16,8 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term foot
+#set $term foot
+set $term kitty
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
@@ -107,7 +108,8 @@ input type:keyboard {
 
     bindsym F5 exec ~/scripts/wayland-screenshot.sh
     bindsym F9 exec swaylock -f --color 000000
-    bindsym F10 exec ~/scripts/wayland-lock-and-hibernate.sh
+    # bindsym F10 exec ~/scripts/wayland-lock-and-hibernate.sh
+    bindsym F10 exec ~/scripts/wayland-lock-and-suspend.sh
 
     bindsym XF86AudioRaiseVolume exec "~/scripts/volume.sh set +5%"
     bindsym XF86AudioLowerVolume exec "~/scripts/volume.sh set -5%"
