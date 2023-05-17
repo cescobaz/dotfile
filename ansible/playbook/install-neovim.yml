@@ -1,30 +1,25 @@
 #!/bin/ansible-playbook
 
 - hosts:
-    - buro-mbp
+    - arch-tower
   tasks:
     - name: Install neovim
+      become: '{{ become_for_package }}'
       ansible.builtin.package:
         name:
           - neovim
           - cmake
-          - cmake-docs
           - ripgrep
         state: latest
     - name: Create neovim config dir
       ansible.builtin.file:
         dest: "{{ user_home }}/.config/nvim"
         state: directory
-      loop:
-        - dest: "{{ user_home }}/.config/nvim"
-        - dest: "{{ user_home }}/.config/nvim/lua"
     - name: Install neovim config
       ansible.builtin.file:
-        src: "{{ config_home }}/home/.config/nvim/init.lua"
-        dest: "{{ user_home }}/.config/nvim/init.lua"
+        src: "{{ config_home }}/home/.config/nvim/{{ item }}"
+        dest: "{{ user_home }}/.config/nvim/{{ item }}"
         state: link
       loop:
-        - src: "{{ config_home }}/home/.config/nvim/init.lua"
-          dest: "{{ user_home }}/.config/nvim/init.lua"
-        - src: "{{ config_home }}/home/.config/nvim/lua"
-          dest: "{{ user_home }}/.config/nvim/lua"
+        - "init.lua"
+        - "lua"

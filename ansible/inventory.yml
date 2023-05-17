@@ -2,6 +2,7 @@
 workstation:
   vars:
     ansible_connection: ssh
+    become_for_package: true
   hosts:
     arch-tower:
       cpu_arc: amd64
@@ -19,6 +20,7 @@ workstation:
     buro-mbp:
       cpu_arc: amd64
       ansible_user: buro
+      become_for_package: false
       ansible_become_password: !vault |
         $ANSIBLE_VAULT;1.1;AES256
         34396336336565343731623838663465616536316535363830653537383964336562393461306463
