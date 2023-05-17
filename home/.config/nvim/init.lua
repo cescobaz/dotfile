@@ -13,54 +13,12 @@ vim.o.listchars = 'eol:$,tab:>·,trail:~,extends:>,precedes:<'
 vim.o.list = true
 
 -- move selection up and down
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
+vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
 
-vim.keymap.set({ "n", "v" }, "<leader>y", '"+y')
-vim.keymap.set({ "n", "v" }, "<leader>Y", '"+Y')
-vim.keymap.set({ "n", "v" }, "<leader>p", '"+p')
-
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
-end
-vim.opt.rtp:prepend(lazypath)
-
-require("lazy").setup({
-  'RRethy/nvim-base16',
-  {
-    'nvim-telescope/telescope-fzf-native.nvim',
-    build =
-    'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
-  },
-  { 'nvim-telescope/telescope.nvim',   dependencies = { 'nvim-lua/plenary.nvim' } },
-  "tpope/vim-fugitive",
-  { "nvim-treesitter/nvim-treesitter", cmd = "TSUpdate" },
-  'cescobaz/vim-snippets',
-  { "L3MON4D3/LuaSnip",          build = "make install_jsregexp" },
-  'saadparwaiz1/cmp_luasnip',
-  'hrsh7th/cmp-nvim-lsp',
-  'hrsh7th/cmp-buffer',
-  'hrsh7th/cmp-path',
-  'hrsh7th/cmp-cmdline',
-  'hrsh7th/nvim-cmp',
-  "neovim/nvim-lspconfig",
-  { "nvim-lualine/lualine.nvim", dependencies = { "nvim-tree/nvim-web-devicons" } },
-  'mfussenegger/nvim-dap',
-})
-
-require("user.base16")
-require("user.telescope")
-require("user.treesitter").setup()
-require("user.luasnip").setup()
-local capabilities = require('user.cmp')
+vim.keymap.set({ 'n', 'v' }, '<leader>y', '"+y')
+vim.keymap.set({ 'n', 'v' }, '<leader>Y', '"+Y')
+vim.keymap.set({ 'n', 'v' }, '<leader>p', '"+p')
 
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 vim.keymap.set('n', '<Leader>e', vim.diagnostic.open_float)
@@ -68,6 +26,27 @@ vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
 vim.keymap.set('n', '<Leader>q', vim.diagnostic.setloclist)
 
-require("user.lspconfig").setup(capabilities)
-require("user.lualine")
--- require("user.dap").setup()
+local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    'git',
+    'clone',
+    '--filter=blob:none',
+    'https://github.com/folke/lazy.nvim.git',
+    '--branch=stable', -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
+
+require('user.lazy')
+
+require('user.base16')
+require('user.telescope')
+require('user.treesitter')
+require('user.luasnip')
+local capabilities = require('user.cmp')
+
+require('user.lspconfig').setup(capabilities)
+require('user.lualine')
+-- require('user.dap').setup()
