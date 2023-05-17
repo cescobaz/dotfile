@@ -1,5 +1,5 @@
 require('lazy').setup({
-  'RRethy/nvim-base16',
+ -- 'RRethy/nvim-base16',
   {
     'nvim-telescope/telescope-fzf-native.nvim',
     build =
@@ -18,5 +18,5 @@ require('lazy').setup({
   'hrsh7th/nvim-cmp',
   'neovim/nvim-lspconfig',
   { 'nvim-lualine/lualine.nvim', dependencies = { 'nvim-tree/nvim-web-devicons' } },
-  'mfussenegger/nvim-dap',
+--  'mfussenegger/nvim-dap',
 })
