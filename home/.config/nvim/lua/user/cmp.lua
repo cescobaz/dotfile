@@ -36,18 +36,5 @@ cmp.setup.cmdline({ '/', '?' }, {
   }
 })
 
--- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-local cmpline_mapping = cmp.mapping.preset.cmdline()
-cmpline_mapping['<Tab>'] = nil
-cmpline_mapping['<S-Tab>'] = nil
-cmp.setup.cmdline(':', {
-  mapping = cmpline_mapping,
-  sources = cmp.config.sources({
-    { name = 'path' }
-  }, {
-    { name = 'cmdline' }
-  })
-})
-
 -- Set up lspconfig.
 return require('cmp_nvim_lsp').default_capabilities()
