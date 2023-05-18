@@ -26,18 +26,6 @@ set $menu rofi -show combi | xargs swaymsg exec --
 
 ### Output configuration
 #
-# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-#output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-# output * bg /home/buro/wallpaper/pexels-magda-ehlers-1279813.jpg fill #000000
-# output * bg #32573b solid_color
-# violet
-# output * bg #350066 solid_color
-# output * bg /home/buro/wallpaper/tiger-violet.jpg fill #350066
-# output * bg /home/buro/wallpaper/rainbow-linux.jpg fill #350066
-output * bg /home/buro/wallpaper/sfondi/Flat/arcify-2560x1600.png fill #350066
-
-seat seat0 xcursor_theme Qogir-dark 24
-#
 # Example configuration:
 #
 #   output HDMI-A-1 resolution 1920x1080 position 1920,0
@@ -257,6 +245,29 @@ titlebar_border_thickness 0
 # client.focused #A1B56C #A1B56C #000000
 client.focused #FFD000 #FFD000 #000000
 client.unfocused #000000 #000000 #DDDDDD
+
+include themes/base16-classic-dark.config
+
+# Property Name         Border  BG      Text    Indicator Child Border
+client.focused          $base0A $base0A $base00 $base08 $base0A
+client.focused_inactive $base01 $base01 $base05 $base03 $base01
+client.unfocused        $base01 $base01 $base05 $base01 $base01
+client.urgent           $base08 $base08 $base00 $base08 $base08
+client.placeholder      $base00 $base00 $base05 $base00 $base00
+client.background       $base00
+#
+# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
+#output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+# output * bg /home/buro/wallpaper/pexels-magda-ehlers-1279813.jpg fill #000000
+# output * bg #32573b solid_color
+# violet
+# output * bg #350066 solid_color
+# output * bg /home/buro/wallpaper/tiger-violet.jpg fill #350066
+# output * bg /home/buro/wallpaper/rainbow-linux.jpg fill #350066
+# output * bg /home/buro/wallpaper/sfondi/Flat/arcify-2560x1600.png fill #350066
+output * bg $base00 solid_color
+
+seat seat0 xcursor_theme Qogir-dark 24
 
 font pango:SourceCodePro 12
 

@@ -1,3 +1,5 @@
+@import "colors/base16-classic-dark.css";
+
 * {
     /* `otf-font-awesome` is required to be installed for icons */
     /* font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif; */
@@ -6,12 +8,11 @@
     transition: none;
     padding: 0;
     margin: 0;
-    color: #DDDDDD;
+    color: @base05;
 }
 
 window#waybar {
-/*    background-color: #181818; */
-    background-color: rgba(24, 24, 24, 1);
+    background-color: @base00;
 }
 
 window#waybar.hidden {
@@ -55,17 +56,17 @@ button:hover {
 
 #workspaces button {
     background-color: transparent;
-    color: #000000;
+    color: @base00;
 }
 
 #workspaces .focused, #workspaces .focused:hover, #workspaces .focused label {
-    background-color: #FFD000;
-    color: #222222;
+    background-color: @base0A;
+    color: @base00;
     font-weight: normal;
 }
 
 #workspaces button.urgent {
-    background-color: #eb4d4b;
+    background-color: @base08;
 }
 
 #mode {
@@ -88,7 +89,7 @@ button:hover {
 #idle_inhibitor,
 #scratchpad,
 #mpd {
-  color: #DDDDDD;
+  color: @base05;
   padding: 4px 12px;
 }
 
@@ -109,13 +110,13 @@ button:hover {
 
 @keyframes blink {
     to {
-        background-color: #ffffff;
-        color: #000000;
+        background-color: @base05;
+        color: @base00;
     }
 }
 
 label:focus {
-    background-color: #000000;
+    background-color: @base00;
 }
 
 #cpu {
@@ -134,15 +135,15 @@ label:focus {
 }
 
 #network.disconnected {
-    background-color: #f53c3c;
+    background-color: @base08;
 }
 
 #pulseaudio {
 }
 
 #pulseaudio.muted {
-    background-color: #90b1b1;
-    color: #2a5c45;
+    background-color: @base03;
+    color: @base05;
 }
 
 #custom-media {
@@ -162,7 +163,7 @@ label:focus {
 }
 
 #temperature.critical {
-    background-color: #eb4d4b;
+    background-color: @base08;
 }
 
 #tray {
@@ -174,15 +175,15 @@ label:focus {
 
 #tray > .needs-attention {
     -gtk-icon-effect: highlight;
-    background-color: #eb4d4b;
+    background-color: @base08;
 }
 
 #idle_inhibitor {
 }
 
 #idle_inhibitor.activated {
-    background-color: #AA0000;
-    color: black;
+    background-color: @base08;
+    color: @base00;
 }
 
 #mpd {
@@ -203,14 +204,14 @@ label:focus {
 }
 
 #language {
-    background: #AAAAAA;
-    color: #222222;
+    background: @base03;
+    color: @base0A;
     padding: 0px 8px;
 }
 
 #keyboard-state {
     background: #97e1ad;
-    color: #000000;
+    color: @base00;
 }
 
 #keyboard-state > label {
