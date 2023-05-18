@@ -21,3 +21,8 @@ cp -r "$build_dir/vim/colors" $HOME/.vim/colors
 echo "Copying to neovim"
 rm -r $HOME/.config/nvim/colors
 cp -r "$build_dir/nvim/colors" $HOME/.config/nvim/colors
+
+echo "Generating for sway and waybar"
+pybase16 build -t sway -t waybar -o "$build_dir"
+cp -r "$build_dir/waybar/colors" $HOME/.config/waybar/colors
+cp -r "$build_dir/sway/themes" $HOME/.config/sway/themes
