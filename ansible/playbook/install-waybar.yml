@@ -1,0 +1,23 @@
+#!/bin/ansible-playbook
+
+- hosts:
+    - arch-tower
+  tasks:
+    - name: Install waybar
+      become: '{{ become_for_package }}'
+      ansible.builtin.package:
+        name:
+          - waybar
+        state: latest
+    - name: Create waybar config dir
+      ansible.builtin.file:
+        dest: "{{ user_home }}/.config/waybar"
+        state: directory
+    - name: Install waybar config
+      ansible.builtin.file:
+        src: "{{ config_home }}/home/.config/waybar/{{ item }}"
+        dest: "{{ user_home }}/.config/waybar/{{ item }}"
+        state: link
+      loop:
+        - "config"
+        - "style.css"
