@@ -267,7 +267,15 @@ client.background       $base00
 # output * bg /home/buro/wallpaper/sfondi/Flat/arcify-2560x1600.png fill #350066
 output * bg $base00 solid_color
 
-seat seat0 xcursor_theme Qogir-dark 24
+set $my_cursor Qogir-dark
+set $my_cursor_size 24
+
+seat seat0 xcursor_theme $my_cursor $my_cursor_size
+# https://github.com/swaywm/sway/issues/3124
+exec_always {
+  gsettings set org.gnome.desktop.interface cursor-theme $my_cursor
+  gsettings set org.gnome.desktop.interface cursor-size $my_cursor_size
+}
 
 font pango:SourceCodePro 12
 
