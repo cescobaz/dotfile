@@ -11,6 +11,28 @@
         repo: 'https://github.com/chriskempson/base16-shell.git'
         dest: '{{ user_home }}/.config/base16-shell'
         version: master
+    - name: Install base16-shell rc script for zsh
+      ansible.builtin.lineinfile:
+        create: true
+        path: '{{ user_home }}/.zshrc'
+        line: |
+          # Base16 Shell
+          BASE16_SHELL="$HOME/.config/base16-shell/"
+          [ -n "$PS1" ] && \
+              [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
+                  source "$BASE16_SHELL/profile_helper.sh"
+          # end Base16 Shell
+    - name: Install base16-shell rc script for bash
+      ansible.builtin.lineinfile:
+        create: true
+        path: '{{ user_home }}/.bashrc'
+        line: |
+          # Base16 Shell
+          BASE16_SHELL="$HOME/.config/base16-shell/"
+          [ -n "$PS1" ] && \
+              [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
+                  source "$BASE16_SHELL/profile_helper.sh"
+          # end Base16 Shell
     - name: Install python3-pip
       become: '{{ become_for_package }}'
       ansible.builtin.package:
