@@ -1,7 +1,7 @@
 #!/bin/ansible-playbook
 
 - hosts:
-    - arch-tower
+    - current
   tasks:
     - name: Install waybar
       become: '{{ become_for_package }}'

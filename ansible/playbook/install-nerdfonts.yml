@@ -1,10 +1,16 @@
 #!/bin/ansible-playbook
 
 - hosts:
-    - arch-tower
+    - current
   vars:
     fonts_path: "{{ user_home }}/.local/share/fonts"
   tasks:
+    - name: Install unzip
+      become: '{{ become_for_package }}'
+      ansible.builtin.package:
+        name:
+          - unzip
+        state: latest
     - name: Create temporary directory for download fonts
       ansible.builtin.file:
         path: "{{ user_home }}/tmp/NerdFont"
@@ -23,13 +29,17 @@
       ansible.builtin.file:
         path: "{{ fonts_path }}/ttf"
         state: directory
+    - name: Get NerdFont files
+      ansible.builtin.find:
+        path: "{{ user_home }}/tmp/NerdFont"
+        patterns: "*.ttf"
+      register: find
     - name: Install NerdFont
       ansible.builtin.copy:
         remote_src: true
-        src: "{{ item }}"
+        src: "{{ item.path }}"
         dest: "{{ fonts_path }}/ttf/"
-      with_fileglob:
-        - "{{ user_home }}/tmp/NerdFont/*.ttf"
+      loop: "{{ find.files }}"
     - name: Cleanup NerdFont
       ansible.builtin.file:
         path: "{{ user_home }}/tmp"

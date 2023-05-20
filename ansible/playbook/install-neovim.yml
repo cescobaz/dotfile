@@ -1,7 +1,9 @@
 #!/bin/ansible-playbook
 
 - hosts:
-    - arch-tower
+    - current
+  vars:
+    install_language_servers: false
   tasks:
     - name: Install neovim
       become: '{{ become_for_package }}'
@@ -10,20 +12,14 @@
           - neovim
           - cmake
           - ripgrep
+        state: latest
+    - name: Install language servers
+      become: '{{ become_for_package }}'
+      ansible.builtin.package:
+        name:
           - bash-language-server
           - lua-language-server
           - elixir-ls
           - tailwindcss-language-server
         state: latest
-    - name: Create neovim config dir
-      ansible.builtin.file:
-        dest: "{{ user_home }}/.config/nvim"
-        state: directory
-    - name: Install neovim config
-      ansible.builtin.file:
-        src: "{{ config_home }}/home/.config/nvim/{{ item }}"
-        dest: "{{ user_home }}/.config/nvim/{{ item }}"
-        state: link
-      loop:
-        - "init.lua"
-        - "lua"
+      when: install_language_servers

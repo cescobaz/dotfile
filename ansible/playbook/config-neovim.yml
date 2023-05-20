@@ -1,0 +1,19 @@
+#!/bin/ansible-playbook
+
+- name: Install config
+  ansible.builtin.import_playbook: install-config.yml
+- hosts:
+    - current
+  tasks:
+    - name: Create neovim config dir
+      ansible.builtin.file:
+        dest: "{{ user_home }}/.config/nvim"
+        state: directory
+    - name: Install neovim config
+      ansible.builtin.file:
+        src: "{{ config_home }}/home/.config/nvim/{{ item }}"
+        dest: "{{ user_home }}/.config/nvim/{{ item }}"
+        state: link
+      loop:
+        - "init.lua"
+        - "lua"

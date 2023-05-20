@@ -1,0 +1,57 @@
+#!/bin/ansible-playbook
+
+- hosts:
+    - current
+  vars:
+    install_language_servers: false
+    tmp_dir: "{{ user_home }}/tmp"
+  tasks:
+    - name: Remove apt neovim
+      become: '{{ become_for_package }}'
+      ansible.builtin.package:
+        name:
+          - neovim
+        state: absent
+    - name: Create temporary directory for download neovim
+      ansible.builtin.file:
+        path: "{{ tmp_dir }}/neovim"
+        state: directory
+    - name: Download neovim
+      tags:
+        - download
+      ansible.builtin.get_url:
+        url: "https://github.com/neovim/neovim/archive/refs/tags/stable.tar.gz"
+        dest: "{{ tmp_dir }}/neovim/"
+      register: neovim_download
+    - name: Unarchive neovim source
+      tags:
+        - download
+      ansible.builtin.unarchive:
+        remote_src: true
+        src: "{{ neovim_download.dest }}"
+        dest: "{{ tmp_dir }}/neovim"
+    - name: Install build requirements
+      become: '{{ become_for_package }}'
+      ansible.builtin.package:
+        name:
+          - ninja-build
+          - gettext
+          - cmake
+          - unzip
+          - curl
+          - 'g++'
+        state: latest
+    - name: Build neovim
+      community.general.make:
+        chdir: '{{ tmp_dir }}/neovim/neovim-stable'
+        params:
+          CMAKE_BUILD_TYPE: Release
+    - name: Install neovim
+      become: true
+      community.general.make:
+        chdir: '{{ tmp_dir }}/neovim/neovim-stable'
+        target: install
+    - name: Cleanup neovim
+      ansible.builtin.file:
+        path: "{{ tmp_dir }}"
+        state: "absent"

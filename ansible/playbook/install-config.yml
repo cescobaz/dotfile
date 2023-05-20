@@ -1,11 +1,17 @@
 #!/bin/ansible-playbook
 
 - hosts:
-    - buro-mbp
+    - current
   tasks:
+    - name: Install git
+      become: '{{ become_for_package }}'
+      ansible.builtin.package:
+        name:
+          - git
+        state: latest
     - name: Install config
       ansible.builtin.git:
         repo: 'https://github.com/cescobaz/dotfile.git'
         dest: '{{ config_home }}'
-        version: latest
+        version: master
 

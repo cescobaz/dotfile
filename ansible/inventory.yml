@@ -3,9 +3,9 @@ workstation:
   vars:
     ansible_connection: ssh
     become_for_package: true
+    cpu_arc: amd64
   hosts:
     arch-tower:
-      cpu_arc: amd64
       ansible_user: buro
       ansible_become_password: !vault |
         $ANSIBLE_VAULT;1.1;AES256
@@ -18,7 +18,6 @@ workstation:
       config_home: /home/buro/xhome
       user_home: /home/buro
     buro-mbp:
-      cpu_arc: amd64
       ansible_user: buro
       become_for_package: false
       ansible_become_password: !vault |
@@ -31,3 +30,21 @@ workstation:
       pkg_manager: brew
       config_home: /Users/buro/dotfile
       user_home: /Users/buro
+    win-debian:
+      ansible_host: arch-macbook
+      ansible_port: 9999
+      ansible_user: buro
+      pkg_manager: apt-get
+      config_home: /home/buro/dotfile
+      user_home: /home/buro
+      ansible_become_password: !vault |
+                $ANSIBLE_VAULT;1.1;AES256
+                65333630323333666435633861653563366363313762333364386639363339333733396262666162
+                6630376265373261616131653962643865643363303735390a336432303230333631303934303135
+                63336265306166626664323536646634333730653363333466643432353366323062383063316137
+                3338636532306633610a393835396666306537313839323932666661396130633632313465636564
+                3362
+  children:
+    current:
+      hosts:
+        win-debian:
