@@ -1,0 +1,21 @@
+#!/bin/ansible-playbook
+
+- name: Install config
+  ansible.builtin.import_playbook: install-config.yml
+- hosts:
+    - current
+  tasks:
+    - name: Install tmux
+      become: '{{ become_for_package }}'
+      ansible.builtin.package:
+        name:
+          - tmux
+        state: latest
+    - name: Install tmux config
+      ansible.builtin.file:
+        src: "{{ config_home }}/home/{{ item }}"
+        dest: "{{ user_home }}/{{ item }}"
+        state: link
+      loop:
+        - ".tmux.conf"
+        - ".config/base16-tmux.conf"
