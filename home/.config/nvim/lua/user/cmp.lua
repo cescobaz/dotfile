@@ -29,5 +29,8 @@ cmp.setup({
   })
 })
 
+-- issue about cmdline https://github.com/hrsh7th/nvim-cmp/issues/740
+-- linked issue https://github.com/neovim/neovim/issues/17098
+
 -- Set up lspconfig.
 return require('cmp_nvim_lsp').default_capabilities()
