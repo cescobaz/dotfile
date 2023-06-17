@@ -21,5 +21,8 @@
           - lua-language-server
           - elixir-ls
           - tailwindcss-language-server
+          - clangd
+          - arduino-cli
+          - arduino-language-server
         state: latest
       when: install_language_servers
