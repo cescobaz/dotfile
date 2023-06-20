@@ -17,10 +17,25 @@ M.setup = function(capabilities)
       },
     },
   })
-  lspconfig.bashls.setup({})
-  lspconfig.ansiblels.setup({})
-  lspconfig.clangd.setup {}
+  lspconfig.bashls.setup({
+    capabilities = capabilities,
+  })
+  lspconfig.ansiblels.setup({
+    capabilities = capabilities,
+  })
+  lspconfig.clangd.setup {
+    capabilities = capabilities,
+  }
+  lspconfig.hls.setup({
+    capabilities = capabilities,
+    filetypes = { 'haskell', 'lhaskell', 'cabal' },
+  })
+  lspconfig.elixirls.setup({
+    capabilities = capabilities,
+    cmd = { "elixir-ls" }
+  })
   lspconfig.tailwindcss.setup({
+    capabilities = capabilities,
     init_options = {
       userLanguages = {
         eelixir = "html-eex",
@@ -28,11 +43,17 @@ M.setup = function(capabilities)
       },
     },
   })
-  lspconfig.elixirls.setup({
+  lspconfig.tsserver.setup({
     capabilities = capabilities,
-    cmd = { "elixir-ls" }
+    cmd = { "npm", "exec", "typescript-language-server", "--", "--stdio" },
   })
-  lspconfig.tsserver.setup({})
+  lspconfig.svelte.setup({
+    capabilities = capabilities,
+    cmd = { "npm", "exec", "svelte-language-server", "--", "--stdio" },
+  })
+  lspconfig.arduino_language_server.setup({
+    capabilities = capabilities,
+  })
 
   -- Use LspAttach autocommand to only map the following keys
   -- after the language server attaches to the current buffer
