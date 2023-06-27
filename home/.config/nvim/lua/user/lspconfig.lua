@@ -53,6 +53,7 @@ M.setup = function(capabilities)
   })
   lspconfig.arduino_language_server.setup({
     capabilities = capabilities,
+    cmd = { "arduino-language-server", "-cli-config", "/Users/buro/Library/Arduino15/arduino-cli.yaml" },
   })
 
   -- Use LspAttach autocommand to only map the following keys
