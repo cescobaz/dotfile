@@ -26,7 +26,7 @@ set $term kitty
 set $menu bemenu-run --ignorecase --list 10 --counter always \
   --fn pango:SourceCodePro 12 \
   --center --fixed-height \
-  --border 2 --margin 22 --line-height 44 --ch 22 --width-factor 0.6 \
+  --border 2 --margin 22 --line-height 34 --ch 22 --width-factor 0.6 \
   --bdr "$base0A" \
   --tf "$base0A" \
   --hb "$base0A" --hf "$base00"
