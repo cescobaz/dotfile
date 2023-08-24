@@ -1,0 +1,11 @@
+#!/bin/ansible-playbook
+
+- hosts:
+    - current
+  tasks:
+    - name: 'Install wayland terminal/vim clipboard support'
+      become: '{{ become_for_package }}'
+      ansible.builtin.package:
+        name:
+          - wl-clipboard
+        state: latest
