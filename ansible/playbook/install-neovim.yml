@@ -3,7 +3,7 @@
 - hosts:
     - current
   vars:
-    install_language_servers: false
+    install_language_servers: true
   tasks:
     - name: Install neovim
       become: '{{ become_for_package }}'

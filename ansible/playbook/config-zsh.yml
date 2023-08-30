@@ -1,0 +1,24 @@
+#!/bin/ansible-playbook
+
+- hosts:
+    - current
+  tasks:
+    - name: 'Install zsh custom prompt'
+      ansible.builtin.lineinfile:
+        create: true
+        path: '{{ user_home }}/.zshrc'
+        line: |
+            # prompt style
+            # http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html
+            PROMPT='%F{yellow}%~ %(1j.%j.)
+            %F{yellow}> %b%f'
+            RPROMPT="%(?.%F{yellow}[%?]%f.%B%F{red}[%?]%f%b"
+            # end prompt style
+    - name: 'Install zsh EDITOR and word move keys'
+      ansible.builtin.lineinfile:
+        create: true
+        path: '{{ user_home }}/.zshrc'
+        line: |
+            export EDITOR=nvim
+            bindkey "^[[1;3D" backward-word
+            bindkey "^[[1;3C" forward-word

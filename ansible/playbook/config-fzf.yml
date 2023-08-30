@@ -1,0 +1,30 @@
+#!/bin/ansible-playbook
+#
+# for key-binding and autocompletion
+# in mac you should run /opt/homebrew/opt/fzf/install
+#
+# OR load the scripts in the installation dir
+# FZF_SHELL_DIR=/usr/local/opt/fzf/shell
+# if [ -d $FZF_SHELL_DIR ]; then
+#   for FILE in $FZF_SHELL_DIR/*.zsh; do
+#     source $FILE
+#   done
+# fi
+
+- hosts:
+    - current
+  tasks:
+    - name: 'Install fzf config into .zshrc'
+      ansible.builtin.lineinfile:
+        create: true
+        path: '{{ user_home }}/.zshrc'
+        line: |
+            # fzf
+            export FZF_DEFAULT_COMMAND="fd --type f"
+            export FZF_DEFAULT_OPTS="--layout=reverse --history=/Users/buro/.fzf_history --color='fg:07,bg:0,preview-fg:07,preview-bg:0,hl:03,fg+:15,bg+:18,gutter:00,hl+:03,info:18,border:00,prompt:07,pointer:03,marker:03,spinner:07,header:03' --no-bold"
+            FZF_BASE16_THEMES_PATH="$BASE16_THEMES_PATH/fzf/bash"
+            FZF_BASE16_THEME="$FZF_BASE16_THEMES_PATH/base16-$BASE16_THEME.config"
+            if [ -f "$FZF_BASE16_THEME" ]; then
+              source "$FZF_BASE16_THEME"
+            fi
+            # end fzf

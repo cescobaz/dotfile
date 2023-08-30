@@ -1,0 +1,13 @@
+#!/bin/ansible-playbook
+
+- hosts:
+    - current
+  tasks:
+    - name: Install fzf fd and ripgrep
+      become: '{{ become_for_package }}'
+      ansible.builtin.package:
+        name:
+          - fzf
+          - fd
+          - ripgrep
+        state: latest
