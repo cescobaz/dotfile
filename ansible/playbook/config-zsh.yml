@@ -22,3 +22,4 @@
             export EDITOR=nvim
             bindkey "^[[1;3D" backward-word
             bindkey "^[[1;3C" forward-word
+            set -o vi # set vi mode: you start in INSERT mode, then press ESC to go in normal mode and move as you do in vim
