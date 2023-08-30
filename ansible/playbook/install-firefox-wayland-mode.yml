@@ -1,0 +1,27 @@
+#!/bin/ansible-playbook
+
+# https://wiki.archlinux.org/title/Firefox#Wayland
+
+- hosts:
+    - current
+  tasks:
+    - name: Install sh script
+      ansible.builtin.copy:
+        src: "../files/firefox-wayland.sh"
+        dest: "{{ user_home }}/.local/bin/firefox-wayland.sh"
+    - name: Install firefox wayland env var for wayland environment
+      ansible.builtin.lineinfile:
+        create: true
+        path: '{{ user_home }}/.config/environment.d/envvars.conf'
+        line: |
+          MOZ_ENABLE_WAYLAND=1
+    - name: Install firefox wayland env var for zsh
+      ansible.builtin.lineinfile:
+        create: true
+        path: '{{ user_home }}/.zshrc'
+        line: |
+          # Firefox Wayland
+          if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+            export MOZ_ENABLE_WAYLAND=1
+          fi
+          # end Firefox Wayland
