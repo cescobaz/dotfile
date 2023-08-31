@@ -1,0 +1,32 @@
+#!/bin/ansible-playbook
+
+- hosts:
+    - current
+  tasks:
+    - name: Install android dev tools
+      become: '{{ become_for_package }}'
+      ansible.builtin.package:
+        name:
+          - openjdk
+          - 'openjdk@11'
+          - android-commandlinetools
+          - fastlane
+        state: latest
+    - name: 'Config ANDROID_HOME and JAVA PATHs'
+      ansible.builtin.lineinfile:
+        create: true
+        path: '{{ user_home }}/.zshrc'
+        line: |
+            # Java
+            # export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+            export PATH="/opt/homebrew/opt/openjdk@11/bin:$PATH"
+            # end Java
+            export ANDROID_HOME=/opt/homebrew/share/android-commandlinetools
+            # Firebase Distribution
+            export GOOGLE_APPLICATION_CREDENTIALS=$HOME/.config/declout-a47bf-8200668e688c.json
+    - name: Install android build-tools
+      ansible.builtin.shell:
+        cmd: "PATH=\"/opt/homebrew/opt/openjdk/bin:$PATH\" sdkmanager 'build-tools;33.0.2'"
+    - name: Install android platform-tools
+      ansible.builtin.shell:
+        cmd: "PATH=\"/opt/homebrew/opt/openjdk/bin:$PATH\" sdkmanager 'platforms;android-33'"

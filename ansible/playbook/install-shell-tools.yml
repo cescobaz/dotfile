@@ -1,0 +1,24 @@
+#!/bin/ansible-playbook
+
+- hosts:
+    - current
+  vars:
+    install_language_servers: true
+  tasks:
+    - name: Install neovim
+      become: '{{ become_for_package }}'
+      ansible.builtin.package:
+        name:
+          - fd
+          - ripgrep
+          - exa
+          - htop
+        state: latest
+    - name: 'Install exa / ls alias'
+      ansible.builtin.lineinfile:
+        create: true
+        path: '{{ user_home }}/.zshrc'
+        line: |
+            alias ls='exa --color=always'
+            alias ll='exa -l --color=always'
+            alias lla='exa -la --color=always'

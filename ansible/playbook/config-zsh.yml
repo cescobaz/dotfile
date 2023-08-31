@@ -3,6 +3,37 @@
 - hosts:
     - current
   tasks:
+    - name: 'Install zsh completions rules'
+      ansible.builtin.lineinfile:
+        create: true
+        path: '{{ user_home }}/.zshrc'
+        line: |
+            # Very nice guide https://thevaluable.dev/zsh-completion-guide-examples/
+            autoload -U compinit; compinit
+            # match case-insensitive
+            zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+            # show a description of the completion grouped
+            zstyle ':completion:*:*:*:*:descriptions' format '%F{yellow}-- %d --%f'
+            # show all info about files
+            zstyle ':completion:*' file-list all
+            # sort files by change on FS
+            zstyle ':completion:*' file-sort change
+            # show the menu with selection when there is at least 1 match
+            zstyle ':completion:*' menu select=1
+            zmodload zsh/complist
+            bindkey -M menuselect 'h' vi-backward-char
+            bindkey -M menuselect 'k' vi-up-line-or-history
+            bindkey -M menuselect 'j' vi-down-line-or-history
+            bindkey -M menuselect 'l' vi-forward-char
+    - name: 'Install zsh EDITOR and word move keys'
+      ansible.builtin.lineinfile:
+        create: true
+        path: '{{ user_home }}/.zshrc'
+        line: |
+            bindkey "^[[1;3D" backward-word
+            bindkey "^[[1;3C" forward-word
+            set -o vi # set vi mode: you start in INSERT mode, then press ESC to go in normal mode and move as you do in vim
+            export EDITOR=nvim
     - name: 'Install zsh custom prompt'
       ansible.builtin.lineinfile:
         create: true
@@ -14,12 +45,3 @@
             %F{yellow}> %b%f'
             RPROMPT="%(?.%F{yellow}[%?]%f.%B%F{red}[%?]%f%b"
             # end prompt style
-    - name: 'Install zsh EDITOR and word move keys'
-      ansible.builtin.lineinfile:
-        create: true
-        path: '{{ user_home }}/.zshrc'
-        line: |
-            export EDITOR=nvim
-            bindkey "^[[1;3D" backward-word
-            bindkey "^[[1;3C" forward-word
-            set -o vi # set vi mode: you start in INSERT mode, then press ESC to go in normal mode and move as you do in vim
