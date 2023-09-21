@@ -23,7 +23,7 @@ set $term kitty
 # on the original workspace that the command was run on.
 #set $menu wofi --show run | xargs swaymsg exec --
 # set $menu rofi -show combi | xargs swaymsg exec --
-set $menu bemenu-run --ignorecase --list 10 --counter always \
+set $menu MOZ_ENABLE_WAYLAND=1 bemenu-run --ignorecase --list 10 --counter always \
   --fn pango:SourceCodePro 12 \
   --center --fixed-height \
   --border 2 --margin 22 --line-height 34 --ch 18 --cw 9 --width-factor 0.6 \
