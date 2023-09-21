@@ -1,0 +1,12 @@
+#!/bin/ansible-playbook
+
+- hosts:
+    - current
+  tasks:
+    - name: Install iOS dev tools
+      become: '{{ become_for_package }}'
+      ansible.builtin.package:
+        name:
+          - cocoapods
+          - fastlane
+        state: latest

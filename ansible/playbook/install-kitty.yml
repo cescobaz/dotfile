@@ -1,11 +1,12 @@
 #!/bin/ansible-playbook
 
 - hosts:
-    - arch-tower
+    - current
   vars:
     fonts_path: "{{ user_home }}/.local/share/fonts/ttf"
   tasks:
     - name: Install kitty
+      ignore_errors: true
       ansible.builtin.package:
         name:
           - kitty
