@@ -50,4 +50,5 @@ local capabilities = require('user.cmp')
 
 require('user.lspconfig').setup(capabilities)
 require('user.lualine')
+require('user.hop')
 -- require('user.dap').setup()

@@ -17,4 +17,9 @@ require('lazy').setup({
   'hrsh7th/nvim-cmp',
   'neovim/nvim-lspconfig',
   { 'nvim-lualine/lualine.nvim', dependencies = { 'nvim-tree/nvim-web-devicons' } },
+  {
+    'smoka7/hop.nvim',
+    version = "*",
+    opts = {},
+  }
 })
