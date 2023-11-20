@@ -47,6 +47,9 @@ M.setup = function(capabilities)
     capabilities = capabilities,
     cmd = { "npm", "exec", "typescript-language-server", "--", "--stdio" },
   })
+  lspconfig.eslint.setup({
+    capabilities = capabilities,
+  })
   lspconfig.svelte.setup({
     capabilities = capabilities,
     cmd = { "npm", "exec", "svelte-language-server", "--", "--stdio" },
