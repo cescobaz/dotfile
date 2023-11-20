@@ -50,6 +50,9 @@ M.setup = function(capabilities)
   lspconfig.eslint.setup({
     capabilities = capabilities,
   })
+  lspconfig.jsonls.setup({
+    capabilities = capabilities,
+  })
   lspconfig.svelte.setup({
     capabilities = capabilities,
     cmd = { "npm", "exec", "svelte-language-server", "--", "--stdio" },
