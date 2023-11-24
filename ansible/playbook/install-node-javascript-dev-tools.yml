@@ -1,0 +1,15 @@
+#!/bin/ansible-playbook
+
+- hosts:
+    - current
+  tasks:
+    - name: Install nodejs, javascript dev tools
+      become: '{{ become_for_package }}'
+      ansible.builtin.package:
+        name:
+          - nodejs
+          - npm
+        state: latest
+    - name: Install npm global tools
+      ansible.builtin.shell:
+        cmd: "npm install -g typescript vscode-langservers-extracted"

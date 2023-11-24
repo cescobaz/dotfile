@@ -23,7 +23,8 @@ set $term kitty
 # on the original workspace that the command was run on.
 #set $menu wofi --show run | xargs swaymsg exec --
 # set $menu rofi -show combi | xargs swaymsg exec --
-set $menu MOZ_ENABLE_WAYLAND=1 bemenu-run --ignorecase --list 10 --counter always \
+set $menu GTK_THEME=Adwaita:dark QT_QPA_PLATFORM=wayland MOZ_ENABLE_WAYLAND=1 bemenu-run \
+  --ignorecase --list 10 --counter always \
   --fn pango:SourceCodePro 12 \
   --center --fixed-height \
   --border 2 --margin 22 --line-height 34 --ch 18 --cw 9 --width-factor 0.6 \
@@ -95,7 +96,7 @@ input type:keyboard {
     bindsym F5 exec ~/scripts/wayland-screenshot.sh
     bindsym F9 exec swaylock -f --color 000000
     # bindsym F10 exec ~/scripts/wayland-lock-and-hibernate.sh
-    bindsym F10 exec ~/scripts/wayland-lock-and-suspend.sh
+    bindsym --release --no-repeat F10 exec ~/scripts/wayland-lock-and-suspend.sh
 
     bindsym XF86AudioRaiseVolume exec "~/scripts/volume.sh set +5%"
     bindsym XF86AudioLowerVolume exec "~/scripts/volume.sh set -5%"
