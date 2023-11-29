@@ -45,7 +45,6 @@ M.setup = function(capabilities)
   })
   lspconfig.tsserver.setup({
     capabilities = capabilities,
-    cmd = { "npm", "exec", "typescript-language-server", "--", "--stdio" },
   })
   lspconfig.eslint.setup({
     capabilities = capabilities,
