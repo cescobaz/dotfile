@@ -12,4 +12,4 @@
         state: latest
     - name: Install npm global tools
       ansible.builtin.shell:
-        cmd: "npm install -g typescript-language-server vscode-langservers-extracted"
+        cmd: "npm install -g typescript-language-server eslint vscode-langservers-extracted"
