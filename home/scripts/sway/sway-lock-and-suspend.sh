@@ -3,6 +3,6 @@
 set -e
 
 sleep 1
-swaylock --daemonize -f -c 333333
+$HOME/scripts/sway/sway-lock.sh
 sleep 2
 systemctl suspend

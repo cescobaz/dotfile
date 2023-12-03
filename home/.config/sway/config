@@ -94,9 +94,8 @@ input type:keyboard {
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 
     bindsym F5 exec ~/scripts/wayland-screenshot.sh
-    bindsym F9 exec swaylock -f --color 000000
-    # bindsym F10 exec ~/scripts/wayland-lock-and-hibernate.sh
-    bindsym --release --no-repeat F10 exec ~/scripts/wayland-lock-and-suspend.sh
+    bindsym F9 exec ~/scripts/sway/sway-lock.sh
+    bindsym --release --no-repeat F10 exec ~/scripts/sway/sway-lock-and-suspend.sh
 
     bindsym XF86AudioRaiseVolume exec "~/scripts/volume.sh set +5%"
     bindsym XF86AudioLowerVolume exec "~/scripts/volume.sh set -5%"
@@ -278,8 +277,8 @@ font pango:SourceCodePro 12
 # Example configuration:
 #
 exec swayidle -w \
-         timeout 300 'swaylock -f -c 000000' \
+         timeout 300 '~/scripts/sway/sway-lock.sh' \
          timeout 310 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-         before-sleep 'swaylock -f -c 000000'
+         before-sleep '~/scripts/sway/sway-lock.sh'
 
 include /etc/sway/config.d/*
