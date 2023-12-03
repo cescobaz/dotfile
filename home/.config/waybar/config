@@ -5,11 +5,11 @@
     // "width": 1280, // Waybar width
     // "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
-    "modules-left": ["sway/workspaces", "sway/mode", "sway/scratchpad", "custom/media"],
+    "modules-left": ["sway/workspaces", "sway/mode", "sway/scratchpad", "custom/media", "tray"],
     // "modules-center": ["sway/window"],
     "modules-center": [],
     // "modules-right": ["mpd", "idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "keyboard-state", "sway/language", "battery", "battery#bat2", "clock", "tray"],
-    "modules-right": ["idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "temperature", "temperatureGPU", "keyboard-state", "sway/language", "clock", "tray"],
+    "modules-right": ["idle_inhibitor", "disk", "cpu", "memory", "temperature", "network", "pulseaudio", "keyboard-state", "sway/language", "clock"],
     // Modules configuration
     // "sway/workspaces": {
     //     "disable-scroll": true,
@@ -41,7 +41,7 @@
     "sway/scratchpad": {
         "format": "{icon} {count}",
         "show-empty": false,
-        "format-icons": ["", ""],
+        "format-icons": ["", " "],
         "tooltip": true,
         "tooltip-format": "{app}: {title}"
     },
@@ -58,8 +58,15 @@
     },
     "clock": {
         // "timezone": "America/New_York",
-        "format": "{:%H.%M - %d/%m/%Y}",
+        "format": "{:%a %d/%m/%Y %H.%M}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+    "disk": {
+        "format": "{percentage_used}% 🖴",
+        "tooltip": true,
+        "states": {
+          "critical" : 80
+        },
     },
     "cpu": {
         "format": "{usage}% ",
@@ -79,17 +86,17 @@
     "temperature": {
         // "thermal-zone": 2,
         "hwmon-path": "/sys/class/hwmon/hwmon1/temp1_input",
-        "critical-threshold": 80,
+        "critical-threshold": 60,
         // "format-critical": "{temperatureC}°C {icon}",
         "format": "{temperatureC}°C {icon}",
         "format-icons": ["", "", ""]
     },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "{ipaddr}/{cidr} ",
-        "tooltip-format": "{ifname} via {gwaddr} ",
-        "format-linked": "{ifname} (No IP) ",
+        "format-wifi": "{essid} ({signalStrength}%)  ",
+        "format-ethernet": "{ipaddr}/{cidr}  ",
+        "tooltip-format": "{ifname} via {gwaddr}  ",
+        "format-linked": "{ifname} (No IP)  ",
         "format-disconnected": "Disconnected ⚠",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
@@ -121,7 +128,7 @@
             "default": "🎜"
         },
         "escape": true,
-        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
+        "exec": "python3 $HOME/scripts/waybar/mediaplayer.py 2> $HOME/toremove/waybar-mediaplayer.py.errors.log" // Script in resources folder
         // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
     }
 }

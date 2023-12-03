@@ -239,7 +239,8 @@ smart_borders on
 smart_gaps on
 titlebar_border_thickness 0
 
-include themes/base16-classic-dark.config
+# include themes/base16-classic-dark.config
+include themes/base16-woodland.config
 
 # Property Name         Border  BG      Text    Indicator Child Border
 client.focused          $base0A $base0A $base00 $base08 $base0A
@@ -257,8 +258,8 @@ client.background       $base00
 # output * bg #350066 solid_color
 # output * bg /home/buro/wallpaper/tiger-violet.jpg fill #350066
 # output * bg /home/buro/wallpaper/rainbow-linux.jpg fill #350066
-# output * bg /home/buro/wallpaper/sfondi/Flat/arcify-2560x1600.png fill #350066
-output * bg $base00 solid_color
+output * bg /home/buro/wallpaper/sfondi/Flat/arcify-2560x1600.png fill #350066
+# output * bg $base00 solid_color
 
 set $my_cursor Qogir-dark
 set $my_cursor_size 24

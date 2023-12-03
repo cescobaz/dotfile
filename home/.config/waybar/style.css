@@ -1,4 +1,4 @@
-@import "colors/base16-classic-dark.css";
+@import "colors/base16-woodland.css";
 
 * {
     /* `otf-font-awesome` is required to be installed for icons */
@@ -65,10 +65,6 @@ button:hover {
     font-weight: normal;
 }
 
-#workspaces button.urgent {
-    background-color: @base08;
-}
-
 #mode {
     background-color: #64727D;
     border-bottom: 3px solid #ffffff;
@@ -128,14 +124,19 @@ label:focus {
 #disk {
 }
 
+#disk.critical,
+#network.disconnected,
+#workspaces button.urgent,
+#temperature.critical {
+    background-color: @base08;
+    color: @base01;
+}
+
 #backlight {
 }
 
 #network {
-}
-
-#network.disconnected {
-    background-color: @base08;
+    color: @base0A;
 }
 
 #pulseaudio {
@@ -143,27 +144,21 @@ label:focus {
 
 #pulseaudio.muted {
     background-color: @base03;
-    color: @base05;
+    color: @base01;
 }
 
 #custom-media {
-    background-color: #66cc99;
-    color: #2a5c45;
 }
 
 #custom-media.custom-spotify {
-    background-color: #66cc99;
+    color: @base0B;
 }
 
 #custom-media.custom-vlc {
-    background-color: #ffa000;
+    color: @base08;
 }
 
 #temperature {
-}
-
-#temperature.critical {
-    background-color: @base08;
 }
 
 #tray {
@@ -182,7 +177,7 @@ label:focus {
 }
 
 #idle_inhibitor.activated {
-    background-color: @base08;
+    background-color: @base0A;
     color: @base00;
 }
 
@@ -204,7 +199,7 @@ label:focus {
 }
 
 #language {
-    background: @base03;
+    background: @base02;
     color: @base0A;
     padding: 0px 8px;
 }
