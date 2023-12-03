@@ -1,7 +1,7 @@
 vim.cmd('map <Space> <Leader>')
 vim.g.mapleader = ' '
 vim.o.number = true
-vim.o.relativenumber = true
+vim.o.relativenumber = false
 vim.o.cursorline = true
 vim.o.ignorecase = true
 vim.o.smartcase = true
