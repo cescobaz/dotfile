@@ -1,0 +1,11 @@
+#!/bin/ansible-playbook
+
+- hosts:
+    - current
+  tasks:
+    - name: Install python dev tools
+      become: '{{ become_for_package }}'
+      ansible.builtin.pip:
+        name:
+          - python-lsp-server
+        state: present
