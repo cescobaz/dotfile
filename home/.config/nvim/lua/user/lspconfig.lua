@@ -52,6 +52,9 @@ M.setup = function(capabilities)
   lspconfig.jsonls.setup({
     capabilities = capabilities,
   })
+  lspconfig.pylsp.setup({
+    capabilities = capabilities,
+  })
   lspconfig.svelte.setup({
     capabilities = capabilities,
     cmd = { "npm", "exec", "svelte-language-server", "--", "--stdio" },
