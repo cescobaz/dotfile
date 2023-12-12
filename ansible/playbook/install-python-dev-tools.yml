@@ -1,5 +1,24 @@
 #!/bin/ansible-playbook
 
+# sudo pacman -S python-lsp-server
+# sudo pacman -S python-rope
+# sudo pacman -S python-pyflakes
+# sudo pacman -S autopep8
+# sudo pacman -S python-pycodestyle
+# sudo pacman -S python-pydocstyle
+#
+# pip install python-lsp-server \
+#             rope \
+#             pyflakes \
+#             autopep8 \
+#             pycodestyle \
+#             pydocstyle
+
+# sudo pacman -S ruff                                                                                                                                                 │
+# sudo pacman -S python-lsp-black
+# sudo pacman -S mypy
+# sudo pacman -S python-lsp-server
+
 - hosts:
     - current
   tasks:
