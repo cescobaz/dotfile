@@ -1,3 +1,3 @@
 #!/bin/bash
 
-GRIM_DEFAULT_DIR=$HOME/screenshots grim -g "$(slurp)"
+GRIM_DEFAULT_DIR=$HOME/Downloads grim -g "$(slurp)"

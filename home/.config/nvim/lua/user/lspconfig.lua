@@ -34,6 +34,9 @@ M.setup = function(capabilities)
     capabilities = capabilities,
     cmd = { "elixir-ls" }
   })
+  lspconfig.cssls.setup {
+    capabilities = capabilities,
+  }
   lspconfig.tailwindcss.setup({
     capabilities = capabilities,
     init_options = {
