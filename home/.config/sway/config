@@ -253,13 +253,16 @@ client.background       $base00
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 #output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 # output * bg /home/buro/wallpaper/pexels-magda-ehlers-1279813.jpg fill #000000
+# green
 # output * bg #32573b solid_color
 # violet
 # output * bg #350066 solid_color
 # output * bg /home/buro/wallpaper/tiger-violet.jpg fill #350066
 # output * bg /home/buro/wallpaper/rainbow-linux.jpg fill #350066
-output * bg /home/buro/wallpaper/sfondi/Flat/arcify-2560x1600.png fill #350066
+# output * bg /home/buro/wallpaper/sfondi/Flat/arcify-2560x1600.png fill #350066
 # output * bg $base00 solid_color
+output * bg $base03 solid_color
+# output * bg $base0F solid_color
 
 set $my_cursor Qogir-dark
 set $my_cursor_size 24
