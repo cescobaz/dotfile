@@ -235,6 +235,9 @@ bar swaybar_command waybar
 
 gaps inner 24
 # default_border none
+default_border none 4
+default_border pixel 4
+default_border normal 4
 smart_borders on
 smart_gaps on
 titlebar_border_thickness 0
