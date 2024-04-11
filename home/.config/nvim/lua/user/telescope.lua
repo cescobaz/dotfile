@@ -24,6 +24,7 @@ require('telescope').setup({
       i = {
         ['<C-j>'] = actions.move_selection_next,
         ['<C-k>'] = actions.move_selection_previous,
+        ['<C-a>'] = actions.send_to_qflist + actions.open_qflist,
       },
     },
     layout_strategy = 'center',
