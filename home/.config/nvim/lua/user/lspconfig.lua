@@ -64,8 +64,9 @@ M.setup = function(capabilities)
   })
   lspconfig.arduino_language_server.setup({
     capabilities = capabilities,
-    cmd = { "arduino-language-server", "-cli-config", "/Users/buro/Library/Arduino15/arduino-cli.yaml" },
+    cmd = { "arduino-language-server", "-cli-config", "/home/buro/.arduino15/arduino-cli.yaml" },
   })
+  lspconfig.terraformls.setup({})
 
   -- Use LspAttach autocommand to only map the following keys
   -- after the language server attaches to the current buffer
