@@ -5,6 +5,10 @@ text = "0xFFFFFF"
 [font]
 size = 18.0
 
+[font.normal]
+family = "AnonymicePro Nerd Font Propo"
+style = "Regular"
+
 [font.bold]
 style = "Bold"
 
@@ -13,10 +17,6 @@ style = "Bold Italic"
 
 [font.italic]
 style = "Italic"
-
-[font.normal]
-family = "AnonymicePro Nerd Font Propo"
-style = "Regular"
 
 [[keyboard.bindings]]
 action = "Paste"
@@ -36,7 +36,7 @@ mods = "Control|Shift"
 [[keyboard.bindings]]
 action = "IncreaseFontSize"
 key = "Equals"
-mods = "Control|Shift"
+mods = "Control"
 
 [[keyboard.bindings]]
 action = "DecreaseFontSize"
