@@ -1,8 +1,8 @@
 # The following lines were added by compinstall
 
-zstyle ':completion:*' completer _complete _ignored
+zstyle ':completion:*' completer _extensions _complete _ignored
 zstyle ':completion:*' list-colors ''
-zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}'
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
 # show a description of the completion grouped
 zstyle ':completion:*:*:*:*:descriptions' format '%F{yellow}-- %d --%f'
 # show all info about files
