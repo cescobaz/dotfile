@@ -13,6 +13,6 @@
         state: latest
     - name: Install kitty config
       ansible.builtin.file:
-        src: "{{ config_home }}/home/.config/kitty/kitty.conf"
-        dest: "{{ user_home }}/.config/kitty/kitty.conf"
+        src: "{{ config_home }}/home/.config/kitty"
+        dest: "{{ user_home }}/.config/kitty"
         state: link
