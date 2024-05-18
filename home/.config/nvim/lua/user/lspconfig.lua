@@ -37,15 +37,15 @@ M.setup = function(capabilities)
   lspconfig.cssls.setup {
     capabilities = capabilities,
   }
-  lspconfig.tailwindcss.setup({
-    capabilities = capabilities,
-    init_options = {
-      userLanguages = {
-        eelixir = "html-eex",
-        elixir = "html-eex",
-      },
-    },
-  })
+  -- lspconfig.tailwindcss.setup({
+  --   capabilities = capabilities,
+  --   init_options = {
+  --     userLanguages = {
+  --       eelixir = "html-eex",
+  --       elixir = "html-eex",
+  --     },
+  --   },
+  -- })
   lspconfig.tsserver.setup({
     capabilities = capabilities,
   })
