@@ -7,3 +7,6 @@ alias burowatch="$HOME/scripts/watch.sh"
 alias downloads='ls -l --reverse --sort=date ~/Downloads | head -n 10'
 alias cabalwatch="$HOME/scripts/macos-watch-and-cabal.sh"
 alias notes="$HOME/scripts/notes.sh"
+alias docker=podman
+alias swayxdg='XDG_CURRENT_DESKTOP=sway sway'
+alias get_idf='. $HOME/projects/external/esp-idf/export.sh'
