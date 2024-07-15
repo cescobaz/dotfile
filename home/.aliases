@@ -1,6 +1,6 @@
-alias ls='exa --color=always'
-alias ll='exa -l --color=always'
-alias lla='exa -la --color=always'
+alias ls='eza --color=always'
+alias ll='eza -l --color=always'
+alias lla='eza -la --color=always'
 alias grep='grep --color'
 alias f='fzf'
 alias burowatch="$HOME/scripts/watch.sh"
