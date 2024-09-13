@@ -21,5 +21,9 @@ require('lazy').setup({
     'smoka7/hop.nvim',
     version = "*",
     opts = {},
+  },
+  {
+    'Exafunction/codeium.vim',
+    event = 'BufEnter'
   }
 })
