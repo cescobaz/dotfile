@@ -2,6 +2,9 @@
 
 # du -sh ~/Library/Caches/* | sort -h
 
+# https://docs.docker.com/engine/manage-resources/pruning/
+# docker container prune
+docker volume prune
 docker image prune --all
 # docker system prune
 
