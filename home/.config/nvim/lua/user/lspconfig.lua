@@ -46,7 +46,7 @@ M.setup = function(capabilities)
   --     },
   --   },
   -- })
-  lspconfig.tsserver.setup({
+  lspconfig.ts_ls.setup({
     capabilities = capabilities,
   })
   lspconfig.eslint.setup({
@@ -67,6 +67,9 @@ M.setup = function(capabilities)
     cmd = { "arduino-language-server", "-cli-config", "/home/buro/.arduino15/arduino-cli.yaml" },
   })
   lspconfig.terraformls.setup({})
+  lspconfig.zls.setup({
+    capabilities = capabilities,
+  })
 
   -- Use LspAttach autocommand to only map the following keys
   -- after the language server attaches to the current buffer

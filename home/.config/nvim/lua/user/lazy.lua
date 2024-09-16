@@ -22,8 +22,9 @@ require('lazy').setup({
     version = "*",
     opts = {},
   },
-  {
-    'Exafunction/codeium.vim',
-    event = 'BufEnter'
-  }
+  -- {
+  --   'Exafunction/codeium.vim',
+  --   event = 'BufEnter'
+  -- },
+  -- { 'codota/tabnine-nvim', build = "./dl_binaries.sh" },
 })
