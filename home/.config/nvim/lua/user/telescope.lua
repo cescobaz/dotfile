@@ -9,6 +9,7 @@ table.insert(vimgrep_arguments, "--glob")
 table.insert(vimgrep_arguments, "!**/.git/*")
 table.insert(vimgrep_arguments, "--trim")
 
+-- doc https://github.com/nvim-telescope/telescope.nvim/blob/master/doc/telescope.txt
 require('telescope').setup({
   extensions = {
     fzf = {
@@ -45,6 +46,8 @@ require('telescope').setup({
     },
     buffers = {
       theme = "dropdown",
+      sort_lastused = true,
+      sort_mru = true,
     },
     current_buffer_fuzzy_find = {
       theme = "dropdown",
