@@ -46,7 +46,8 @@ M.setup = function(capabilities)
   --     },
   --   },
   -- })
-  lspconfig.ts_ls.setup({
+  -- lspconfig.ts_ls.setup({
+  lspconfig.tsserver.setup({
     capabilities = capabilities,
   })
   lspconfig.eslint.setup({
