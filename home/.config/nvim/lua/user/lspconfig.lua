@@ -32,7 +32,10 @@ M.setup = function(capabilities)
   })
   lspconfig.elixirls.setup({
     capabilities = capabilities,
-    cmd = { "elixir-ls" }
+    cmd = { "/opt/homebrew/bin/elixir-ls" },
+    elixirLS = {
+      dialyzerEnabled = false
+    }
   })
   lspconfig.cssls.setup {
     capabilities = capabilities,
@@ -99,7 +102,13 @@ M.setup = function(capabilities)
       vim.keymap.set('n', 'gr', '<cmd>Telescope lsp_references theme=dropdown<cr>')
       --vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
       vim.keymap.set('n', '<Leader>l', function()
-        vim.lsp.buf.format { async = true }
+        if vim.fn.exists(':EslintFixAll') > 0
+        then
+          vim.cmd('EslintFixAll')
+          print('EslintFixAll')
+        else
+          vim.lsp.buf.format { async = false }
+        end
       end, opts)
     end,
   })
