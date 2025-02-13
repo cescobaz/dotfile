@@ -22,3 +22,15 @@ Install home links
 cd ~/xhome
 ./macosx_install_links.sh
 ```
+
+## Notes
+
+`.npmrc` contains `ignore-scripts=true`, that is a security config that does not allow npm deps to run arbitrary scripts.
+```bash
+# check configurations
+npm config list -l
+
+# set config
+npm config set ignore-scripts true
+```
+
