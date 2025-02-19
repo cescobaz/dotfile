@@ -13,7 +13,7 @@ table.insert(vimgrep_arguments, "--trim")
 require('telescope').setup({
   extensions = {
     fzf = {
-      fuzzy = true,                   -- false will only do exact matching
+      fuzzy = false,                   -- false will only do exact matching
       override_generic_sorter = true, -- override the generic sorter
       override_file_sorter = true,    -- override the file sorter
       case_mode = "smart_case",       -- or "ignore_case" or "respect_case"
@@ -28,35 +28,37 @@ require('telescope').setup({
         ['<C-a>'] = actions.send_to_qflist + actions.open_qflist,
       },
     },
-    layout_strategy = 'center',
+    layout_strategy = 'vertical',
     layout_config = {
-      vertical = { width = 0.9, height = 0.9, anchor = 'CENTER' },
+      horizontal = {
+        preview_width = 0.5,
+        width = 0.9,
+        height = 0.9
+      },
+      vertical = { width = 0.95, height = 0.95 },
+      center = {
+        height = 0.9,
+        width = 0.9
+      },
     },
   },
   pickers = {
     builtin = {
-      theme = "dropdown",
     },
     find_files = {
-      theme = "dropdown",
       find_command = { "fd", "--hidden", "--ignore", "--type", "f", "--glob", "--exclude", "**/.git/**" },
     },
     live_grep = {
-      theme = "dropdown",
     },
     buffers = {
-      theme = "dropdown",
       sort_lastused = true,
       sort_mru = true,
     },
     current_buffer_fuzzy_find = {
-      theme = "dropdown",
     },
     command_history = {
-      theme = "dropdown",
     },
     help_tags = {
-      theme = "dropdown",
     },
   },
 })
