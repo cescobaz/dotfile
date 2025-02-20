@@ -35,10 +35,18 @@ require('telescope').setup({
         width = 0.9,
         height = 0.9
       },
-      vertical = { width = 0.95, height = 0.95 },
       center = {
         height = 0.9,
         width = 0.9
+      },
+      vertical = {
+        width = 0.95,
+        height = 0.95,
+        anchor = 'CENTER',
+        anchor_padding = 0,
+        prompt_position = 'bottom',
+        preview_cutoff = 0,
+        preview_height = 0.6,
       },
     },
   },

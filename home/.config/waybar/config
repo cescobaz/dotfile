@@ -5,11 +5,9 @@
     // "width": 1280, // Waybar width
     // "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
-    // "modules-left": ["sway/workspaces", "sway/mode", "sway/scratchpad", "custom/media", "tray"],
     "modules-left": ["sway/workspaces", "sway/mode", "sway/scratchpad", "tray"],
     // "modules-center": ["sway/window"],
     "modules-center": [],
-    // "modules-right": ["mpd", "idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "keyboard-state", "sway/language", "battery", "battery#bat2", "clock", "tray"],
     "modules-right": ["idle_inhibitor", "disk", "cpu", "memory", "temperature", "network", "pulseaudio", "keyboard-state", "sway/language", "clock"],
     // Modules configuration
     // "sway/workspaces": {
@@ -58,9 +56,11 @@
         "spacing": 10
     },
     "clock": {
-        // "timezone": "America/New_York",
+        //"timezone": "America/New_York",
         "format": "{:%a %d/%m/%Y %H.%M}",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+        "format-alt": "{%H.%M}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "interval": 1
     },
     "disk": {
         "format": "{percentage_used}% 🖴",
