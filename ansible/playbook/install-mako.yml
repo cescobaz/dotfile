@@ -1,0 +1,22 @@
+#!/bin/ansible-playbook
+
+- hosts:
+    - current
+  tasks:
+    - name: Install mako
+      become: '{{ become_for_package }}'
+      ansible.builtin.package:
+        name:
+          - mako
+        state: latest
+    - name: Create mako config dir
+      ansible.builtin.file:
+        dest: "{{ user_home }}/.config/mako"
+        state: directory
+    - name: Install waybar config
+      ansible.builtin.file:
+        src: "{{ config_home }}/home/.config/mako/{{ item }}"
+        dest: "{{ user_home }}/.config/mako/{{ item }}"
+        state: link
+      loop:
+        - "config"

@@ -1,0 +1,11 @@
+anchor=bottom-right
+font=pango:SourceCodePro 12
+padding=12
+margin=12,0,0,0
+outer-margin=12
+border-size=4
+border-color=#e0ac16
+background-color=#231e18
+on-button-left=dismiss
+on-button-right=invoke-default-action
+on-button-middle=dismiss-all
