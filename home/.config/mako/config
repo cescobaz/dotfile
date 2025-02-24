@@ -1,5 +1,6 @@
+default-timeout=5000
 anchor=bottom-right
-font=pango:SourceCodePro 12
+font=SourceCodePro 12
 padding=12
 margin=12,0,0,0
 outer-margin=12
