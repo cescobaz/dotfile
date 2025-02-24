@@ -290,8 +290,11 @@ font pango:SourceCodePro 12
 # Example configuration:
 #
 exec swayidle -w \
-         timeout 300 '~/scripts/sway/sway-lock.sh' \
-         timeout 310 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+         timeout 120 '~/scripts/sway/sway-lock.sh' \
+         timeout 130 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
          before-sleep '~/scripts/sway/sway-lock.sh'
+
+# notifications
+exec mako
 
 include /etc/sway/config.d/*
