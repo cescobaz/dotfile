@@ -7,5 +7,5 @@ border-size=4
 border-color=#e0ac16
 background-color=#231e18
 on-button-left=dismiss
-on-button-right=invoke-default-action
-on-button-middle=dismiss-all
+on-button-middle=invoke-default-action
+on-button-right=dismiss-all
