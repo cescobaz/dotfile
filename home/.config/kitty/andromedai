@@ -1,0 +1,28 @@
+
+new_tab
+cd ~/projects/andromed_ai/platform/webapp
+launch nvim -c G
+
+new_tab
+cd ~/projects/andromed_ai/platform/webapp
+launch npm run dev
+
+new_tab
+cd ~/projects/andromed_ai/platform/backend
+launch nvim -c G
+
+new_tab
+cd ~/projects/andromed_ai/platform/backend
+launch zsh -c 'set -a && source .env && mix phx.server'
+
+new_tab
+cd ~/projects/andromed_ai/platform/text-api
+launch nvim -c G
+
+new_tab
+cd ~/projects/andromed_ai/platform/text-api
+launch
+
+new_tab
+cd ~/projects/andromed_ai/devops/ansible
+launch ./kratos/docker-run-local.sh
