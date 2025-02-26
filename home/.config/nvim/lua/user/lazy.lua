@@ -37,6 +37,12 @@ require('lazy').setup({
       -- add any opts here
       provider = "claude",                  -- Recommend using Claude
       auto_suggestions_provider = "claude", -- Since auto-suggestions are a high-frequency operation and therefore expensive, it is recommended to specify an inexpensive provider or even a free provider: copilot
+      claude = {
+        model = "claude-3-7-sonnet-20250219",
+      },
+      windows = {
+        width = 50
+      },
     },
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
     build = "make",
