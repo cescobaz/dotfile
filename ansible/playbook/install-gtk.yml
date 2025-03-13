@@ -1,0 +1,25 @@
+#!/bin/ansible-playbook
+
+- hosts:
+    - current
+  tasks:
+    - name: Install nwg-look for easy config from UI
+      become: '{{ become_for_package }}'
+      ansible.builtin.package:
+        name:
+          - nwg-look
+          - 'qogir-gtk-theme' # archlinux AUR
+          - 'qogir-cursor-theme' # archlinux AUR
+        state: latest
+    - name: Create gtk-3.0 config dir
+      ansible.builtin.file:
+        dest: "{{ user_home }}/.config/gtk-3.0"
+        state: directory
+    - name: Install gtk-3.0 config
+      ansible.builtin.file:
+        src: "{{ config_home }}/home/.config/gtk-3.0/{{ item }}"
+        dest: "{{ user_home }}/.config/gtk-3.0/{{ item }}"
+        state: link
+      loop:
+        - "settings.ini"
+        - "gtk.css"

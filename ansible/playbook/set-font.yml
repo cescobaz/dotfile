@@ -1,0 +1,14 @@
+#!/bin/ansible-playbook
+
+# watch fonts at https://www.programmingfonts.org/#source-code-pro
+
+# .config/kitty/kitty.conf `font_family        Lekton Nerd Font Mono`
+# .config/sway/config `set $font LektonNerdFontMono 12`
+# .config/waybar/style.css `font-family: LektonNerdFontMono, SourceCodePro, Arial, sans-serif;`
+# .config/gtk-3.0/settings.ini `gtk-font-name=Lekton Nerd Font Mono 11` # this change also Firefox!
+
+- hosts:
+    - current
+  vars:
+    font: "Lekton Nerd Font Mono"
+    font: "LektonNerdFontMono"
