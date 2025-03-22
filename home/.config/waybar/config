@@ -71,6 +71,7 @@
     },
     "cpu": {
         "format": "{usage}% ",
+        "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
         "tooltip": true
     },
     "memory": {

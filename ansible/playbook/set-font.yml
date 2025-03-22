@@ -7,6 +7,9 @@
 # .config/waybar/style.css `font-family: LektonNerdFontMono, SourceCodePro, Arial, sans-serif;`
 # .config/gtk-3.0/settings.ini `gtk-font-name=Lekton Nerd Font Mono 11` # this change also Firefox!
 
+# ttf-font-awesome for icons
+# otf-font-awesome
+
 - hosts:
     - current
   vars:

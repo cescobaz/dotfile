@@ -1,0 +1,31 @@
+#!/bin/ansible-playbook
+
+- hosts:
+    - current
+  tasks:
+    - name: Create neovim config dir
+      ansible.builtin.file:
+        dest: "{{ user_home }}/.local/bin"
+        state: directory
+
+    - name: Detect OS family
+      ansible.builtin.set_fact:
+        os_subfolder: >-
+          {% if ansible_facts['os_family'] | lower == 'darwin' %}mac{% else %}linux{% endif %}
+
+    - name: Install common scripts (if any exist in the root scripts directory)
+      ansible.builtin.file:
+        src: "{{ item }}"
+        dest: "{{ user_home }}/.local/bin/{{ item | basename }}"
+        state: link
+      with_fileglob:
+        - '{{ config_home }}/home/scripts/*'
+      when: item is not search('/linux/|/mac/')
+
+    - name: Install OS-specific scripts
+      ansible.builtin.file:
+        src: "{{ item }}"
+        dest: "{{ user_home }}/.local/bin/{{ item | basename }}"
+        state: link
+      with_fileglob:
+        - '{{ config_home }}/home/scripts/{{ os_subfolder }}/*'
