@@ -16,7 +16,7 @@
     - name: Install common scripts (if any exist in the root scripts directory)
       ansible.builtin.file:
         src: "{{ item }}"
-        dest: "{{ user_home }}/.local/bin/{{ item | basename }}"
+        dest: "{{ user_home }}/.local/bin/buro-{{ item | basename }}"
         state: link
       with_fileglob:
         - '{{ config_home }}/home/scripts/*'
@@ -25,7 +25,7 @@
     - name: Install OS-specific scripts
       ansible.builtin.file:
         src: "{{ item }}"
-        dest: "{{ user_home }}/.local/bin/{{ item | basename }}"
+        dest: "{{ user_home }}/.local/bin/buro-{{ item | basename }}"
         state: link
       with_fileglob:
         - '{{ config_home }}/home/scripts/{{ os_subfolder }}/*'
