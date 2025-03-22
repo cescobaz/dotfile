@@ -103,13 +103,13 @@ input type:keyboard {
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 
-    bindsym F5 exec ~/scripts/wayland-screenshot.sh
-    bindsym F9 exec ~/scripts/sway/sway-lock.sh
-    bindsym --release --no-repeat F10 exec ~/scripts/sway/sway-lock-and-suspend.sh
+    bindsym F5 exec ~/scripts/linux/wayland-screenshot.sh
+    bindsym F9 exec ~/scripts/linux/sway/sway-lock.sh
+    bindsym --release --no-repeat F10 exec ~/scripts/linux/sway/sway-lock-and-suspend.sh
 
-    bindsym XF86AudioRaiseVolume exec "~/scripts/volume.sh set +5%"
-    bindsym XF86AudioLowerVolume exec "~/scripts/volume.sh set -5%"
-    bindsym XF86AudioMute exec "~/scripts/volume.sh toggle-mute"
+    bindsym XF86AudioRaiseVolume exec "~/scripts/linux/volume.sh set +5%"
+    bindsym XF86AudioLowerVolume exec "~/scripts/linux/volume.sh set -5%"
+    bindsym XF86AudioMute exec "~/scripts/linux/volume.sh toggle-mute"
 #
 # Moving around:
 #
@@ -294,9 +294,9 @@ font $font
 # Example configuration:
 #
 exec swayidle -w \
-         timeout 120 '~/scripts/sway/sway-lock.sh' \
+         timeout 120 '~/scripts/linux/sway/sway-lock.sh' \
          timeout 130 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-         before-sleep '~/scripts/sway/sway-lock.sh'
+         before-sleep '~/scripts/linux/sway/sway-lock.sh'
 
 # notifications
 exec mako
