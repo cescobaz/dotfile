@@ -2,7 +2,8 @@
 
 set -e
 
+DIR=$(dirname $(realpath $0))
 sleep 1
-$HOME/scripts/sway/sway-lock.sh
+$DIR/sway-lock.sh
 sleep 2
 systemctl suspend
