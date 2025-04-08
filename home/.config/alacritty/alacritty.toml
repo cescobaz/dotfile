@@ -193,7 +193,7 @@ mods = "Control"
 [mouse]
 hide_when_typing = true
 
-[shell]
+[terminal.shell]
 args = ["--login"]
 program = "/bin/zsh"
 
@@ -204,3 +204,5 @@ startup_mode = "Maximized"
 [window.padding]
 x = 0
 y = 0
+
+[terminal]

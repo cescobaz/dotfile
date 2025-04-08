@@ -75,6 +75,8 @@ input "6127:24601:PixArt_Lenovo_USB_Optical_Mouse" {
 input type:keyboard {
     xkb_layout us,it
     xkb_options grp:shifts_toggle
+    repeat_delay 240
+    repeat_rate 40
 }
 
 ### Key bindings

@@ -1,0 +1,16 @@
+#!/bin/ansible-playbook
+
+- hosts:
+    - current
+  tasks:
+    - name: Install pulse audio
+      become: '{{ become_for_package }}'
+      ansible.builtin.package:
+        name:
+          - pulseaudio
+          - pulseaudio-alsa
+          - pulseaudio-equalizer
+          - jack2
+          - pulseaudio-jack
+          - pavucontrol
+        state: latest

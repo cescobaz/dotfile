@@ -89,6 +89,7 @@ button:hover {
 #mode,
 #idle_inhibitor,
 #scratchpad,
+#systemd-failed-units,
 #mpd {
   color: @base05;
   padding: 4px 12px;

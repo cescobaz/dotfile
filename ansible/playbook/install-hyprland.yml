@@ -1,0 +1,24 @@
+#!/bin/ansible-playbook
+
+- hosts:
+    - current
+  tasks:
+    - name: Install Hyprland and dependencies
+      become: '{{ become_for_package }}'
+      ansible.builtin.package:
+        name:
+          - hyprland
+          #- xdg-desktop-portal-hyprland
+          #- polkit-kde-agent
+        state: latest
+    - name: Create Hyprland config dir
+      ansible.builtin.file:
+        dest: "{{ user_home }}/.config/hypr"
+        state: directory
+    - name: Install Hyprland config
+      ansible.builtin.file:
+        src: "{{ config_home }}/home/.config/hypr/{{ item }}"
+        dest: "{{ user_home }}/.config/hypr/{{ item }}"
+        state: link
+      loop:
+        - "hyprland.conf"
