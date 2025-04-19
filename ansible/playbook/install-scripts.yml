@@ -3,7 +3,7 @@
 - hosts:
     - current
   tasks:
-    - name: Create neovim config dir
+    - name: Create user bin dir
       ansible.builtin.file:
         dest: "{{ user_home }}/.local/bin"
         state: directory
