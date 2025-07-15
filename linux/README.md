@@ -1,3 +1,14 @@
+## DNS
+
+Change DNS via (not really working)
+
+```
+buro-dns-set-cloudfair.sh
+```
+
+Brute force way: change the file `/etc/systemd/resolved.conf.d/dns_servers.conf`
+And restart resolver `resolvectl restart`
+
 ## Driver
 
 Use `modprobe` to enable or disable a driver, e.g.:
