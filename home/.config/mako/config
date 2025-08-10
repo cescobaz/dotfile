@@ -10,3 +10,5 @@ background-color=#231e18
 on-button-left=dismiss
 on-button-middle=invoke-default-action
 on-button-right=dismiss-all
+[mode=do-not-disturb]
+invisible=1

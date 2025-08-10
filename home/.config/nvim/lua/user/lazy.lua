@@ -53,7 +53,7 @@ local claude_code = {
   "coder/claudecode.nvim",
   config = true,
   keys = {
-    { "<leader>a",  nil,                              desc = "AI/Claude Code" },
+    { "<leader>aa", nil,                              desc = "AI/Claude Code" },
     { "<leader>ac", "<cmd>ClaudeCode<cr>",            desc = "Toggle Claude" },
     { "<leader>af", "<cmd>ClaudeCodeFocus<cr>",       desc = "Focus Claude" },
     { "<leader>ar", "<cmd>ClaudeCode --resume<cr>",   desc = "Resume Claude" },
@@ -89,7 +89,10 @@ require('lazy').setup({
   'hrsh7th/cmp-buffer',
   'hrsh7th/cmp-path',
   'hrsh7th/nvim-cmp',
-  { 'neovim/nvim-lspconfig',     version = "v0.1.8" },
+  {
+    'neovim/nvim-lspconfig',
+    --  version = "v0.1.8"
+  },
   { 'nvim-lualine/lualine.nvim', dependencies = { 'nvim-tree/nvim-web-devicons' } },
   {
     'smoka7/hop.nvim',

@@ -32,7 +32,7 @@ M.setup = function(capabilities)
   })
   lspconfig.elixirls.setup({
     capabilities = capabilities,
-    cmd = { "/opt/homebrew/bin/elixir-ls" },
+    cmd = { "elixir-ls" },
     elixirLS = {
       dialyzerEnabled = false
     }
@@ -49,8 +49,8 @@ M.setup = function(capabilities)
   --     },
   --   },
   -- })
-  -- lspconfig.ts_ls.setup({
-  lspconfig.tsserver.setup({
+  lspconfig.ts_ls.setup({
+  --lspconfig.tsserver.setup({
     capabilities = capabilities,
   })
   lspconfig.eslint.setup({
