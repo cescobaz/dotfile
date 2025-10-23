@@ -9,6 +9,19 @@ buro-dns-set-cloudfair.sh
 Brute force way: change the file `/etc/systemd/resolved.conf.d/dns_servers.conf`
 And restart resolver `resolvectl restart`
 
+## GTK theme
+
+UI config tool `nwg-look`.
+Check arch wiki: config files in ~/.config/gtk-*
+Sometimes the themes change name so they broke.
+
+You can forse a theme by
+```
+GTK_THEME=Qogir-Round-Dark
+```
+
+Also check that GTK_THEME is set in the sway config with launcher.
+
 ## Driver
 
 Use `modprobe` to enable or disable a driver, e.g.:

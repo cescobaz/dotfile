@@ -1,8 +1,7 @@
 local M = {}
 
 M.setup = function(capabilities)
-  local lspconfig = require("lspconfig")
-  lspconfig.lua_ls.setup({
+  vim.lsp.config('lua_ls', {
     capabilities = capabilities,
     settings = {
       Lua = {
@@ -17,63 +16,78 @@ M.setup = function(capabilities)
       },
     },
   })
-  lspconfig.bashls.setup({
+  vim.lsp.enable('lua_ls')
+  vim.lsp.config('bashls', {
     capabilities = capabilities,
   })
-  lspconfig.ansiblels.setup({
+  vim.lsp.enable('bashls')
+  vim.lsp.config('ansiblels', {
     capabilities = capabilities,
   })
-  lspconfig.clangd.setup {
+  vim.lsp.enable('ansiblels')
+  vim.lsp.config('clangd', {
     capabilities = capabilities,
-  }
-  lspconfig.hls.setup({
+  })
+  vim.lsp.enable('clangd')
+  vim.lsp.config('hls', {
     capabilities = capabilities,
     filetypes = { 'haskell', 'lhaskell', 'cabal' },
   })
-  lspconfig.elixirls.setup({
+  vim.lsp.enable('hls')
+  vim.lsp.config('elixirls', {
     capabilities = capabilities,
     cmd = { "elixir-ls" },
     elixirLS = {
       dialyzerEnabled = false
     }
   })
-  lspconfig.cssls.setup {
-    capabilities = capabilities,
-  }
-  -- lspconfig.tailwindcss.setup({
-  --   capabilities = capabilities,
-  --   init_options = {
-  --     userLanguages = {
-  --       eelixir = "html-eex",
-  --       elixir = "html-eex",
-  --     },
-  --   },
-  -- })
-  lspconfig.ts_ls.setup({
-  --lspconfig.tsserver.setup({
+  vim.lsp.enable('elixirls')
+  vim.lsp.config('cssls', {
     capabilities = capabilities,
   })
-  lspconfig.eslint.setup({
+  vim.lsp.enable('cssls')
+  vim.lsp.config('tailwindcss', {
+    capabilities = capabilities,
+    init_options = {
+      userLanguages = {
+        eelixir = "html-eex",
+        elixir = "html-eex",
+      },
+    },
+  })
+  -- vim.lsp.enable('tailwindcss')
+  vim.lsp.config('ts_ls', {
     capabilities = capabilities,
   })
-  lspconfig.jsonls.setup({
+  vim.lsp.enable('ts_ls')
+  vim.lsp.config('eslint', {
     capabilities = capabilities,
   })
-  lspconfig.pylsp.setup({
+  vim.lsp.enable('eslint')
+  vim.lsp.config('jsonls', {
     capabilities = capabilities,
   })
-  lspconfig.svelte.setup({
+  vim.lsp.enable('jsonls')
+  vim.lsp.config('pylsp', {
+    capabilities = capabilities,
+  })
+  vim.lsp.enable('pylsp')
+  vim.lsp.config('svelte', {
     capabilities = capabilities,
     cmd = { "npm", "exec", "svelte-language-server", "--", "--stdio" },
   })
-  lspconfig.arduino_language_server.setup({
+  vim.lsp.enable('svelte')
+  vim.lsp.config('arduino_language_server', {
     capabilities = capabilities,
     cmd = { "arduino-language-server", "-cli-config", "/home/buro/.arduino15/arduino-cli.yaml" },
   })
-  lspconfig.terraformls.setup({})
-  lspconfig.zls.setup({
+  vim.lsp.enable('arduino_language_server')
+  vim.lsp.config('terraformls', {})
+  vim.lsp.enable('terraformls')
+  vim.lsp.config('zls', {
     capabilities = capabilities,
   })
+  vim.lsp.enable('zls')
 
   -- Use LspAttach autocommand to only map the following keys
   -- after the language server attaches to the current buffer

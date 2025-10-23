@@ -1,22 +1,22 @@
 @import "colors/base16-woodland.css";
 
 * {
-    /* `otf-font-awesome` is required to be installed for icons */
-    /* font-family: FontAwesome, LektonNerdFontMono, SourceCodePro, Roboto, Helvetica, Arial, sans-serif; */
-    font-family: LektonNerdFontPropo, LektonNerdFontMono;
-    font-size: 16px;
-    transition: none;
-    padding: 0;
-    margin: 0;
-    color: @base05;
+  /* `otf-font-awesome` is required to be installed for icons */
+  /* font-family: FontAwesome, LektonNerdFontMono, SourceCodePro, Roboto, Helvetica, Arial, sans-serif; */
+  font-family: LektonNerdFontPropo, LektonNerdFontMono;
+  font-size: 16px;
+  transition: none;
+  padding: 0;
+  margin: 0;
+  color: @base05;
 }
 
 window#waybar {
-    background-color: @base01;
+  background-color: @base01;
 }
 
 window#waybar.hidden {
-    opacity: 0.2;
+  opacity: 0.2;
 }
 
 /*
@@ -29,50 +29,54 @@ window#waybar.solo {
 */
 
 window#waybar.termite {
-    background-color: #3F3F3F;
+  background-color: #3F3F3F;
 }
 
 window#waybar.chromium {
-    background-color: red;
-    border: none;
+  background-color: red;
+  border: none;
 }
 
 button {
-    /* Use box-shadow instead of border so the text isn't offset */
-    /* box-shadow: inset 0 -3px transparent; */
-    /* Avoid rounded borders under each button name */
-    border: none;
-    border-radius: 0;
-    padding: 4px 12px;
-    margin: 0;
+  /* Use box-shadow instead of border so the text isn't offset */
+  /* box-shadow: inset 0 -3px transparent; */
+  /* Avoid rounded borders under each button name */
+  border: none;
+  border-radius: 0;
+  padding: 4px 12px;
+  margin: 0;
 }
 
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 button:hover {
-    background: none;
-    font-weight: normal;
-    text-shadow: none;
+  box-shadow: none;
+  border: none;
+  background: none;
+  font-weight: bold;
+  text-shadow: none;
 }
 
 #workspaces button {
-    background-color: transparent;
-    color: @base00;
+  background-color: transparent;
+  color: @base00;
 }
 
 #workspaces label {
-    font-size: 16px;
-    font-weight: normal;
+  font-size: 16px;
+  font-weight: normal;
 }
 
-#workspaces .focused, #workspaces .focused:hover, #workspaces .focused label {
-    background-color: @base0A;
-    color: @base00;
-    font-weight: normal;
+#workspaces .focused,
+#workspaces .focused:hover,
+#workspaces .focused label {
+  background-color: @base0A;
+  color: @base00;
+  font-weight: normal;
 }
 
 #mode {
-    background-color: #64727D;
-    border-bottom: 3px solid #ffffff;
+  background-color: #64727D;
+  border-bottom: 3px solid #ffffff;
 }
 
 #clock,
@@ -96,138 +100,123 @@ button:hover {
 }
 
 #window,
-#workspaces {
-}
+#workspaces {}
 
 /* If workspaces is the leftmost module, omit left margin */
-.modules-left > widget:first-child > #workspaces {
-}
+.modules-left>widget:first-child>#workspaces {}
 
 /* If workspaces is the rightmost module, omit right margin */
-.modules-right > widget:last-child > #workspaces {
-}
+.modules-right>widget:last-child>#workspaces {}
 
-#clock {
-}
+#clock {}
 
 @keyframes blink {
-    to {
-        background-color: @base05;
-        color: @base00;
-    }
+  to {
+    background-color: @base05;
+    color: @base00;
+  }
 }
 
 label:focus {
-    background-color: @base00;
+  background-color: @base00;
 }
 
-#cpu {
-}
+#cpu {}
 
-#memory {
-}
+#memory {}
 
-#disk {
-}
+#disk {}
 
 #disk.critical,
 #network.disconnected,
 #workspaces button.urgent,
 #temperature.critical {
-    background-color: @base08;
-    color: @base01;
+  background-color: @base08;
+  color: @base01;
 }
 
-#backlight {
-}
+#backlight {}
 
 #network {
-    color: @base0A;
+  color: @base0A;
 }
 
-#pulseaudio {
-}
+#pulseaudio {}
 
 #pulseaudio.muted {
-    background-color: @base03;
-    color: @base01;
+  background-color: @base03;
+  color: @base01;
 }
 
-#custom-media {
-}
+#custom-media {}
 
 #custom-media.custom-spotify {
-    color: @base0B;
+  color: @base0B;
 }
 
 #custom-media.custom-vlc {
-    color: @base08;
+  color: @base08;
 }
 
-#temperature {
+#temperature {}
+
+#tray {}
+
+#tray>.passive {
+  -gtk-icon-effect: dim;
 }
 
-#tray {
+#tray>.needs-attention {
+  -gtk-icon-effect: highlight;
+  background-color: @base08;
 }
 
-#tray > .passive {
-    -gtk-icon-effect: dim;
-}
-
-#tray > .needs-attention {
-    -gtk-icon-effect: highlight;
-    background-color: @base08;
-}
-
-#idle_inhibitor {
-}
+#idle_inhibitor {}
 
 #idle_inhibitor.activated {
-    background-color: @base0A;
-    color: @base00;
+  background-color: @base0A;
+  color: @base00;
 }
 
 #mpd {
-    background-color: #66cc99;
-    color: #2a5c45;
+  background-color: #66cc99;
+  color: #2a5c45;
 }
 
 #mpd.disconnected {
-    background-color: #f53c3c;
+  background-color: #f53c3c;
 }
 
 #mpd.stopped {
-    background-color: #90b1b1;
+  background-color: #90b1b1;
 }
 
 #mpd.paused {
-    background-color: #51a37a;
+  background-color: #51a37a;
 }
 
 #language {
-    background: @base02;
-    color: @base0A;
-    padding: 0px 8px;
-    min-width: 24px;
+  background: @base02;
+  color: @base0A;
+  padding: 0px 8px;
+  min-width: 24px;
 }
 
 #keyboard-state {
-    background: #97e1ad;
-    color: @base00;
+  background: #97e1ad;
+  color: @base00;
 }
 
-#keyboard-state > label {
-}
+#keyboard-state>label {}
 
-#keyboard-state > label.locked {
-    background: rgba(0, 0, 0, 0.2);
+#keyboard-state>label.locked {
+  background: rgba(0, 0, 0, 0.2);
 }
 
 #scratchpad {
-    background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.2);
 }
 
 #scratchpad.empty {
-	background-color: transparent;
+  background-color: transparent;
 }
-
