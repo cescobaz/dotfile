@@ -1,56 +1,9 @@
-local avante = {
-  "yetone/avante.nvim",
-  --dir = "/Users/buro/projects/external/avante.nvim",
-  event = "VeryLazy",
-  lazy = false,
-  version = false, -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
-  opts = {
-    providers = {
-      claude = {
-        model = "claude-sonnet-4-20250514",
-      },
-    },
-    provider = "claude",                  -- Recommend using Claude
-    auto_suggestions_provider = "claude", -- Since auto-suggestions are a high-frequency operation and therefore expensive, it is recommended to specify an inexpensive provider or even a free provider: copilot
-    windows = {
-      width = 50
-    },
-  },
-  -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
-  build = "make",
-  -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
-  dependencies = {
-    "stevearc/dressing.nvim",
-    "nvim-lua/plenary.nvim",
-    "MunifTanjim/nui.nvim",
-    --- The below dependencies are optional,
-    "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
-    "zbirenbaum/copilot.lua",      -- for providers='copilot'
-    {
-      -- support for image pasting
-      "HakonHarnes/img-clip.nvim",
-      event = "VeryLazy",
-      opts = {
-        -- recommended settings
-        default = {
-          embed_image_as_base64 = false,
-          prompt_for_file_name = false,
-          drag_and_drop = {
-            insert_mode = true,
-          },
-          -- required for Windows users
-          use_absolute_path = true,
-        },
-      },
-    },
-  },
-}
-
 -- claude code
 -- https://docs.anthropic.com/en/docs/claude-code/overview
 -- npm install -g @anthropic-ai/claude-code
 local claude_code = {
   "coder/claudecode.nvim",
+  dependencies = { "folke/snacks.nvim" },
   config = true,
   keys = {
     { "<leader>aa", nil,                              desc = "AI/Claude Code" },
@@ -69,6 +22,9 @@ local claude_code = {
     { "<leader>aa", "<cmd>ClaudeCodeDiffAccept<cr>", desc = "Accept diff" },
     { "<leader>ad", "<cmd>ClaudeCodeDiffDeny<cr>",   desc = "Deny diff" },
   },
+  opts = {
+    focus_after_send = true,
+  }
 }
 
 require('lazy').setup({
@@ -104,6 +60,5 @@ require('lazy').setup({
   --   event = 'BufEnter'
   -- },
   -- { 'codota/tabnine-nvim', build = "./dl_binaries.sh" },
-  -- avante
   claude_code
 })
