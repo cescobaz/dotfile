@@ -37,9 +37,6 @@ M.setup = function(capabilities)
   vim.lsp.config('elixirls', {
     capabilities = capabilities,
     cmd = { "elixir-ls" },
-    elixirLS = {
-      dialyzerEnabled = false
-    }
   })
   vim.lsp.enable('elixirls')
   vim.lsp.config('cssls', {
@@ -116,8 +113,7 @@ M.setup = function(capabilities)
       vim.keymap.set('n', 'gr', '<cmd>Telescope lsp_references theme=dropdown<cr>')
       --vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
       vim.keymap.set('n', '<Leader>l', function()
-        if vim.fn.exists(':EslintFixAll') > 0
-        then
+        if vim.fn.exists(':EslintFixAll') > 0 then
           vim.cmd('EslintFixAll')
           print('EslintFixAll')
         else
