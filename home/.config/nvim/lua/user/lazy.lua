@@ -45,12 +45,17 @@ require('lazy').setup({
     build =
     'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
   },
-  { 'nvim-telescope/telescope.nvim',   dependencies = { 'nvim-lua/plenary.nvim' } },
+  { 'nvim-telescope/telescope.nvim', dependencies = { 'nvim-lua/plenary.nvim' } },
   'tpope/vim-fugitive',
-  { 'nvim-treesitter/nvim-treesitter', cmd = 'TSUpdate' },
+  {
+    'nvim-treesitter/nvim-treesitter',
+    branch = 'main',
+    lazy = false,
+    build = ':TSUpdate'
+  },
   'cescobaz/vim-snippets',
   --{ dir = '/home/buro/projects/vim-snippets' },
-  { 'L3MON4D3/LuaSnip',          build = 'make install_jsregexp' },
+  { 'L3MON4D3/LuaSnip',              build = 'make install_jsregexp' },
   'saadparwaiz1/cmp_luasnip',
   'hrsh7th/cmp-nvim-lsp',
   'hrsh7th/cmp-buffer',

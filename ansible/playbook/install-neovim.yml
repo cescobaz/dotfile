@@ -12,6 +12,7 @@
           - neovim
           - cmake
           - ripgrep
+          - tree-sitter-cli
         state: latest
     - name: Install language servers
       become: '{{ become_for_package }}'
