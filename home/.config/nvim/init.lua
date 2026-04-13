@@ -4,6 +4,7 @@ vim.cmd('map <Space> <Leader>')
 -- views can only be fully collapsed with the global statusline
 -- vim.opt.laststatus = 3
 
+vim.g.noswapfile = true
 vim.g.mapleader = ' '
 vim.o.number = true
 vim.o.relativenumber = false
