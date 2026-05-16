@@ -21,3 +21,5 @@
       loop:
         - "config"
         - "style.css"
+        - "config-hyprland"
+        - "style-hyprland.css"
