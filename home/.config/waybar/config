@@ -1,4 +1,5 @@
 {
+  "reload_style_on_change": true,
   // "layer": "top", // Waybar at top layer
   "position": "top", // Waybar position (top|bottom|left|right)
   // "height": 30, // Waybar height (to be removed for auto height)
@@ -28,21 +29,6 @@
     "systemd-failed-units"
   ],
   // Modules configuration
-  // "sway/workspaces": {
-  //     "disable-scroll": true,
-  //     "all-outputs": true,
-  //     "format": "{name}: {icon}",
-  //     "format-icons": {
-  //         "1": "",
-  //         "2": "",
-  //         "3": "",
-  //         "4": "",
-  //         "5": "",
-  //         "urgent": "",
-  //         "focused": "",
-  //         "default": ""
-  //     }
-  // },
   "keyboard-state": {
     "numlock": true,
     "capslock": true,

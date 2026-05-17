@@ -21,4 +21,4 @@
         dest: "{{ user_home }}/.config/hypr/{{ item }}"
         state: link
       loop:
-        - "hyprland.conf"
+        - "hyprland.lua"

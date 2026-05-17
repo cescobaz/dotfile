@@ -67,6 +67,9 @@ output HDMI-A-1 scale 2
 
 # for gaming
 # output HDMI-A-1 scale 1 mode 1920x1080@120.000Hz
+# thread https://github.com/swaywm/sway/issues/7714#issuecomment-1694356639
+# https://gitlab.freedesktop.org/drm/amd/-/work_items/3166#note_2277578
+# output HDMI-A-1 scale 1 mode 1920x1080@120.000Hz max_render_time 1 adaptive_sync off
 
 input "6127:24601:PixArt_Lenovo_USB_Optical_Mouse" {
        natural_scroll enabled
