@@ -79,6 +79,9 @@ hl.on("hyprland.start", function()
 
   -- notifications
   hl.exec_cmd("mako")
+
+  -- hyprlock is started by hypridle when needed
+  hl.exec_cmd("hypridle")
 end)
 
 
@@ -263,6 +266,7 @@ hl.config({
     disable_splash_rendering = true,
     force_default_wallpaper = 0,
     background_color = base00,
+    allow_session_lock_restore = true,
     vrr = 3
   }
 })

@@ -8,7 +8,9 @@
       ansible.builtin.package:
         name:
           - hyprland
-          #- xdg-desktop-portal-hyprland
+          - hypridle
+          - hyprlock
+          - xdg-desktop-portal-hyprland
           #- polkit-kde-agent
         state: latest
     - name: Create Hyprland config dir
@@ -22,3 +24,5 @@
         state: link
       loop:
         - "hyprland.lua"
+        - "hypridle.conf"
+        - "hyprlock.conf"
