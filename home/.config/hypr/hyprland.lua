@@ -2,6 +2,29 @@
 -- Converted from hyprland.conf
 -- Refer to https://wiki.hypr.land/Configuring/Start/
 
+local font = "LektonNerdFontMono"
+local font_size = 12
+
+--  Base16 Woodland
+--  Author: Jay Cornwall (https://jcornwall.com)
+
+local base00 = "#231e18"
+-- local base01 = "#302b25"
+-- local base02 = "#48413a"
+-- local base03 = "#9d8b70"
+-- local base04 = "#b4a490"
+-- local base05 = "#cabcb1"
+-- local base06 = "#d7c8bc"
+-- local base07 = "#e4d4c8"
+-- local base08 = "#d35c5c"
+-- local base09 = "#ca7f32"
+local base0A = "#e0ac16"
+-- local base0B = "#b7ba53"
+-- local base0C = "#6eb958"
+-- local base0D = "#88a4d3"
+-- local base0E = "#bb90e2"
+-- local base0F = "#b49368"
+
 
 -------------------------------
 ---- ENVIRONMENT VARIABLES ----
@@ -79,11 +102,11 @@ hl.config({
 
 hl.config({
   general = {
-    resize_on_border = true,
+    resize_on_border = false,
 
-    gaps_in          = 6,
-    gaps_out         = 12,
-    border_size      = 8,
+    gaps_in          = 0,
+    gaps_out         = 0,
+    border_size      = 0,
 
     col              = {
       active_border   = { colors = { "rgba(33ccffee)", "rgba(00ff99ee)" }, angle = 45 },
@@ -94,16 +117,16 @@ hl.config({
   },
 
   decoration = {
-    rounding = 4,
+    rounding = 0,
 
     blur = {
-      enabled = true,
+      enabled = false,
       size    = 3,
       passes  = 1,
     },
 
     shadow = {
-      enabled      = true,
+      enabled      = false,
       range        = 4,
       render_power = 3,
       color        = 0xee1a1a1a,
@@ -111,18 +134,18 @@ hl.config({
   },
 
   animations = {
-    enabled = true,
+    enabled = false,
   },
 })
 
-hl.curve("myBezier", { type = "bezier", points = { { 0.05, 0.9 }, { 0.1, 1.05 } } })
-
-hl.animation({ leaf = "windows", enabled = true, speed = 2.5, bezier = "myBezier" })
-hl.animation({ leaf = "windowsOut", enabled = true, speed = 7, bezier = "default", style = "popin 80%" })
-hl.animation({ leaf = "border", enabled = true, speed = 10, bezier = "default" })
-hl.animation({ leaf = "borderangle", enabled = true, speed = 8, bezier = "default" })
-hl.animation({ leaf = "fade", enabled = true, speed = 7, bezier = "default" })
-hl.animation({ leaf = "workspaces", enabled = false, speed = 3, bezier = "default" })
+-- hl.curve("myBezier", { type = "bezier", points = { { 0.05, 0.9 }, { 0.1, 1.05 } } })
+--
+-- hl.animation({ leaf = "windows", enabled = true, speed = 2.5, bezier = "myBezier" })
+-- hl.animation({ leaf = "windowsOut", enabled = true, speed = 7, bezier = "default", style = "popin 80%" })
+-- hl.animation({ leaf = "border", enabled = true, speed = 10, bezier = "default" })
+-- hl.animation({ leaf = "borderangle", enabled = true, speed = 8, bezier = "default" })
+-- hl.animation({ leaf = "fade", enabled = true, speed = 7, bezier = "default" })
+-- hl.animation({ leaf = "workspaces", enabled = false, speed = 3, bezier = "default" })
 
 
 ----------------
@@ -161,7 +184,18 @@ local mainMod = "SUPER"
 
 hl.bind(mainMod .. " + return", hl.dsp.exec_cmd("kitty"))
 hl.bind(mainMod .. " + SHIFT + E", hl.dsp.exit())
-hl.bind(mainMod .. " + space", hl.dsp.exec_cmd("wofi --show drun"))
+-- hl.bind(mainMod .. " + space", hl.dsp.exec_cmd("wofi --show drun"))
+hl.bind(mainMod .. " + space", hl.dsp.exec_cmd([[
+  GTK_THEME=Qogir-Round-Dark QT_QPA_PLATFORM=wayland MOZ_ENABLE_WAYLAND=1 bemenu-run \
+  --ignorecase --list 10 --counter always \
+  --fn ']] .. font .. " " .. tostring(font_size) .. [[' \
+  --center --fixed-height \
+  --border 2 --margin 22 --line-height 34 --ch 18 --cw 9 --width-factor 0.6 \
+  --bdr ']] .. base0A .. [[' \
+  --tf ']] .. base0A .. [[' \
+  --hb ']] .. base0A .. [[' \
+  --hf ']] .. base00 .. [['
+]]))
 
 -- Volume / mute
 hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"),
