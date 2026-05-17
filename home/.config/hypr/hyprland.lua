@@ -209,8 +209,8 @@ hl.config({
 
 local mainMod = "SUPER"
 
-hl.bind(mainMod .. " + return", hl.dsp.exec_cmd("kitty"))
 hl.bind(mainMod .. " + SHIFT + E", hl.dsp.exit())
+hl.bind(mainMod .. " + return", hl.dsp.exec_cmd("kitty"))
 -- hl.bind(mainMod .. " + space", hl.dsp.exec_cmd("wofi --show drun"))
 hl.bind(mainMod .. " + space", hl.dsp.exec_cmd([[
   GTK_THEME=Qogir-Round-Dark QT_QPA_PLATFORM=wayland MOZ_ENABLE_WAYLAND=1 bemenu-run \
@@ -230,6 +230,10 @@ hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO
 hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"),
   { locked = true, repeating = true })
 hl.bind("XF86AudioMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"), { locked = true })
+
+hl.bind(mainMod .. " + F5", hl.dsp.exec_cmd("~/scripts/linux/wayland-screenshot.sh"))
+hl.bind(mainMod .. " + F9", hl.dsp.exec_cmd("loginctl lock-session"))
+hl.bind(mainMod .. " + F10", hl.dsp.exec_cmd("sleep 1 && systemctl suspend"))
 
 -- Move focus with mainMod + h/j/k/l
 hl.bind(mainMod .. " + h", hl.dsp.focus({ direction = "left" }))
