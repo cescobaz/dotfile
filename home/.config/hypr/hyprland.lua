@@ -9,7 +9,7 @@ local font_size = 12
 --  Author: Jay Cornwall (https://jcornwall.com)
 
 local base00 = "#231e18"
--- local base01 = "#302b25"
+local base01 = "#302b25"
 -- local base02 = "#48413a"
 -- local base03 = "#9d8b70"
 -- local base04 = "#b4a490"
@@ -119,8 +119,8 @@ hl.config({
     border_size      = 0,
 
     col              = {
-      active_border   = { colors = { "rgba(33ccffee)", "rgba(00ff99ee)" }, angle = 45 },
-      inactive_border = "rgba(595959aa)",
+      active_border   = base0A,
+      inactive_border = base01,
     },
 
     layout           = "dwindle",
@@ -148,6 +148,20 @@ hl.config({
   },
 })
 
+-- on workspace with multiple windows show borders and gaps
+hl.workspace_rule({
+  workspace = "w[2-100]",
+  gaps_out = 12,
+  gaps_in = 6,
+  border_size = 6
+})
+hl.workspace_rule({
+  workspace = "w[f1-100]",
+  gaps_out = 12,
+  gaps_in = 6,
+  border_size = 6,
+})
+
 -- hl.curve("myBezier", { type = "bezier", points = { { 0.05, 0.9 }, { 0.1, 1.05 } } })
 --
 -- hl.animation({ leaf = "windows", enabled = true, speed = 2.5, bezier = "myBezier" })
@@ -164,7 +178,10 @@ hl.config({
 
 hl.config({
   dwindle = {
+    -- 0 -> split follows mouse, 1 -> always split to the left (new = left or top) 2 -> always split to the right (new = right or bottom)
+    force_split = 2,
     preserve_split = true, -- you probably want this
+    permanent_direction_override = true,
   },
 })
 
