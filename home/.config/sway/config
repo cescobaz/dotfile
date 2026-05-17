@@ -73,7 +73,7 @@ output HDMI-A-1 scale 2
 # output HDMI-A-1 scale 1 mode 1920x1080@120.000Hz max_render_time off allow_tearing yes adaptive_sync off
 
 input "6127:24601:PixArt_Lenovo_USB_Optical_Mouse" {
-       natural_scroll enabled
+    natural_scroll enabled
 }
 
 input type:keyboard {
@@ -250,10 +250,9 @@ bindsym $mod+r mode "resize"
 bar swaybar_command waybar
 
 gaps inner 24
-# default_border none
-default_border none 4
+# ths (pixel) hide the title bar, else 'normal' will show it
 default_border pixel 4
-default_border normal 4
+default_floating_border normal 4
 smart_borders on
 smart_gaps on
 titlebar_border_thickness 0
@@ -283,7 +282,7 @@ client.background       $base00
 # output * bg $base03 solid_color
 # output * bg /home/buro/wallpaper/world-from-bottom.jpeg fill $base03
 # output * bg /home/buro/wallpaper/milk-way.jpeg fill $base03
-output * bg $base0F solid_color
+output * bg $base00 solid_color
 
 set $my_cursor Qogir-dark
 set $my_cursor_size 24
