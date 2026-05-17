@@ -30,6 +30,18 @@ local base0A = "#e0ac16"
 ---- ENVIRONMENT VARIABLES ----
 -------------------------------
 
+hl.env("XDG_CURRENT_DESKTOP", "Hyprland")
+hl.env("XDG_SESSION_TYPE", "wayland")
+hl.env("XDG_SESSION_DESKTOP", "Hyprland")
+
+hl.env("GDK_BACKEND", "wayland,x11,*")
+hl.env("CLUTTER_BACKEND", "wayland")
+hl.env("QT_QPA_PLATFORM", "wayland,;xcb")
+hl.env("SDL_VIDEODRIVER", "wayland")
+hl.env("MOZ_ENABLE_WAYLAND", "1")
+
+hl.env("GTK_THEME", "Qogir-Round-Dark")
+hl.env("XCURSOR_SIZE", "Qogir-dark")
 hl.env("XCURSOR_SIZE", "24")
 
 
@@ -57,7 +69,7 @@ hl.monitor({
 -------------------
 
 hl.on("hyprland.start", function()
-  hl.exec_cmd("swaybg -o '*' -i ~/wallpaper/sfondi/Flat/arcify-2560x1600.png -m fill -c '#350066'")
+  -- hl.exec_cmd("swaybg -o '*' -i ~/wallpaper/sfondi/Flat/arcify-2560x1600.png -m fill -c '#350066'")
   hl.exec_cmd("waybar --config ~/.config/waybar/config-hyprland --style ~/.config/waybar/style-hyprland.css")
 
   -- hl.exec_cmd([[swayidle -w \\
@@ -250,6 +262,7 @@ hl.config({
     disable_hyprland_logo = true,
     disable_splash_rendering = true,
     force_default_wallpaper = 0,
+    background_color = base00,
     vrr = 3
   }
 })
