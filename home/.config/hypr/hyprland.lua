@@ -72,11 +72,6 @@ hl.on("hyprland.start", function()
   -- hl.exec_cmd("swaybg -o '*' -i ~/wallpaper/sfondi/Flat/arcify-2560x1600.png -m fill -c '#350066'")
   hl.exec_cmd("waybar --config ~/.config/waybar/config-hyprland --style ~/.config/waybar/style-hyprland.css")
 
-  -- hl.exec_cmd([[swayidle -w \\
-  --        timeout 120 '~/scripts/linux/sway/sway-lock.sh' \\
-  --        timeout 130 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \\
-  --        before-sleep '~/scripts/linux/sway/sway-lock.sh']])
-
   -- notifications
   hl.exec_cmd("mako")
 
@@ -267,6 +262,7 @@ hl.config({
     force_default_wallpaper = 0,
     background_color = base00,
     allow_session_lock_restore = true,
+    key_press_enables_dpms = true,
     vrr = 3
   }
 })
