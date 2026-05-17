@@ -86,11 +86,8 @@ end)
 
 hl.config({
   input = {
-    kb_layout      = "us",
-    kb_variant     = "",
-    kb_model       = "",
-    kb_options     = "",
-    kb_rules       = "",
+    kb_layout      = "us,it",
+    kb_options     = "grp:shifts_toggle",
     repeat_delay   = 240,
     repeat_rate    = 40,
 
