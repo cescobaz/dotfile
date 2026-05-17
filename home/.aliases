@@ -9,5 +9,5 @@ alias downloads='ls -l --reverse --sort=date ~/Downloads | head -n 10'
 alias cabalwatch="$HOME/scripts/macos-watch-and-cabal.sh"
 alias notes="$HOME/scripts/notes.sh"
 alias docker=podman
-alias swayxdg='XDG_CURRENT_DESKTOP=sway sway'
+alias swayxdg='XDG_CURRENT_DESKTOP=sway XDG_SESSION_DESKTOP=sway XDG_SESSION_TYPE=wayland WLR_RENDERER=vulkan GTK_THEME=Qogir-Round-Dark sway'
 alias get_idf='. $HOME/projects/external/esp-idf/export.sh'

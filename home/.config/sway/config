@@ -63,13 +63,14 @@ set $menu GTK_THEME=Qogir-Round-Dark QT_QPA_PLATFORM=wayland MOZ_ENABLE_WAYLAND=
 
 output HDMI-A-1 scale 2
 # for work
-# output HDMI-A-1 scale 2 mode 3840x2160@60.000Hz
+# output HDMI-A-1 scale 2 mode 3840x2160@60.000Hz max_render_time off adaptive_sync off allow_tearing no
 
 # for gaming
 # output HDMI-A-1 scale 1 mode 1920x1080@120.000Hz
 # thread https://github.com/swaywm/sway/issues/7714#issuecomment-1694356639
 # https://gitlab.freedesktop.org/drm/amd/-/work_items/3166#note_2277578
 # output HDMI-A-1 scale 1 mode 1920x1080@120.000Hz max_render_time 1 adaptive_sync off
+# output HDMI-A-1 scale 1 mode 1920x1080@120.000Hz max_render_time off allow_tearing yes adaptive_sync off
 
 input "6127:24601:PixArt_Lenovo_USB_Optical_Mouse" {
        natural_scroll enabled
@@ -108,9 +109,9 @@ input type:keyboard {
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 
-    bindsym F5 exec ~/scripts/linux/wayland-screenshot.sh
-    bindsym F9 exec ~/scripts/linux/sway/sway-lock.sh
-    bindsym --release --no-repeat F10 exec ~/scripts/linux/sway/sway-lock-and-suspend.sh
+    bindsym $mod+F5 exec ~/scripts/linux/wayland-screenshot.sh
+    bindsym $mod+F9 exec ~/scripts/linux/sway/sway-lock.sh
+    bindsym --release --no-repeat $mod+F10 exec ~/scripts/linux/sway/sway-lock-and-suspend.sh
 
     bindsym XF86AudioRaiseVolume exec "~/scripts/linux/volume.sh set +5%"
     bindsym XF86AudioLowerVolume exec "~/scripts/linux/volume.sh set -5%"
