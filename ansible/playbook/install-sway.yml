@@ -1,5 +1,20 @@
 #!/bin/ansible-playbook
 
+# to correctly start sway some env vars have to be set
+# XDG_CURRENT_DESKTOP=sway
+# XDG_SESSION_DESKTOP=sway
+# XDG_SESSION_TYPE=wayland
+#
+# optional?
+# GTK_THEME=Qogir-Round-Dark sway'
+#
+# optional/experimental
+# WLR_RENDERER=vulkan
+#
+# shell alias
+# alias swayxdg='XDG_CURRENT_DESKTOP=sway XDG_SESSION_DESKTOP=sway XDG_SESSION_TYPE=wayland WLR_RENDERER=vulkan GTK_THEME=Qogir-Round-Dark sway'
+
+
 - hosts:
     - current
   tasks:
