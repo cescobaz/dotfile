@@ -1,0 +1,17 @@
+#!/bin/ansible-playbook
+
+- hosts:
+    - current
+  tasks:
+    - name: Install pipewire
+      become: '{{ become_for_package }}'
+      ansible.builtin.package:
+        name:
+          - pipewire
+          # - pipewire-docs
+          - wireplumber
+          - pipewire-pulse
+          - pipewire-audio
+          - pipewire-alsa
+          - pipewire-jack
+        state: latest
