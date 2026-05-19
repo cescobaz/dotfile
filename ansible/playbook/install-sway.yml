@@ -8,6 +8,11 @@
       ansible.builtin.package:
         name:
           - sway
+          - swayidle
+          - swaylock
+          - swaybg
+          - bemenu-run
+          - mako
           - xdg-desktop-portal
           - xdg-desktop-portal-wlr
         state: latest
