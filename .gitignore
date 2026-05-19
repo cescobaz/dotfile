@@ -1,3 +1,4 @@
+*.iso
 home/.zsh_custom/plugins
 *.swp
 Session.vim
@@ -7,3 +8,8 @@ ansible/*logs*
 
 base16/builder
 base16/_build
+
+# qemu VM runtime state (per-VM NVRAM, TPM state, SPICE socket)
+qemu/*/OVMF_VARS*.fd
+qemu/*/tpm/
+qemu/*/spice.sock
