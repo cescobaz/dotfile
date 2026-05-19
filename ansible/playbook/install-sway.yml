@@ -1,0 +1,40 @@
+#!/bin/ansible-playbook
+
+- hosts:
+    - current
+  tasks:
+    - name: Install sway and dependencies
+      become: '{{ become_for_package }}'
+      ansible.builtin.package:
+        name:
+          - sway
+          - xdg-desktop-portal
+          - xdg-desktop-portal-wlr
+        state: latest
+    - name: Create sway config dir
+      ansible.builtin.file:
+        dest: "{{ user_home }}/.config/sway"
+        state: directory
+    - name: Install sway config
+      ansible.builtin.file:
+        src: "{{ config_home }}/home/.config/sway/config"
+        dest: "{{ user_home }}/.config/sway/config"
+        state: link
+    - name: Create xdg-desktop-portal-wlr config dir
+      ansible.builtin.file:
+        dest: "{{ user_home }}/.config/xdg-desktop-portal-wlr"
+        state: directory
+    - name: Install xdg-desktop-portal-wlr config
+      ansible.builtin.file:
+        src: "{{ config_home }}/home/.config/xdg-desktop-portal-wlr/config"
+        dest: "{{ user_home }}/.config/xdg-desktop-portal-wlr/config"
+        state: link
+    - name: Create xdg-desktop-portal config dir
+      ansible.builtin.file:
+        dest: "{{ user_home }}/.config/xdg-desktop-portal"
+        state: directory
+    - name: Install xdg-desktop-portal sway config
+      ansible.builtin.file:
+        src: "{{ config_home }}/home/.config/xdg-desktop-portal/sway-portals.conf"
+        dest: "{{ user_home }}/.config/xdg-desktop-portal/sway-portals.conf"
+        state: link
