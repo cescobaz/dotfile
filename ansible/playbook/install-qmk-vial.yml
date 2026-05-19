@@ -1,0 +1,44 @@
+#!/bin/ansible-playbook
+
+# Tooling for building/flashing QMK firmware and for live-remapping
+# Vial-enabled keyboards (e.g. the Tokyo60).
+#
+# Installs:
+#   - qmk          official QMK CLI. Pulls in avr-gcc, arm-none-eabi-gcc,
+#                  dfu-programmer, dfu-util, avrdude and the rest of the
+#                  flashing toolchain as dependencies.
+#   - vial-appimage  Vial GUI (AppImage wrapper from the AUR). Provides
+#                  the `vial` command which speaks to Vial-enabled
+#                  firmware over hidraw and remaps keys live.
+#
+# Also drops the Vial udev rule so non-root users can open the hidraw
+# device the keyboard exposes.
+
+- hosts:
+    - current
+  tasks:
+    - name: Install QMK CLI and Vial GUI
+      become: '{{ become_for_package }}'
+      ansible.builtin.package:
+        name:
+          - qmk
+          - vial-appimage  # archlinux AUR
+        state: latest
+    - name: Install Vial udev rule
+      become: true
+      ansible.builtin.copy:
+        src: "{{ config_home }}/linux/etc/udev/rules.d/99-vial.rules"
+        dest: /etc/udev/rules.d/99-vial.rules
+        owner: root
+        group: root
+        mode: '0644'
+      notify:
+        - Reload udev rules
+        - Trigger udev
+  handlers:
+    - name: Reload udev rules
+      become: true
+      ansible.builtin.command: udevadm control --reload
+    - name: Trigger udev
+      become: true
+      ansible.builtin.command: udevadm trigger

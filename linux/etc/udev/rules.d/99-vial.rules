@@ -1,0 +1,20 @@
+# Allow non-root access to Vial-compatible keyboards via hidraw.
+#
+# Vial talks to the keyboard over a raw HID interface, which requires
+# the uaccess tag so the logged-in user can open /dev/hidrawN.
+#
+# The first rule is the upstream Vial recipe: it matches on the magic
+# serial string ("vial:f64c2b3c") that Vial-enabled firmware advertises,
+# scoping access to Vial keyboards only.
+#
+# The second rule is a fallback specifically for the tokyo60
+# (VID feed:6060) in case its firmware is stock QMK (no Vial serial)
+# but you still want to talk to it via hidraw — useful for `qmk console`
+# and similar tooling.
+
+KERNEL=="hidraw*", SUBSYSTEM=="hidraw", \
+  ATTRS{serial}=="*vial:f64c2b3c*", MODE="0660", TAG+="uaccess"
+
+KERNEL=="hidraw*", SUBSYSTEM=="hidraw", \
+  ATTRS{idVendor}=="feed", ATTRS{idProduct}=="6060", \
+  MODE="0660", TAG+="uaccess"
