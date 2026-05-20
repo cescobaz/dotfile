@@ -1,0 +1,20 @@
+#!/bin/ansible-playbook
+
+- hosts:
+    - current
+  tasks:
+    - name: Install htop
+      become: '{{ become_for_package }}'
+      ansible.builtin.package:
+        name:
+          - htop
+        state: latest
+    - name: Create htop config dir
+      ansible.builtin.file:
+        dest: "{{ user_home }}/.config/htop"
+        state: directory
+    - name: Install htop config
+      ansible.builtin.file:
+        src: "{{ config_home }}/home/.config/htop/htoprc"
+        dest: "{{ user_home }}/.config/htop/htoprc"
+        state: link
