@@ -1,0 +1,21 @@
+#!/bin/ansible-playbook
+
+- hosts:
+    - current
+  tasks:
+    - name: Install packages
+      become: '{{ become_for_package }}'
+      ansible.builtin.package:
+        name: "{{ packages }}"
+        state: latest
+    - name: Create config dir
+      ansible.builtin.file:
+        dest: "{{ user_home }}/.config/{{ config_path }}"
+        state: directory
+    - name: Install config files
+      ansible.builtin.file:
+        src: "{{ item }}"
+        dest: "{{ user_home }}/.config/{{ config_path }}/{{ item | basename }}"
+        state: link
+      with_fileglob:
+        - '{{ config_home }}/home/.config/{{ config_path }}/*'
