@@ -11,7 +11,7 @@ new_tab backend
 launch --hold --cwd ~/projects/andromed_ai/platform/backend nvim -c G
 # 
 new_tab backend2
-launch --hold --cwd ~/projects/andromed_ai/platform/backend zsh -c 'set -a && source .env && mix phx.server'
+launch --hold --cwd ~/projects/andromed_ai/platform/backend zsh -c 'set -a && source .env && iex -S mix phx.server'
 
 ## text-api
 new_tab text-api
