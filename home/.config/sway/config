@@ -64,6 +64,7 @@ set $menu GTK_THEME=Qogir-Round-Dark QT_QPA_PLATFORM=wayland MOZ_ENABLE_WAYLAND=
 output HDMI-A-1 scale 2
 # for work
 # output HDMI-A-1 scale 2 mode 3840x2160@60.000Hz max_render_time off adaptive_sync off allow_tearing no
+# output HDMI-A-1 scale 2 mode 3840x2160@59.997Hz max_render_time off adaptive_sync off allow_tearing no
 
 # for gaming
 # output HDMI-A-1 scale 1 mode 1920x1080@120.000Hz
@@ -303,6 +304,7 @@ font $font
 exec swayidle -w \
          timeout 120 '~/scripts/linux/sway/sway-lock.sh' \
          timeout 130 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+         timeout 1800 'systemctl suspend' \
          before-sleep '~/scripts/linux/sway/sway-lock.sh'
 
 # notifications
