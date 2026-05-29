@@ -61,7 +61,8 @@ set $menu GTK_THEME=Qogir-Round-Dark QT_QPA_PLATFORM=wayland MOZ_ENABLE_WAYLAND=
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
 
-output HDMI-A-1 scale 2
+# output HDMI-A-1 scale 2
+output HDMI-A-2 scale 2
 # for work
 # output HDMI-A-1 scale 2 mode 3840x2160@60.000Hz max_render_time off adaptive_sync off allow_tearing no
 # output HDMI-A-1 scale 2 mode 3840x2160@59.997Hz max_render_time off adaptive_sync off allow_tearing no

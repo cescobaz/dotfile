@@ -2,4 +2,7 @@
 
 set -ex
 
-swaymsg output HDMI-A-1 scale 1 mode 1920x1080@120.000Hz max_render_time off allow_tearing yes adaptive_sync off
+#OUTPUT=HDMI-A-1
+OUTPUT=HDMI-A-2
+
+swaymsg output $OUTPUT scale 1 mode 1920x1080@120.000Hz max_render_time off allow_tearing yes adaptive_sync off
