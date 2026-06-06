@@ -36,7 +36,7 @@ aspirational, not current state.)
 
 ```
 .
-├── run.sh                          launcher; must run as root (re-execs via sudo)
+├── run.sh                          launcher; runs as your user (sudo only to grant disk access)
 ├── OVMF_VARS-secboot.4m.fd         VM NVRAM (Secure Boot, boot order, etc.)
 ├── tpm/                            swtpm state — emulated TPM 2.0 for the guest
 └── Win11_25H2_EnglishInternational_x64_v2.iso   installer media
@@ -49,15 +49,17 @@ The ISO is not tracked in git; download a fresh one if you need to redo this.
 Arch packages:
 
 ```
-sudo pacman -S qemu-full edk2-ovmf swtpm virt-viewer
+sudo pacman -S qemu-full edk2-ovmf swtpm virglrenderer acl
 ```
 
-(`virt-viewer` provides `remote-viewer`, the SPICE client that pops up as
-the VM window — see "Clipboard & drag-and-drop" below.)
+(`qemu-full` includes the GTK UI; `virglrenderer` backs the OpenGL display
+(`gl=on`); `acl` provides `setfacl`, used to grant disk access — see below.)
 
-The host needs KVM (CPU virtualization extensions enabled in BIOS) and the
-user running `run.sh` needs sudo — `/dev/sdb` is a raw block device and only
-root can open it.
+The host needs KVM (CPU virtualization extensions enabled in BIOS) and a GPU
+with a usable DRI render node (`/dev/dri/renderD128`) for the accelerated
+display. QEMU runs as **your** user, not root — `run.sh` only uses `sudo`
+once at startup to grant your user rw access to `/dev/sdb` (via an ACL) and
+to adopt any state files left behind by older root-era runs.
 
 ## Usage
 
@@ -67,19 +69,22 @@ root can open it.
 
 What it does:
 
-1. Re-execs itself under `sudo` if not root.
+1. Grants your user rw on `/dev/sdb` via `sudo setfacl` (and adopts any
+   root-owned local state from older runs) — a single sudo prompt, only when
+   needed. Everything after this runs as your unprivileged user.
 2. Refuses to start if **any partition of `/dev/sdb` is currently mounted on
    the host** — concurrent host+guest writes would corrupt the filesystem.
 3. Copies a clean `OVMF_VARS.4m.fd` template the first time, then reuses the
    local one on subsequent runs.
 4. Starts `swtpm` as a daemon listening on `tpm/swtpm.sock` (auto-killed on
    exit via trap).
-5. Launches QEMU with:
+5. Launches QEMU (in the foreground) with:
    - q35 + KVM + Secure Boot OVMF
    - half of the host's logical CPUs, exposed as cores on one socket
    - 8 GiB RAM
    - `/dev/sdb` as the boot disk (`bootindex=1`)
-   - virtio-vga + SPICE display, launched separately as your user
+   - `virtio-vga-gl` into a GTK window with OpenGL (`-display gtk,gl=on`),
+     opened directly by QEMU as your user (no separate SPICE viewer)
 
 By default **no install CD is attached** — the VM boots straight into the
 Windows install on `sdb`. Pass `WITH_ISO=1` to re-attach the ISO at
@@ -132,57 +137,105 @@ patch it out short of breaking unattended deployments entirely.
 You can later add a Microsoft account from Settings → Accounts if you ever
 want one — this just avoids being forced into it during install.
 
-## Clipboard & drag-and-drop (host ↔ guest)
+## Display & clipboard (host ↔ guest)
 
-The VM uses SPICE for its display (`-display spice-app`) and runs a
-`vdagent` virtio-serial channel that the SPICE guest agent talks over. With
-the guest agent installed, you get:
+The VM renders into a **GTK window opened directly by QEMU**
+(`-display gtk,gl=on`), using `virtio-vga-gl` as the adapter. `gl=on` makes
+the host composite the guest framebuffer as an OpenGL texture on your GPU,
+which is lower-latency and lighter on CPU than the old SPICE path (SPICE
+protocol + a separate `remote-viewer` process). There is no SPICE server,
+socket, or external viewer anymore.
 
-- **Clipboard sync** — `Ctrl+C` on the host and `Ctrl+V` inside Windows
-  (and vice versa) move text between sides automatically. Most rich content
-  works too.
-- **Drag-and-drop** — drag files from a host file manager onto the
-  `remote-viewer` window; they land in the focused Explorer folder (or on
-  the Desktop) inside Windows.
-- **Dynamic resolution** — resize the SPICE window and Windows reflows the
-  display.
-- **Seamless mouse** — no need to "release" the cursor; it hops in and out
-  of the VM window as you'd expect.
+> **Performance note.** This is still emulated graphics. `gl=on` accelerates
+> *presentation* on the host; it does **not** give the Windows guest 3D
+> acceleration, because Windows has no production virtio-gpu 3D driver. The
+> win is a snappier 2D desktop, not gaming performance — that requires GPU
+> passthrough (see the intro and the bottom caveat).
+
+Clipboard still works without SPICE: QEMU itself speaks the vdagent protocol
+via `-chardev qemu-vdagent,clipboard=on` over the same `com.redhat.spice.0`
+virtio-serial channel, bridged to the GTK window's clipboard. So:
+
+- **Clipboard sync** — `Ctrl+C`/`Ctrl+V` move text between host and Windows
+  (needs the guest agent — see below).
+- **Seamless mouse** — the `usb-tablet` gives absolute pointing, so the
+  cursor hops in and out of the window without an explicit release.
+- **Dynamic resolution** — resizing the GTK window reflows the guest display
+  once the virtio-gpu guest driver is installed.
+
+**Drag-and-drop is gone.** File DnD was a SPICE/`remote-viewer` feature; the
+GTK display doesn't provide it. Use the clipboard for small text, or the
+bulk-transfer route below for files. The GTK window's own *View* menu offers
+zoom / full-screen / scaling controls in its place.
 
 ### One-time guest setup
 
-This only works once the SPICE Guest Tools are installed in Windows.
-Otherwise the SPICE window still functions but clipboard and DnD do
-nothing.
+Clipboard needs the `spice-vdagent` service running in Windows, and the
+adapter is happiest with the virtio-gpu display driver. Both come from the
+SPICE Guest Tools:
 
 1. Boot the VM with `./run.sh`. Networking works out of the box (NAT), so
    open Edge inside Windows.
 2. Go to <https://www.spice-space.org/download.html> and grab
    **"spice-guest-tools-latest.exe"** under *Windows binaries*.
-3. Run it. It installs the QXL/virtio guest drivers, the `spice-vdagent`
-   service, and a USB redirector. Reboot the VM when prompted.
+3. Run it. It installs the virtio/QXL guest drivers and the `spice-vdagent`
+   service. Reboot the VM when prompted.
 
-After reboot, clipboard and drag-and-drop should both work immediately —
-no extra configuration on either side.
+After reboot, clipboard sync works with no extra configuration on either
+side. (If the display stays on a generic Microsoft Basic adapter, install
+the virtio-gpu driver from the `virtio-win` ISO for proper 2D acceleration
+and dynamic resolution.)
 
 ### If something doesn't work
 
 - **Clipboard does nothing in either direction:** check that the
   `spice-vdagent` service is running inside Windows (`services.msc`). If
   it's stopped, start it; if it's missing, reinstall SPICE Guest Tools.
-- **Drag-and-drop into the VM does nothing:** make sure you're using
-  `remote-viewer` ≥ 9.0 (`remote-viewer --version`). Older versions
-  support clipboard but not file DnD.
-- **No SPICE window opens at all:** `-display spice-app` needs
-  `remote-viewer`; `run.sh` checks for it before launching.
+- **QEMU exits at startup with a GL/EGL or virgl error:** the host couldn't
+  get an OpenGL context. Confirm `virglrenderer` is installed and
+  `/dev/dri/renderD128` is readable by your user. As a fallback you can drop
+  acceleration by editing `run.sh` to use `-display gtk` (no `gl=on`) and
+  `-device virtio-vga` (no `-gl`).
+- **Window is black or won't open on Wayland:** ensure you're running
+  `run.sh` from within your graphical session (so `WAYLAND_DISPLAY` /
+  `XDG_RUNTIME_DIR` are set); QEMU now runs as your user and inherits them.
 
 ### Bulk transfers
 
-Clipboard + DnD is great for "a file or two." For dumping tens of GiB of
+The clipboard is great for "a line or two." For dumping tens of GiB of
 data either direction, it's faster to shut the VM down and `mount` `sdb`'s
 NTFS partition directly on the host (`sudo mount /dev/sdb3 /mnt/win`) —
 the install on `sdb` is a real Windows filesystem that Linux can read and
 write via the kernel's NTFS3 driver.
+
+## Networking: reaching host services from the guest
+
+The VM uses QEMU **user-mode networking** (`-netdev user,id=net0` in
+`run.sh`) — a built-in NAT. No addresses are configured explicitly, so QEMU
+applies its hardcoded SLiRP defaults for the `10.0.2.0/24` network:
+
+| Role | Address |
+|------|---------|
+| **Host (this Linux machine)** | **`10.0.2.2`** |
+| Guest (Windows) — first DHCP lease | `10.0.2.15` |
+| Virtual DNS | `10.0.2.3` |
+
+So **to connect from Windows to a server running on the host, use `10.0.2.2`
+plus the port** — e.g. `http://10.0.2.2:8080`. SLiRP originates the
+connection from the host itself, so this reaches host services bound to
+`127.0.0.1` as well as `0.0.0.0`; you usually don't need to rebind. If it
+won't connect, check the host firewall (`firewalld`/`nftables`).
+
+These numbers aren't in `run.sh` — they're QEMU defaults, documented under
+`-netdev user` in `man qemu-system-x86_64`. Confirm them live from Windows
+with `ipconfig` (IP + gateway) and `nslookup` (DNS). To change them, set
+them explicitly, e.g.
+`-netdev user,id=net0,net=192.168.76.0/24,host=192.168.76.9`.
+
+Note the NAT is one-way: the guest can reach the host, but the host can't
+initiate connections *into* the guest without a `hostfwd=` port forward. For
+full LAN visibility (guest gets its own IP, reachable from other machines),
+switch to a tap bridge — see the caveat below.
 
 ## Booting `sdb` bare metal
 

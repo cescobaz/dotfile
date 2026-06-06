@@ -1,13 +1,44 @@
 #!/bin/sh
 set -eu
 
-# /dev/sdb is root-owned (group: disk) — re-exec under sudo if we're not root.
-[ "$(id -u)" -eq 0 ] || exec sudo -E -- "$0" "$@"
-
 cd "$(dirname "$0")"
 
 DISK=/dev/sdb
 ISO=Win11_25H2_EnglishInternational_x64_v2.iso
+
+# Secure Boot OVMF (required by Win11). VARS file is local so changes
+# made by the firmware stay isolated from your real machine's NVRAM.
+OVMF_CODE=/usr/share/edk2/x64/OVMF_CODE.secboot.4m.fd
+OVMF_VARS_SRC=/usr/share/edk2/x64/OVMF_VARS.4m.fd
+OVMF_VARS=./OVMF_VARS-secboot.4m.fd
+
+# TPM 2.0 via swtpm (required by Win11 install/upgrade).
+TPM_DIR=./tpm
+
+# QEMU runs as the invoking user (NOT root), so its GTK window is a normal
+# user-owned GUI — no root-owned GTK/Wayland client. The only bits that need
+# elevation are: rw access to the raw disk (/dev/sdb is root:disk and we're
+# not in the disk group) and taking ownership of any state files left behind
+# by earlier root-era runs. Collect those into a single sudo invocation.
+#   - /dev/kvm and /dev/dri/renderD128 are already world-rw, so KVM and the
+#     GL render node need no elevation.
+#   - The disk ACL is cleared when the device node is recreated (reboot or
+#     replug), so re-apply it whenever it's missing.
+USER_NAME=$(id -un)
+ROOT_CMDS=""
+add_root_cmd() { ROOT_CMDS="${ROOT_CMDS}$1
+"; }
+
+{ [ -r "$DISK" ] && [ -w "$DISK" ]; } || add_root_cmd "setfacl -m u:$USER_NAME:rw $DISK"
+for f in "$OVMF_VARS" "$TPM_DIR"; do
+    [ -e "$f" ] && ! [ -O "$f" ] && add_root_cmd "chown -R $USER_NAME: $f"
+done
+
+if [ -n "$ROOT_CMDS" ]; then
+    echo "One-time privilege setup (needs sudo):"
+    printf '%s' "$ROOT_CMDS" | sed 's/^/  /'
+    sudo sh -ec "$ROOT_CMDS"
+fi
 
 # Safety: refuse to start if the host has any sdb partition mounted —
 # concurrent access from host + guest will corrupt the filesystem.
@@ -17,20 +48,14 @@ if awk '$1 ~ /^\/dev\/sdb/ {found=1} END {exit !found}' /proc/mounts; then
     exit 1
 fi
 
-# Secure Boot OVMF (required by Win11). VARS file is local so changes
-# made by the firmware stay isolated from your real machine's NVRAM.
-OVMF_CODE=/usr/share/edk2/x64/OVMF_CODE.secboot.4m.fd
-OVMF_VARS_SRC=/usr/share/edk2/x64/OVMF_VARS.4m.fd
-OVMF_VARS=./OVMF_VARS-secboot.4m.fd
 [ -f "$OVMF_VARS" ] || cp "$OVMF_VARS_SRC" "$OVMF_VARS"
 
-# TPM 2.0 via swtpm (required by Win11 install/upgrade).
+# (TPM 2.0 via swtpm — required by Win11 install/upgrade.)
 # Install with:  sudo pacman -S swtpm
 if ! command -v swtpm >/dev/null 2>&1; then
     echo "swtpm not found. Install it (sudo pacman -S swtpm) and rerun." >&2
     exit 1
 fi
-TPM_DIR=./tpm
 TPM_SOCK=$TPM_DIR/swtpm.sock
 mkdir -p "$TPM_DIR"
 if ! [ -S "$TPM_SOCK" ] || ! pgrep -af "swtpm .*$TPM_SOCK" >/dev/null; then
@@ -40,24 +65,11 @@ if ! [ -S "$TPM_SOCK" ] || ! pgrep -af "swtpm .*$TPM_SOCK" >/dev/null; then
         --log level=20 \
         --daemon
 fi
-# SPICE client (remote-viewer) is launched by this script — NOT by QEMU's
-# -display spice-app — so we can run it as the unprivileged user. Running
-# remote-viewer as root tends to break GTK4's sandboxed SVG icon loader
-# (glycin + bwrap) on themes that use SVG icons.
-# Install with:  sudo pacman -S virt-viewer
-if ! command -v remote-viewer >/dev/null 2>&1; then
-    echo "remote-viewer not found. Install virt-viewer (sudo pacman -S virt-viewer) and rerun." >&2
-    exit 1
-fi
 
-SPICE_SOCK="$(pwd)/spice.sock"
-rm -f "$SPICE_SOCK"
-
-trap '
-    kill "${QEMU_PID:-0}" 2>/dev/null || true
-    pkill -f "swtpm .*'"$TPM_SOCK"'" 2>/dev/null || true
-    rm -f "'"$SPICE_SOCK"'"
-' EXIT INT TERM
+# QEMU opens its own GTK window (-display gtk,gl=on) and runs in the
+# foreground as this user, so there's no separate viewer process to launch
+# and no SPICE socket to manage. Just reap swtpm when QEMU exits.
+trap 'pkill -f "swtpm .*'"$TPM_SOCK"'" 2>/dev/null || true' EXIT INT TERM
 
 # Attach the install ISO only when WITH_ISO=1 (e.g. for repair / reinstall).
 # Default: no CD drive, boot straight from the HDD.
@@ -90,38 +102,13 @@ qemu-system-x86_64 \
     $ISO_ARGS \
     -netdev user,id=net0 \
     -device e1000e,netdev=net0 \
-    -device virtio-vga,xres=1920,yres=1080 \
+    -device virtio-vga-gl,xres=1920,yres=1080 \
     -device qemu-xhci \
     -device usb-tablet \
     -device usb-kbd \
     -device virtio-serial-pci \
-    -chardev spicevmc,id=spicechannel0,name=vdagent \
-    -device virtserialport,chardev=spicechannel0,name=com.redhat.spice.0 \
+    -chardev qemu-vdagent,id=vdagent,name=vdagent,clipboard=on \
+    -device virtserialport,chardev=vdagent,name=com.redhat.spice.0 \
     -rtc base=localtime,clock=host \
-    -display none \
-    -spice unix=on,addr="$SPICE_SOCK",disable-ticketing=on \
-    "$@" &
-QEMU_PID=$!
-
-# Wait for QEMU to open the SPICE socket (slow with Secure Boot OVMF).
-for _ in $(seq 1 200); do
-    [ -S "$SPICE_SOCK" ] && break
-    kill -0 "$QEMU_PID" 2>/dev/null || {
-        echo "QEMU exited before opening the SPICE socket." >&2
-        exit 1
-    }
-    sleep 0.1
-done
-
-# Hand the socket to the unprivileged user so remote-viewer can connect
-# without needing root (which breaks GTK4's glycin/bwrap on SVG themes).
-if [ -n "${SUDO_USER:-}" ]; then
-    chown "$SUDO_USER:" "$SPICE_SOCK"
-    sudo -u "$SUDO_USER" -- remote-viewer "spice+unix://$SPICE_SOCK"
-else
-    remote-viewer "spice+unix://$SPICE_SOCK"
-fi
-
-# Viewer closed → stop QEMU and reap it.
-kill "$QEMU_PID" 2>/dev/null || true
-wait "$QEMU_PID" 2>/dev/null || true
+    -display gtk,gl=on \
+    "$@"
