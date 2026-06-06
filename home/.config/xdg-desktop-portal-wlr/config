@@ -1,7 +1,7 @@
 [screencast]
 output_name=
-max_fps=60
-max_framerate=60
+max_fps=30
+max_framerate=30
 chooser_type=dmenu
 chooser_cmd=wofi --show=dmenu
 exec_before=${HOME}/.local/bin/buro-disable-notification.sh
