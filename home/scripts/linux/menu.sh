@@ -1,21 +1,39 @@
 #!/usr/bin/env bash
-# Application launcher: bemenu-run themed from the current base16 theme.
+# Themed bemenu wrapper, colored from the current base16 theme.
 # Works on Wayland (sway) and X11. Self-contained — resolves its own colors via
-# base16-shell-colors-load.sh, so the WM only needs:
-#     set $menu ~/scripts/linux/menu.sh        # sway
-# Launched apps are forced onto Wayland only when we're actually in a Wayland
-# session; under X11 they keep their default backend.
+# base16-shell-colors-load.sh, so callers stay in sync with the active theme.
+#
+# Modes (first arg, default "run"):
+#   run    -> bemenu-run : application launcher, executes the chosen command
+#   dmenu  -> bemenu     : reads candidates on stdin, prints the choice (dmenu)
+#
+# Env knobs:
+#   MENU_PROMPT  prompt text shown left of the input (default: empty/hidden)
+#   MENU_FONT    font string (default: LektonNerdFontMono 12)
+#
+# Examples:
+#   set $menu ~/scripts/linux/menu.sh                      # sway launcher
+#   chooser_cmd=MENU_PROMPT=screencast ~/scripts/linux/menu.sh dmenu
 set -euo pipefail
+
+case "${1:-run}" in
+  run)   bin=bemenu-run ;;
+  dmenu) bin=bemenu ;;
+  *) echo "usage: ${0##*/} [run|dmenu]" >&2; exit 2 ;;
+esac
+
+# Only relevant when launching apps (run mode); harmless but pointless for dmenu.
+if [ "$bin" = bemenu-run ]; then
+  export GTK_THEME=Qogir-Round-Dark
+  if [ -n "${WAYLAND_DISPLAY:-}" ]; then
+    export QT_QPA_PLATFORM=wayland MOZ_ENABLE_WAYLAND=1
+  fi
+fi
 
 source "$HOME/scripts/base16-shell-colors-load.sh"
 
-export GTK_THEME=Qogir-Round-Dark
-if [ -n "${WAYLAND_DISPLAY:-}" ]; then
-  export QT_QPA_PLATFORM=wayland MOZ_ENABLE_WAYLAND=1
-fi
-
-exec bemenu-run \
-  --prompt '' --no-spacing \
+exec "$bin" \
+  --prompt "${MENU_PROMPT:-}" --no-spacing \
   --ignorecase --list 10 --counter always \
   --fn "${MENU_FONT:-LektonNerdFontMono 12}" \
   --center --fixed-height \

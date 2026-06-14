@@ -3,6 +3,6 @@ output_name=
 max_fps=30
 max_framerate=30
 chooser_type=dmenu
-chooser_cmd=wofi --show=dmenu
+chooser_cmd=MENU_PROMPT=screencast ${HOME}/scripts/linux/menu.sh dmenu
 exec_before=${HOME}/.local/bin/buro-disable-notification.sh
 exec_after=${HOME}/.local/bin/buro-enable-notification.sh
