@@ -38,6 +38,9 @@ exec "$bin" \
   --fn "${MENU_FONT:-LektonNerdFontMono 12}" \
   --center --fixed-height \
   --border 2 --margin 22 --line-height 34 --ch 18 --cw 9 --width-factor 0.6 \
+  --nb "$base00" \
+  --ab "$base00" \
+  --fb "$base00" \
   --bdr "$base0A" \
   --tf "$base0A" \
   --hb "$base0A" --hf "$base00"
