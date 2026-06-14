@@ -26,14 +26,7 @@ set $term kitty
 # on the original workspace that the command was run on.
 #set $menu wofi --show run | xargs swaymsg exec --
 # set $menu rofi -show combi | xargs swaymsg exec --
-set $menu GTK_THEME=Qogir-Round-Dark QT_QPA_PLATFORM=wayland MOZ_ENABLE_WAYLAND=1 bemenu-run \
-  --ignorecase --list 10 --counter always \
-  --fn $font \
-  --center --fixed-height \
-  --border 2 --margin 22 --line-height 34 --ch 18 --cw 9 --width-factor 0.6 \
-  --bdr "$base0A" \
-  --tf "$base0A" \
-  --hb "$base0A" --hf "$base00"
+set $menu ~/scripts/linux/menu.sh
 
 ### Output configuration
 #
@@ -251,7 +244,7 @@ bindsym $mod+r mode "resize"
 #}
 bar swaybar_command waybar
 
-gaps inner 24
+gaps inner 20
 # ths (pixel) hide the title bar, else 'normal' will show it
 default_border pixel 4
 default_floating_border normal 4
@@ -284,7 +277,8 @@ client.background       $base00
 # output * bg $base03 solid_color
 # output * bg /home/buro/wallpaper/world-from-bottom.jpeg fill $base03
 # output * bg /home/buro/wallpaper/milk-way.jpeg fill $base03
-output * bg $base00 solid_color
+# output * bg /home/buro/wallpaper/sfondi/Arte/The-Starry-Night.jpg fill $base00
+output * bg $base01 solid_color
 
 set $my_cursor Qogir-dark
 set $my_cursor_size 24
