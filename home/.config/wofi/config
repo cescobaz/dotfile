@@ -1,0 +1,19 @@
+# wofi config
+# Configured to resemble the bemenu launcher used in sway:
+#   bemenu-run --ignorecase --list 10 --counter always --center
+#              --fixed-height --width-factor 0.6
+# Colors and fonts live in style.css (base16-woodland scheme).
+
+mode=run
+prompt=run
+insensitive=true
+location=center
+width=60%
+lines=10
+hide_scroll=true
+no_actions=true
+allow_markup=true
+halign=fill
+content_halign=fill
+orientation=vertical
+gtk_dark=true

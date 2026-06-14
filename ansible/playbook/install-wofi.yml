@@ -1,0 +1,23 @@
+#!/bin/ansible-playbook
+
+- hosts:
+    - current
+  tasks:
+    - name: Install wofi
+      become: '{{ become_for_package }}'
+      ansible.builtin.package:
+        name:
+          - wofi
+        state: latest
+    - name: Create wofi config dir
+      ansible.builtin.file:
+        dest: "{{ user_home }}/.config/wofi"
+        state: directory
+    - name: Install wofi config
+      ansible.builtin.file:
+        src: "{{ config_home }}/home/.config/wofi/{{ item }}"
+        dest: "{{ user_home }}/.config/wofi/{{ item }}"
+        state: link
+      loop:
+        - "config"
+        - "style.css"

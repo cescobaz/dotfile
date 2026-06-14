@@ -1,0 +1,67 @@
+/* wofi style mirroring the sway bemenu launcher
+ * base16-woodland scheme:
+ *   base00 #231e18  background / highlight foreground
+ *   base02 #48413a  input separator
+ *   base05 #cabcb1  default foreground
+ *   base0A #e0ac16  border / text / highlight background  */
+
+* {
+    border-radius: 0;
+    outline: none;
+}
+
+window {
+    margin: 22px;
+    background-color: #231e18;
+    font-family: "LektonNerdFontMono";
+    font-size: 12pt;
+}
+
+#outer-box {
+    border: 2px solid #e0ac16;
+    background-color: #231e18;
+}
+
+#inner-box,
+#scroll {
+    background-color: #231e18;
+}
+
+/* hide GTK's dashed scroll overflow indicators */
+scrolledwindow undershoot.top,
+scrolledwindow undershoot.bottom,
+scrolledwindow overshoot.top,
+scrolledwindow overshoot.bottom {
+    background: none;
+    box-shadow: none;
+    border: none;
+}
+
+#input {
+    margin: 0px;
+    padding: 6px;
+    border: none;
+    border-bottom: 2px solid #48413a;
+    color: #e0ac16;
+    background-color: #302b25;
+}
+
+#input:focus {
+    border-bottom: 2px solid #e0ac16;
+}
+
+#entry {
+    padding: 6px;
+}
+
+#text {
+    color: #e0ac16;
+}
+
+#entry:selected {
+    background-color: #e0ac16;
+}
+
+#entry:selected #text {
+    color: #231e18;
+}
