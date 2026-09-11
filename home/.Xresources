@@ -5,7 +5,7 @@ Xft.dpi: 192
 !Xft.autohint:  0
 !Xft.hintstyle: hintslight
 !Xft.lcdfilter: lcddefault
-Xcursor.theme: Qogir-dark
+Xcursor.theme: Qogir-Dark
 !URxvt.scrollBar: false
 !URxvt.font: xft:SourceCodePro:size=12
 !URxvt.internalBorder: 0

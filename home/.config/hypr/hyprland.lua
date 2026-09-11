@@ -41,7 +41,7 @@ hl.env("SDL_VIDEODRIVER", "wayland")
 hl.env("MOZ_ENABLE_WAYLAND", "1")
 
 hl.env("GTK_THEME", "Qogir-Round-Dark")
-hl.env("XCURSOR_SIZE", "Qogir-dark")
+hl.env("XCURSOR_SIZE", "Qogir-Dark")
 hl.env("XCURSOR_SIZE", "24")
 
 
@@ -51,7 +51,7 @@ hl.env("XCURSOR_SIZE", "24")
 
 -- See https://wiki.hypr.land/Configuring/Basics/Monitors/
 hl.monitor({
-  output   = "HDMI-A-1",
+  output   = "HDMI-A-2",
   mode     = "3840x2160@60.00",
   position = "0x0",
   scale    = 2,

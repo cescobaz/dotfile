@@ -10,6 +10,7 @@
           - nwg-look
           - 'qogir-gtk-theme' # archlinux AUR
           - 'qogir-cursor-theme' # archlinux AUR
+          - 'qogir-icon-theme' # archlinux AUR
         state: latest
     - name: Create gtk-3.0 config dir
       ansible.builtin.file:

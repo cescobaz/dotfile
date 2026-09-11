@@ -280,7 +280,7 @@ client.background       $base00
 # output * bg /home/buro/wallpaper/sfondi/Arte/The-Starry-Night.jpg fill $base00
 output * bg $base01 solid_color
 
-set $my_cursor Qogir-dark
+set $my_cursor Qogir-Dark
 set $my_cursor_size 24
 
 seat seat0 xcursor_theme $my_cursor $my_cursor_size
