@@ -8,7 +8,7 @@ rm -rf ~/.local/state/nvim/lsp.log
 
 # https://docs.docker.com/engine/manage-resources/pruning/
 # docker container prune
-docker volume prune
+docker volume prune -a -f
 docker image prune --all
 # the following docker command prune really anything!
 # https://apple.stackexchange.com/questions/391377/what-is-the-purpose-of-docker-raw-file-on-mac-os-catalina
