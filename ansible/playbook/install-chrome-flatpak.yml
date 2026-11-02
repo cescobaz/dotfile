@@ -1,0 +1,80 @@
+#!/bin/ansible-playbook
+
+# Google Chrome in a locked-down Flatpak sandbox, plus Flatseal to inspect it.
+#
+#   https://wiki.archlinux.org/title/Flatpak
+#   https://docs.flatpak.org/en/latest/sandbox-permissions.html
+#
+# Everything is installed per-user (no system-wide flathub). The override
+# file below is the same one Flatseal edits: re-running this playbook resets
+# any change made from Flatseal back to what is written here.
+#
+# Chrome data lives in ~/.var/app/com.google.Chrome, delete it to wipe it.
+
+- hosts:
+    - current
+  vars:
+    chrome_app_id: com.google.Chrome
+    # Chrome reads the USB webcam straight from /dev/video*, only `all` exposes
+    # it (also U2F keys); false = GPU only. Mic goes via the pulseaudio socket.
+    chrome_device_all: true
+  tasks:
+    # xdg-desktop-portal-gtk: sandboxed apps cannot open host file dialogs, they
+    # ask the portal for one. xdg-desktop-portal-hyprland only does screen
+    # sharing, so without the gtk backend Chrome upload/save dialogs never open.
+    - name: Install flatpak and gtk portal
+      become: '{{ become_for_package }}'
+      ansible.builtin.package:
+        name:
+          - flatpak
+          - xdg-desktop-portal-gtk
+        state: latest
+
+    - name: Add flathub remote (user)
+      community.general.flatpak_remote:
+        name: flathub
+        flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
+        method: user
+        state: present
+
+    - name: Install Chrome and Flatseal (user)
+      community.general.flatpak:
+        name:
+          - "{{ chrome_app_id }}"
+          - com.github.tchx84.Flatseal
+        remote: flathub
+        method: user
+        state: present
+
+    - name: Create flatpak overrides dir
+      ansible.builtin.file:
+        path: "{{ user_home }}/.local/share/flatpak/overrides"
+        state: directory
+
+    # no home/host, only ~/Downloads; Wayland only (X11 lets apps snoop input)
+    - name: Install Chrome sandbox overrides
+      ansible.builtin.copy:
+        dest: "{{ user_home }}/.local/share/flatpak/overrides/{{ chrome_app_id }}"
+        mode: '0644'
+        content: |
+          [Context]
+          sockets=!x11;!fallback-x11;wayland;pulseaudio;
+          devices={{ '' if chrome_device_all else '!all;' }}dri;
+          filesystems=!home;!host;xdg-download;
+
+          [Session Bus Policy]
+          org.freedesktop.Notifications=talk
+
+    - name: Create Chrome config dir
+      ansible.builtin.file:
+        path: "{{ user_home }}/.var/app/{{ chrome_app_id }}/config"
+        state: directory
+
+    # copied, not linked: the sandbox cannot follow a link out of ~/.var/app
+    - name: Install Chrome Wayland flags
+      ansible.builtin.copy:
+        dest: "{{ user_home }}/.var/app/{{ chrome_app_id }}/config/chrome-flags.conf"
+        mode: '0644'
+        content: |
+          --ozone-platform=wayland
+          --enable-features=WaylandWindowDecorations
