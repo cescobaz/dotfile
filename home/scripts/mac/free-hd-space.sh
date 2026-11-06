@@ -17,8 +17,9 @@ rm -rf ~/.npm/_npx ~/.npm/_logs
 
 # https://docs.docker.com/engine/manage-resources/pruning/
 # docker container prune
-docker volume prune -a -f
-docker image prune --all
+docker volume prune -af
+docker image prune -af
+docker builder prune -af
 # the following docker command prune really anything!
 # https://apple.stackexchange.com/questions/391377/what-is-the-purpose-of-docker-raw-file-on-mac-os-catalina
 # A lot of space is here

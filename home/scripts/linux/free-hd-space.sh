@@ -13,8 +13,9 @@ rm -rf ~/.ghcup/logs/*
 npm cache clean --force
 rm -rf ~/.npm/_npx ~/.npm/_logs
 
-podman volume prune -a -f
-podman image prune --all
+podman volume prune -af
+podman image prune -af --build-cache
+
 sudo pacman -Scc
 sudo paru -Scc
 sudo paru --clean
