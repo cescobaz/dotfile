@@ -1,4 +1,9 @@
 *.iso
+*.ISO
+*.qcow2
+*.img
+*.vhd
+*.vhdx
 home/.zsh_custom/plugins
 *.swp
 Session.vim
