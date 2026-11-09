@@ -8,7 +8,8 @@ scripts_dir=$(dirname "$(readlink -f "$0")")
 swaymsg "workspace 1; exec '$scripts_dir/kitty-andromedai.sh'"
 # swaymsg "workspace 8; exec firefox --profile ~/.mozilla/firefox/TIdSrxLp.Profile\ 1"
 swaymsg "workspace 8; exec '$scripts_dir/linux/google-chrome.sh'"
-swaymsg "workspace 10; exec '$scripts_dir/linux/slack-wayland.sh'"
+# Slack opens links via xdg-open/BROWSER: route them to Chrome, like kitty.
+swaymsg "workspace 10; exec env BROWSER='$scripts_dir/linux/google-chrome.sh' PATH='$scripts_dir/andromedai-bin:$PATH' '$scripts_dir/linux/slack-wayland.sh'"
 
 # Flatpak Chrome maps late and sway's exec workspace tracking misses it, so
 # it lands on the focused workspace. Wait for its window and move it to 8.
